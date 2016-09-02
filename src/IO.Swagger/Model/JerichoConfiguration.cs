@@ -1,7 +1,7 @@
 /* 
  * BombBomb
  *
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -134,6 +134,12 @@ namespace IO.Swagger.Model
         [DataMember(Name="sendWithoutVideo", EmitDefaultValue=false)]
         public bool? SendWithoutVideo { get; set; }
         /// <summary>
+        /// The state of the send.
+        /// </summary>
+        /// <value>The state of the send.</value>
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public string Status { get; private set; }
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -151,6 +157,7 @@ namespace IO.Swagger.Model
             sb.Append("  EmailSubject: ").Append(EmailSubject).Append("\n");
             sb.Append("  EmailBody: ").Append(EmailBody).Append("\n");
             sb.Append("  SendWithoutVideo: ").Append(SendWithoutVideo).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -236,6 +243,11 @@ namespace IO.Swagger.Model
                     this.SendWithoutVideo == other.SendWithoutVideo ||
                     this.SendWithoutVideo != null &&
                     this.SendWithoutVideo.Equals(other.SendWithoutVideo)
+                ) && 
+                (
+                    this.Status == other.Status ||
+                    this.Status != null &&
+                    this.Status.Equals(other.Status)
                 );
         }
 
@@ -270,6 +282,8 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.EmailBody.GetHashCode();
                 if (this.SendWithoutVideo != null)
                     hash = hash * 59 + this.SendWithoutVideo.GetHashCode();
+                if (this.Status != null)
+                    hash = hash * 59 + this.Status.GetHashCode();
                 return hash;
             }
         }

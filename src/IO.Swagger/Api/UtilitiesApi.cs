@@ -1,7 +1,7 @@
 /* 
  * BombBomb
  *
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -26,6 +26,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace IO.Swagger.Api
 {
@@ -44,8 +45,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
         /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns></returns>
-        void CreateOAuthClient (string name, string redirectUri);
+        /// <returns>OAuthClient</returns>
+        OAuthClient CreateOAuthClient (string name, string redirectUri);
 
         /// <summary>
         /// Create an OAuth Client
@@ -56,8 +57,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
         /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CreateOAuthClientWithHttpInfo (string name, string redirectUri);
+        /// <returns>ApiResponse of OAuthClient</returns>
+        ApiResponse<OAuthClient> CreateOAuthClientWithHttpInfo (string name, string redirectUri);
         /// <summary>
         /// Delete an OAuth Client
         /// </summary>
@@ -86,8 +87,8 @@ namespace IO.Swagger.Api
         /// Enumerates OAuth Clients managed by the user
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void GetOAuthClients ();
+        /// <returns>List&lt;OAuthClient&gt;</returns>
+        List<OAuthClient> GetOAuthClients ();
 
         /// <summary>
         /// Lists OAuth Clients
@@ -96,8 +97,8 @@ namespace IO.Swagger.Api
         /// Enumerates OAuth Clients managed by the user
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetOAuthClientsWithHttpInfo ();
+        /// <returns>ApiResponse of List&lt;OAuthClient&gt;</returns>
+        ApiResponse<List<OAuthClient>> GetOAuthClientsWithHttpInfo ();
         /// <summary>
         /// Describes this api
         /// </summary>
@@ -128,8 +129,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
         /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CreateOAuthClientAsync (string name, string redirectUri);
+        /// <returns>Task of OAuthClient</returns>
+        System.Threading.Tasks.Task<OAuthClient> CreateOAuthClientAsync (string name, string redirectUri);
 
         /// <summary>
         /// Create an OAuth Client
@@ -140,8 +141,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
         /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CreateOAuthClientAsyncWithHttpInfo (string name, string redirectUri);
+        /// <returns>Task of ApiResponse (OAuthClient)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OAuthClient>> CreateOAuthClientAsyncWithHttpInfo (string name, string redirectUri);
         /// <summary>
         /// Delete an OAuth Client
         /// </summary>
@@ -170,8 +171,8 @@ namespace IO.Swagger.Api
         /// Enumerates OAuth Clients managed by the user
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetOAuthClientsAsync ();
+        /// <returns>Task of List&lt;OAuthClient&gt;</returns>
+        System.Threading.Tasks.Task<List<OAuthClient>> GetOAuthClientsAsync ();
 
         /// <summary>
         /// Lists OAuth Clients
@@ -180,8 +181,8 @@ namespace IO.Swagger.Api
         /// Enumerates OAuth Clients managed by the user
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetOAuthClientsAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (List&lt;OAuthClient&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<OAuthClient>>> GetOAuthClientsAsyncWithHttpInfo ();
         /// <summary>
         /// Describes this api
         /// </summary>
@@ -319,10 +320,11 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
         /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns></returns>
-        public void CreateOAuthClient (string name, string redirectUri)
+        /// <returns>OAuthClient</returns>
+        public OAuthClient CreateOAuthClient (string name, string redirectUri)
         {
-             CreateOAuthClientWithHttpInfo(name, redirectUri);
+             ApiResponse<OAuthClient> localVarResponse = CreateOAuthClientWithHttpInfo(name, redirectUri);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -331,8 +333,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
         /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> CreateOAuthClientWithHttpInfo (string name, string redirectUri)
+        /// <returns>ApiResponse of OAuthClient</returns>
+        public ApiResponse< OAuthClient > CreateOAuthClientWithHttpInfo (string name, string redirectUri)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -388,10 +390,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<OAuthClient>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (OAuthClient) Configuration.ApiClient.Deserialize(localVarResponse, typeof(OAuthClient)));
+            
         }
 
         /// <summary>
@@ -400,10 +402,11 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
         /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CreateOAuthClientAsync (string name, string redirectUri)
+        /// <returns>Task of OAuthClient</returns>
+        public async System.Threading.Tasks.Task<OAuthClient> CreateOAuthClientAsync (string name, string redirectUri)
         {
-             await CreateOAuthClientAsyncWithHttpInfo(name, redirectUri);
+             ApiResponse<OAuthClient> localVarResponse = await CreateOAuthClientAsyncWithHttpInfo(name, redirectUri);
+             return localVarResponse.Data;
 
         }
 
@@ -413,8 +416,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
         /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateOAuthClientAsyncWithHttpInfo (string name, string redirectUri)
+        /// <returns>Task of ApiResponse (OAuthClient)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<OAuthClient>> CreateOAuthClientAsyncWithHttpInfo (string name, string redirectUri)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -470,10 +473,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<OAuthClient>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (OAuthClient) Configuration.ApiClient.Deserialize(localVarResponse, typeof(OAuthClient)));
+            
         }
 
         /// <summary>
@@ -631,18 +634,19 @@ namespace IO.Swagger.Api
         /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void GetOAuthClients ()
+        /// <returns>List&lt;OAuthClient&gt;</returns>
+        public List<OAuthClient> GetOAuthClients ()
         {
-             GetOAuthClientsWithHttpInfo();
+             ApiResponse<List<OAuthClient>> localVarResponse = GetOAuthClientsWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetOAuthClientsWithHttpInfo ()
+        /// <returns>ApiResponse of List&lt;OAuthClient&gt;</returns>
+        public ApiResponse< List<OAuthClient> > GetOAuthClientsWithHttpInfo ()
         {
 
             var localVarPath = "/oauthclient";
@@ -690,20 +694,21 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<List<OAuthClient>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (List<OAuthClient>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OAuthClient>)));
+            
         }
 
         /// <summary>
         /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetOAuthClientsAsync ()
+        /// <returns>Task of List&lt;OAuthClient&gt;</returns>
+        public async System.Threading.Tasks.Task<List<OAuthClient>> GetOAuthClientsAsync ()
         {
-             await GetOAuthClientsAsyncWithHttpInfo();
+             ApiResponse<List<OAuthClient>> localVarResponse = await GetOAuthClientsAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -711,8 +716,8 @@ namespace IO.Swagger.Api
         /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetOAuthClientsAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (List&lt;OAuthClient&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<OAuthClient>>> GetOAuthClientsAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/oauthclient";
@@ -760,10 +765,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<List<OAuthClient>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (List<OAuthClient>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OAuthClient>)));
+            
         }
 
         /// <summary>

@@ -2,7 +2,7 @@
 <!--
 BombBomb
 
-We make it easy to use simple video to build relationships
+We make it easy to build relationships using simple videos.
 
 OpenAPI spec version: 2.0
 
@@ -24,7 +24,7 @@ limitations under the License.
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7860664B-7F9D-4E77-8FC2-4053AD7286EB}</ProjectGuid>
+    <ProjectGuid>{A5C59EC7-9D9C-4A76-8022-012118C88ABE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IO.Swagger</RootNamespace>

@@ -1,7 +1,7 @@
 /* 
  * BombBomb
  *
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -44,8 +44,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="prompt">The Video Email Prompt to be created</param>
-        /// <returns></returns>
-        void CreateVideoEmailPrompt (JerichoConfiguration prompt);
+        /// <returns>VideoEmailPrompt</returns>
+        VideoEmailPrompt CreateVideoEmailPrompt (VideoEmailPrompt prompt);
 
         /// <summary>
         /// Prompts user to send a video
@@ -55,8 +55,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="prompt">The Video Email Prompt to be created</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CreateVideoEmailPromptWithHttpInfo (JerichoConfiguration prompt);
+        /// <returns>ApiResponse of VideoEmailPrompt</returns>
+        ApiResponse<VideoEmailPrompt> CreateVideoEmailPromptWithHttpInfo (VideoEmailPrompt prompt);
         /// <summary>
         /// Gets a prompt
         /// </summary>
@@ -65,8 +65,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Id of the prompt</param>
-        /// <returns></returns>
-        void GetVideoEmailPrompt (string id);
+        /// <returns>VideoEmailPrompt</returns>
+        VideoEmailPrompt GetVideoEmailPrompt (string id);
 
         /// <summary>
         /// Gets a prompt
@@ -76,8 +76,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Id of the prompt</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetVideoEmailPromptWithHttpInfo (string id);
+        /// <returns>ApiResponse of VideoEmailPrompt</returns>
+        ApiResponse<VideoEmailPrompt> GetVideoEmailPromptWithHttpInfo (string id);
         /// <summary>
         /// Respond to a prompt
         /// </summary>
@@ -88,8 +88,8 @@ namespace IO.Swagger.Api
         /// <param name="id">The id of the prompt.</param>
         /// <param name="choice">The users&#39; selection. Can be: WithVideo, WithoutVideo, Cancel</param>
         /// <param name="videoId">The id of the video. (optional)</param>
-        /// <returns></returns>
-        void RespondToVideoEmailPrompt (string id, string choice, string videoId = null);
+        /// <returns>VideoEmailPrompt</returns>
+        VideoEmailPrompt RespondToVideoEmailPrompt (string id, string choice, string videoId = null);
 
         /// <summary>
         /// Respond to a prompt
@@ -101,8 +101,8 @@ namespace IO.Swagger.Api
         /// <param name="id">The id of the prompt.</param>
         /// <param name="choice">The users&#39; selection. Can be: WithVideo, WithoutVideo, Cancel</param>
         /// <param name="videoId">The id of the video. (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> RespondToVideoEmailPromptWithHttpInfo (string id, string choice, string videoId = null);
+        /// <returns>ApiResponse of VideoEmailPrompt</returns>
+        ApiResponse<VideoEmailPrompt> RespondToVideoEmailPromptWithHttpInfo (string id, string choice, string videoId = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -113,8 +113,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="prompt">The Video Email Prompt to be created</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CreateVideoEmailPromptAsync (JerichoConfiguration prompt);
+        /// <returns>Task of VideoEmailPrompt</returns>
+        System.Threading.Tasks.Task<VideoEmailPrompt> CreateVideoEmailPromptAsync (VideoEmailPrompt prompt);
 
         /// <summary>
         /// Prompts user to send a video
@@ -124,8 +124,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="prompt">The Video Email Prompt to be created</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CreateVideoEmailPromptAsyncWithHttpInfo (JerichoConfiguration prompt);
+        /// <returns>Task of ApiResponse (VideoEmailPrompt)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VideoEmailPrompt>> CreateVideoEmailPromptAsyncWithHttpInfo (VideoEmailPrompt prompt);
         /// <summary>
         /// Gets a prompt
         /// </summary>
@@ -134,8 +134,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Id of the prompt</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetVideoEmailPromptAsync (string id);
+        /// <returns>Task of VideoEmailPrompt</returns>
+        System.Threading.Tasks.Task<VideoEmailPrompt> GetVideoEmailPromptAsync (string id);
 
         /// <summary>
         /// Gets a prompt
@@ -145,8 +145,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Id of the prompt</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetVideoEmailPromptAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (VideoEmailPrompt)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VideoEmailPrompt>> GetVideoEmailPromptAsyncWithHttpInfo (string id);
         /// <summary>
         /// Respond to a prompt
         /// </summary>
@@ -157,8 +157,8 @@ namespace IO.Swagger.Api
         /// <param name="id">The id of the prompt.</param>
         /// <param name="choice">The users&#39; selection. Can be: WithVideo, WithoutVideo, Cancel</param>
         /// <param name="videoId">The id of the video. (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RespondToVideoEmailPromptAsync (string id, string choice, string videoId = null);
+        /// <returns>Task of VideoEmailPrompt</returns>
+        System.Threading.Tasks.Task<VideoEmailPrompt> RespondToVideoEmailPromptAsync (string id, string choice, string videoId = null);
 
         /// <summary>
         /// Respond to a prompt
@@ -170,8 +170,8 @@ namespace IO.Swagger.Api
         /// <param name="id">The id of the prompt.</param>
         /// <param name="choice">The users&#39; selection. Can be: WithVideo, WithoutVideo, Cancel</param>
         /// <param name="videoId">The id of the video. (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RespondToVideoEmailPromptAsyncWithHttpInfo (string id, string choice, string videoId = null);
+        /// <returns>Task of ApiResponse (VideoEmailPrompt)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VideoEmailPrompt>> RespondToVideoEmailPromptAsyncWithHttpInfo (string id, string choice, string videoId = null);
         #endregion Asynchronous Operations
     }
 
@@ -289,10 +289,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="prompt">The Video Email Prompt to be created</param>
-        /// <returns></returns>
-        public void CreateVideoEmailPrompt (JerichoConfiguration prompt)
+        /// <returns>VideoEmailPrompt</returns>
+        public VideoEmailPrompt CreateVideoEmailPrompt (VideoEmailPrompt prompt)
         {
-             CreateVideoEmailPromptWithHttpInfo(prompt);
+             ApiResponse<VideoEmailPrompt> localVarResponse = CreateVideoEmailPromptWithHttpInfo(prompt);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -300,8 +301,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="prompt">The Video Email Prompt to be created</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> CreateVideoEmailPromptWithHttpInfo (JerichoConfiguration prompt)
+        /// <returns>ApiResponse of VideoEmailPrompt</returns>
+        public ApiResponse< VideoEmailPrompt > CreateVideoEmailPromptWithHttpInfo (VideoEmailPrompt prompt)
         {
             // verify the required parameter 'prompt' is set
             if (prompt == null)
@@ -340,6 +341,12 @@ namespace IO.Swagger.Api
                 localVarPostBody = prompt; // byte array
             }
 
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -354,10 +361,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<VideoEmailPrompt>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (VideoEmailPrompt) Configuration.ApiClient.Deserialize(localVarResponse, typeof(VideoEmailPrompt)));
+            
         }
 
         /// <summary>
@@ -365,10 +372,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="prompt">The Video Email Prompt to be created</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CreateVideoEmailPromptAsync (JerichoConfiguration prompt)
+        /// <returns>Task of VideoEmailPrompt</returns>
+        public async System.Threading.Tasks.Task<VideoEmailPrompt> CreateVideoEmailPromptAsync (VideoEmailPrompt prompt)
         {
-             await CreateVideoEmailPromptAsyncWithHttpInfo(prompt);
+             ApiResponse<VideoEmailPrompt> localVarResponse = await CreateVideoEmailPromptAsyncWithHttpInfo(prompt);
+             return localVarResponse.Data;
 
         }
 
@@ -377,8 +385,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="prompt">The Video Email Prompt to be created</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> CreateVideoEmailPromptAsyncWithHttpInfo (JerichoConfiguration prompt)
+        /// <returns>Task of ApiResponse (VideoEmailPrompt)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<VideoEmailPrompt>> CreateVideoEmailPromptAsyncWithHttpInfo (VideoEmailPrompt prompt)
         {
             // verify the required parameter 'prompt' is set
             if (prompt == null)
@@ -417,6 +425,12 @@ namespace IO.Swagger.Api
                 localVarPostBody = prompt; // byte array
             }
 
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -431,10 +445,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<VideoEmailPrompt>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (VideoEmailPrompt) Configuration.ApiClient.Deserialize(localVarResponse, typeof(VideoEmailPrompt)));
+            
         }
 
         /// <summary>
@@ -442,10 +456,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Id of the prompt</param>
-        /// <returns></returns>
-        public void GetVideoEmailPrompt (string id)
+        /// <returns>VideoEmailPrompt</returns>
+        public VideoEmailPrompt GetVideoEmailPrompt (string id)
         {
-             GetVideoEmailPromptWithHttpInfo(id);
+             ApiResponse<VideoEmailPrompt> localVarResponse = GetVideoEmailPromptWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -453,8 +468,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Id of the prompt</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetVideoEmailPromptWithHttpInfo (string id)
+        /// <returns>ApiResponse of VideoEmailPrompt</returns>
+        public ApiResponse< VideoEmailPrompt > GetVideoEmailPromptWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -506,10 +521,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<VideoEmailPrompt>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (VideoEmailPrompt) Configuration.ApiClient.Deserialize(localVarResponse, typeof(VideoEmailPrompt)));
+            
         }
 
         /// <summary>
@@ -517,10 +532,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Id of the prompt</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetVideoEmailPromptAsync (string id)
+        /// <returns>Task of VideoEmailPrompt</returns>
+        public async System.Threading.Tasks.Task<VideoEmailPrompt> GetVideoEmailPromptAsync (string id)
         {
-             await GetVideoEmailPromptAsyncWithHttpInfo(id);
+             ApiResponse<VideoEmailPrompt> localVarResponse = await GetVideoEmailPromptAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -529,8 +545,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Id of the prompt</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetVideoEmailPromptAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (VideoEmailPrompt)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<VideoEmailPrompt>> GetVideoEmailPromptAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -582,10 +598,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<VideoEmailPrompt>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (VideoEmailPrompt) Configuration.ApiClient.Deserialize(localVarResponse, typeof(VideoEmailPrompt)));
+            
         }
 
         /// <summary>
@@ -595,10 +611,11 @@ namespace IO.Swagger.Api
         /// <param name="id">The id of the prompt.</param>
         /// <param name="choice">The users&#39; selection. Can be: WithVideo, WithoutVideo, Cancel</param>
         /// <param name="videoId">The id of the video. (optional)</param>
-        /// <returns></returns>
-        public void RespondToVideoEmailPrompt (string id, string choice, string videoId = null)
+        /// <returns>VideoEmailPrompt</returns>
+        public VideoEmailPrompt RespondToVideoEmailPrompt (string id, string choice, string videoId = null)
         {
-             RespondToVideoEmailPromptWithHttpInfo(id, choice, videoId);
+             ApiResponse<VideoEmailPrompt> localVarResponse = RespondToVideoEmailPromptWithHttpInfo(id, choice, videoId);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -608,8 +625,8 @@ namespace IO.Swagger.Api
         /// <param name="id">The id of the prompt.</param>
         /// <param name="choice">The users&#39; selection. Can be: WithVideo, WithoutVideo, Cancel</param>
         /// <param name="videoId">The id of the video. (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> RespondToVideoEmailPromptWithHttpInfo (string id, string choice, string videoId = null)
+        /// <returns>ApiResponse of VideoEmailPrompt</returns>
+        public ApiResponse< VideoEmailPrompt > RespondToVideoEmailPromptWithHttpInfo (string id, string choice, string videoId = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -660,10 +677,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<VideoEmailPrompt>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (VideoEmailPrompt) Configuration.ApiClient.Deserialize(localVarResponse, typeof(VideoEmailPrompt)));
+            
         }
 
         /// <summary>
@@ -673,10 +690,11 @@ namespace IO.Swagger.Api
         /// <param name="id">The id of the prompt.</param>
         /// <param name="choice">The users&#39; selection. Can be: WithVideo, WithoutVideo, Cancel</param>
         /// <param name="videoId">The id of the video. (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RespondToVideoEmailPromptAsync (string id, string choice, string videoId = null)
+        /// <returns>Task of VideoEmailPrompt</returns>
+        public async System.Threading.Tasks.Task<VideoEmailPrompt> RespondToVideoEmailPromptAsync (string id, string choice, string videoId = null)
         {
-             await RespondToVideoEmailPromptAsyncWithHttpInfo(id, choice, videoId);
+             ApiResponse<VideoEmailPrompt> localVarResponse = await RespondToVideoEmailPromptAsyncWithHttpInfo(id, choice, videoId);
+             return localVarResponse.Data;
 
         }
 
@@ -687,8 +705,8 @@ namespace IO.Swagger.Api
         /// <param name="id">The id of the prompt.</param>
         /// <param name="choice">The users&#39; selection. Can be: WithVideo, WithoutVideo, Cancel</param>
         /// <param name="videoId">The id of the video. (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RespondToVideoEmailPromptAsyncWithHttpInfo (string id, string choice, string videoId = null)
+        /// <returns>Task of ApiResponse (VideoEmailPrompt)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<VideoEmailPrompt>> RespondToVideoEmailPromptAsyncWithHttpInfo (string id, string choice, string videoId = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -739,10 +757,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<VideoEmailPrompt>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (VideoEmailPrompt) Configuration.ApiClient.Deserialize(localVarResponse, typeof(VideoEmailPrompt)));
+            
         }
 
     }

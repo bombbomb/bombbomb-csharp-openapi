@@ -34,19 +34,32 @@ using Newtonsoft.Json.Converters;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// ModelString
+    /// InlineResponse200
     /// </summary>
     [DataContract]
-    public partial class ModelString :  IEquatable<ModelString>
+    public partial class InlineResponse200 :  IEquatable<InlineResponse200>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModelString" /> class.
+        /// Initializes a new instance of the <see cref="InlineResponse200" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public ModelString()
+        /// <param name="TotalPages">TotalPages.</param>
+        /// <param name="Items">Items.</param>
+        public InlineResponse200(int? TotalPages = null, List<InlineResponse200Items> Items = null)
         {
+            this.TotalPages = TotalPages;
+            this.Items = Items;
         }
         
+        /// <summary>
+        /// Gets or Sets TotalPages
+        /// </summary>
+        [DataMember(Name="totalPages", EmitDefaultValue=false)]
+        public int? TotalPages { get; set; }
+        /// <summary>
+        /// Gets or Sets Items
+        /// </summary>
+        [DataMember(Name="items", EmitDefaultValue=false)]
+        public List<InlineResponse200Items> Items { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -54,7 +67,9 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ModelString {\n");
+            sb.Append("class InlineResponse200 {\n");
+            sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
+            sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -76,21 +91,31 @@ namespace IO.Swagger.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ModelString);
+            return this.Equals(obj as InlineResponse200);
         }
 
         /// <summary>
-        /// Returns true if ModelString instances are equal
+        /// Returns true if InlineResponse200 instances are equal
         /// </summary>
-        /// <param name="other">Instance of ModelString to be compared</param>
+        /// <param name="other">Instance of InlineResponse200 to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ModelString other)
+        public bool Equals(InlineResponse200 other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
                 return false;
 
-            return false;
+            return 
+                (
+                    this.TotalPages == other.TotalPages ||
+                    this.TotalPages != null &&
+                    this.TotalPages.Equals(other.TotalPages)
+                ) && 
+                (
+                    this.Items == other.Items ||
+                    this.Items != null &&
+                    this.Items.SequenceEqual(other.Items)
+                );
         }
 
         /// <summary>
@@ -104,6 +129,10 @@ namespace IO.Swagger.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
+                if (this.TotalPages != null)
+                    hash = hash * 59 + this.TotalPages.GetHashCode();
+                if (this.Items != null)
+                    hash = hash * 59 + this.Items.GetHashCode();
                 return hash;
             }
         }

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="addwebhook"></a>
 # **AddWebHook**
-> void AddWebHook (string hookUrl)
+> BBWebHook AddWebHook (string hookUrl)
 
 Add Webhook
 
@@ -42,7 +42,8 @@ namespace Example
             try
             {
                 // Add Webhook
-                apiInstance.AddWebHook(hookUrl);
+                BBWebHook result = apiInstance.AddWebHook(hookUrl);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**BBWebHook**](BBWebHook.md)
 
 ### Authorization
 
@@ -76,7 +77,7 @@ void (empty response body)
 
 <a name="deletewebhook"></a>
 # **DeleteWebHook**
-> void DeleteWebHook (string hookId)
+> string DeleteWebHook (string hookId)
 
 Deletes Webhook
 
@@ -106,7 +107,8 @@ namespace Example
             try
             {
                 // Deletes Webhook
-                apiInstance.DeleteWebHook(hookId);
+                string result = apiInstance.DeleteWebHook(hookId);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -125,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -140,7 +142,7 @@ void (empty response body)
 
 <a name="getwebhooks"></a>
 # **GetWebHooks**
-> void GetWebHooks ()
+> List<BBWebHook> GetWebHooks ()
 
 Lists Webhooks
 
@@ -169,7 +171,8 @@ namespace Example
             try
             {
                 // Lists Webhooks
-                apiInstance.GetWebHooks();
+                List&lt;BBWebHook&gt; result = apiInstance.GetWebHooks();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -185,7 +188,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**List<BBWebHook>**](BBWebHook.md)
 
 ### Authorization
 

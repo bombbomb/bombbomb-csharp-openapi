@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="createvideoemailprompt"></a>
 # **CreateVideoEmailPrompt**
-> void CreateVideoEmailPrompt (JerichoConfiguration prompt)
+> VideoEmailPrompt CreateVideoEmailPrompt (VideoEmailPrompt prompt)
 
 Prompts user to send a video
 
@@ -32,13 +32,17 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new PromptsApi();
-            var prompt = new JerichoConfiguration(); // JerichoConfiguration | The Video Email Prompt to be created
+            var prompt = new VideoEmailPrompt(); // VideoEmailPrompt | The Video Email Prompt to be created
 
             try
             {
                 // Prompts user to send a video
-                apiInstance.CreateVideoEmailPrompt(prompt);
+                VideoEmailPrompt result = apiInstance.CreateVideoEmailPrompt(prompt);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -53,15 +57,15 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **prompt** | [**JerichoConfiguration**](JerichoConfiguration.md)| The Video Email Prompt to be created | 
+ **prompt** | [**VideoEmailPrompt**](VideoEmailPrompt.md)| The Video Email Prompt to be created | 
 
 ### Return type
 
-void (empty response body)
+[**VideoEmailPrompt**](VideoEmailPrompt.md)
 
 ### Authorization
 
-No authorization required
+[BBOAuth2](../README.md#BBOAuth2)
 
 ### HTTP request headers
 
@@ -72,7 +76,7 @@ No authorization required
 
 <a name="getvideoemailprompt"></a>
 # **GetVideoEmailPrompt**
-> void GetVideoEmailPrompt (string id)
+> VideoEmailPrompt GetVideoEmailPrompt (string id)
 
 Gets a prompt
 
@@ -102,7 +106,8 @@ namespace Example
             try
             {
                 // Gets a prompt
-                apiInstance.GetVideoEmailPrompt(id);
+                VideoEmailPrompt result = apiInstance.GetVideoEmailPrompt(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -121,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**VideoEmailPrompt**](VideoEmailPrompt.md)
 
 ### Authorization
 
@@ -136,7 +141,7 @@ void (empty response body)
 
 <a name="respondtovideoemailprompt"></a>
 # **RespondToVideoEmailPrompt**
-> void RespondToVideoEmailPrompt (string id, string choice, string videoId = null)
+> VideoEmailPrompt RespondToVideoEmailPrompt (string id, string choice, string videoId = null)
 
 Respond to a prompt
 
@@ -165,7 +170,8 @@ namespace Example
             try
             {
                 // Respond to a prompt
-                apiInstance.RespondToVideoEmailPrompt(id, choice, videoId);
+                VideoEmailPrompt result = apiInstance.RespondToVideoEmailPrompt(id, choice, videoId);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -186,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**VideoEmailPrompt**](VideoEmailPrompt.md)
 
 ### Authorization
 

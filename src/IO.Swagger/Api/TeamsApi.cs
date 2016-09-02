@@ -1,7 +1,7 @@
 /* 
  * BombBomb
  *
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -37,6 +37,79 @@ namespace IO.Swagger.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Cancel a Jericho Send
+        /// </summary>
+        /// <remarks>
+        /// Cancels a scheduled Jericho send from being sent.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho Job to cancel</param>
+        /// <returns></returns>
+        void CancelJerichoSend (string jerichoId);
+
+        /// <summary>
+        /// Cancel a Jericho Send
+        /// </summary>
+        /// <remarks>
+        /// Cancels a scheduled Jericho send from being sent.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho Job to cancel</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> CancelJerichoSendWithHttpInfo (string jerichoId);
+        /// <summary>
+        /// Lists team assets
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of assets
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assetType">The type of assets.</param>
+        /// <param name="teamId">The team containing the assets. (optional)</param>
+        /// <param name="autoTagName">The auto tag name containing the assets. (optional)</param>
+        /// <param name="pageSize">The number of items to retrieve in a single db query. (optional)</param>
+        /// <param name="page">Zero-based index of the page of data to retrieve from the db. (optional)</param>
+        /// <param name="search">Search words. (optional)</param>
+        /// <returns>InlineResponse200</returns>
+        InlineResponse200 GetClientGroupAssets (string assetType, string teamId = null, string autoTagName = null, string pageSize = null, string page = null, string search = null);
+
+        /// <summary>
+        /// Lists team assets
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of assets
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assetType">The type of assets.</param>
+        /// <param name="teamId">The team containing the assets. (optional)</param>
+        /// <param name="autoTagName">The auto tag name containing the assets. (optional)</param>
+        /// <param name="pageSize">The number of items to retrieve in a single db query. (optional)</param>
+        /// <param name="page">Zero-based index of the page of data to retrieve from the db. (optional)</param>
+        /// <param name="search">Search words. (optional)</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        ApiResponse<InlineResponse200> GetClientGroupAssetsWithHttpInfo (string assetType, string teamId = null, string autoTagName = null, string pageSize = null, string page = null, string search = null);
+        /// <summary>
+        /// List Jericho Sends
+        /// </summary>
+        /// <remarks>
+        /// Lists Jericho sends, both pending and sent.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team whose Jericho sends you wish to see.</param>
+        /// <returns>List&lt;JerichoConfiguration&gt;</returns>
+        List<JerichoConfiguration> GetJerichoSends (string teamId);
+
+        /// <summary>
+        /// List Jericho Sends
+        /// </summary>
+        /// <remarks>
+        /// Lists Jericho sends, both pending and sent.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team whose Jericho sends you wish to see.</param>
+        /// <returns>ApiResponse of List&lt;JerichoConfiguration&gt;</returns>
+        ApiResponse<List<JerichoConfiguration>> GetJerichoSendsWithHttpInfo (string teamId);
+        /// <summary>
         /// Creates a Jericho send.
         /// </summary>
         /// <remarks>
@@ -61,6 +134,79 @@ namespace IO.Swagger.Api
         ApiResponse<JerichoConfiguration> QueueJerichoSendWithHttpInfo (JerichoConfiguration config, string teamId);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Cancel a Jericho Send
+        /// </summary>
+        /// <remarks>
+        /// Cancels a scheduled Jericho send from being sent.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho Job to cancel</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task CancelJerichoSendAsync (string jerichoId);
+
+        /// <summary>
+        /// Cancel a Jericho Send
+        /// </summary>
+        /// <remarks>
+        /// Cancels a scheduled Jericho send from being sent.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho Job to cancel</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> CancelJerichoSendAsyncWithHttpInfo (string jerichoId);
+        /// <summary>
+        /// Lists team assets
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of assets
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assetType">The type of assets.</param>
+        /// <param name="teamId">The team containing the assets. (optional)</param>
+        /// <param name="autoTagName">The auto tag name containing the assets. (optional)</param>
+        /// <param name="pageSize">The number of items to retrieve in a single db query. (optional)</param>
+        /// <param name="page">Zero-based index of the page of data to retrieve from the db. (optional)</param>
+        /// <param name="search">Search words. (optional)</param>
+        /// <returns>Task of InlineResponse200</returns>
+        System.Threading.Tasks.Task<InlineResponse200> GetClientGroupAssetsAsync (string assetType, string teamId = null, string autoTagName = null, string pageSize = null, string page = null, string search = null);
+
+        /// <summary>
+        /// Lists team assets
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of assets
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assetType">The type of assets.</param>
+        /// <param name="teamId">The team containing the assets. (optional)</param>
+        /// <param name="autoTagName">The auto tag name containing the assets. (optional)</param>
+        /// <param name="pageSize">The number of items to retrieve in a single db query. (optional)</param>
+        /// <param name="page">Zero-based index of the page of data to retrieve from the db. (optional)</param>
+        /// <param name="search">Search words. (optional)</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> GetClientGroupAssetsAsyncWithHttpInfo (string assetType, string teamId = null, string autoTagName = null, string pageSize = null, string page = null, string search = null);
+        /// <summary>
+        /// List Jericho Sends
+        /// </summary>
+        /// <remarks>
+        /// Lists Jericho sends, both pending and sent.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team whose Jericho sends you wish to see.</param>
+        /// <returns>Task of List&lt;JerichoConfiguration&gt;</returns>
+        System.Threading.Tasks.Task<List<JerichoConfiguration>> GetJerichoSendsAsync (string teamId);
+
+        /// <summary>
+        /// List Jericho Sends
+        /// </summary>
+        /// <remarks>
+        /// Lists Jericho sends, both pending and sent.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team whose Jericho sends you wish to see.</param>
+        /// <returns>Task of ApiResponse (List&lt;JerichoConfiguration&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<JerichoConfiguration>>> GetJerichoSendsAsyncWithHttpInfo (string teamId);
         /// <summary>
         /// Creates a Jericho send.
         /// </summary>
@@ -194,6 +340,493 @@ namespace IO.Swagger.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Cancel a Jericho Send Cancels a scheduled Jericho send from being sent.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho Job to cancel</param>
+        /// <returns></returns>
+        public void CancelJerichoSend (string jerichoId)
+        {
+             CancelJerichoSendWithHttpInfo(jerichoId);
+        }
+
+        /// <summary>
+        /// Cancel a Jericho Send Cancels a scheduled Jericho send from being sent.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho Job to cancel</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> CancelJerichoSendWithHttpInfo (string jerichoId)
+        {
+            // verify the required parameter 'jerichoId' is set
+            if (jerichoId == null)
+                throw new ApiException(400, "Missing required parameter 'jerichoId' when calling TeamsApi->CancelJerichoSend");
+
+            var localVarPath = "/team/{teamId}/jericho/{jerichoId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (jerichoId != null) localVarPathParams.Add("jerichoId", Configuration.ApiClient.ParameterToString(jerichoId)); // path parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CancelJerichoSend", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Cancel a Jericho Send Cancels a scheduled Jericho send from being sent.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho Job to cancel</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task CancelJerichoSendAsync (string jerichoId)
+        {
+             await CancelJerichoSendAsyncWithHttpInfo(jerichoId);
+
+        }
+
+        /// <summary>
+        /// Cancel a Jericho Send Cancels a scheduled Jericho send from being sent.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho Job to cancel</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> CancelJerichoSendAsyncWithHttpInfo (string jerichoId)
+        {
+            // verify the required parameter 'jerichoId' is set
+            if (jerichoId == null)
+                throw new ApiException(400, "Missing required parameter 'jerichoId' when calling TeamsApi->CancelJerichoSend");
+
+            var localVarPath = "/team/{teamId}/jericho/{jerichoId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (jerichoId != null) localVarPathParams.Add("jerichoId", Configuration.ApiClient.ParameterToString(jerichoId)); // path parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CancelJerichoSend", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Lists team assets Returns a collection of assets
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assetType">The type of assets.</param>
+        /// <param name="teamId">The team containing the assets. (optional)</param>
+        /// <param name="autoTagName">The auto tag name containing the assets. (optional)</param>
+        /// <param name="pageSize">The number of items to retrieve in a single db query. (optional)</param>
+        /// <param name="page">Zero-based index of the page of data to retrieve from the db. (optional)</param>
+        /// <param name="search">Search words. (optional)</param>
+        /// <returns>InlineResponse200</returns>
+        public InlineResponse200 GetClientGroupAssets (string assetType, string teamId = null, string autoTagName = null, string pageSize = null, string page = null, string search = null)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = GetClientGroupAssetsWithHttpInfo(assetType, teamId, autoTagName, pageSize, page, search);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Lists team assets Returns a collection of assets
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assetType">The type of assets.</param>
+        /// <param name="teamId">The team containing the assets. (optional)</param>
+        /// <param name="autoTagName">The auto tag name containing the assets. (optional)</param>
+        /// <param name="pageSize">The number of items to retrieve in a single db query. (optional)</param>
+        /// <param name="page">Zero-based index of the page of data to retrieve from the db. (optional)</param>
+        /// <param name="search">Search words. (optional)</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        public ApiResponse< InlineResponse200 > GetClientGroupAssetsWithHttpInfo (string assetType, string teamId = null, string autoTagName = null, string pageSize = null, string page = null, string search = null)
+        {
+            // verify the required parameter 'assetType' is set
+            if (assetType == null)
+                throw new ApiException(400, "Missing required parameter 'assetType' when calling TeamsApi->GetClientGroupAssets");
+
+            var localVarPath = "/team/assets/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (assetType != null) localVarQueryParams.Add("assetType", Configuration.ApiClient.ParameterToString(assetType)); // query parameter
+            if (teamId != null) localVarQueryParams.Add("teamId", Configuration.ApiClient.ParameterToString(teamId)); // query parameter
+            if (autoTagName != null) localVarQueryParams.Add("autoTagName", Configuration.ApiClient.ParameterToString(autoTagName)); // query parameter
+            if (pageSize != null) localVarQueryParams.Add("pageSize", Configuration.ApiClient.ParameterToString(pageSize)); // query parameter
+            if (page != null) localVarQueryParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // query parameter
+            if (search != null) localVarQueryParams.Add("search", Configuration.ApiClient.ParameterToString(search)); // query parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetClientGroupAssets", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+            
+        }
+
+        /// <summary>
+        /// Lists team assets Returns a collection of assets
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assetType">The type of assets.</param>
+        /// <param name="teamId">The team containing the assets. (optional)</param>
+        /// <param name="autoTagName">The auto tag name containing the assets. (optional)</param>
+        /// <param name="pageSize">The number of items to retrieve in a single db query. (optional)</param>
+        /// <param name="page">Zero-based index of the page of data to retrieve from the db. (optional)</param>
+        /// <param name="search">Search words. (optional)</param>
+        /// <returns>Task of InlineResponse200</returns>
+        public async System.Threading.Tasks.Task<InlineResponse200> GetClientGroupAssetsAsync (string assetType, string teamId = null, string autoTagName = null, string pageSize = null, string page = null, string search = null)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = await GetClientGroupAssetsAsyncWithHttpInfo(assetType, teamId, autoTagName, pageSize, page, search);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Lists team assets Returns a collection of assets
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assetType">The type of assets.</param>
+        /// <param name="teamId">The team containing the assets. (optional)</param>
+        /// <param name="autoTagName">The auto tag name containing the assets. (optional)</param>
+        /// <param name="pageSize">The number of items to retrieve in a single db query. (optional)</param>
+        /// <param name="page">Zero-based index of the page of data to retrieve from the db. (optional)</param>
+        /// <param name="search">Search words. (optional)</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> GetClientGroupAssetsAsyncWithHttpInfo (string assetType, string teamId = null, string autoTagName = null, string pageSize = null, string page = null, string search = null)
+        {
+            // verify the required parameter 'assetType' is set
+            if (assetType == null)
+                throw new ApiException(400, "Missing required parameter 'assetType' when calling TeamsApi->GetClientGroupAssets");
+
+            var localVarPath = "/team/assets/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (assetType != null) localVarQueryParams.Add("assetType", Configuration.ApiClient.ParameterToString(assetType)); // query parameter
+            if (teamId != null) localVarQueryParams.Add("teamId", Configuration.ApiClient.ParameterToString(teamId)); // query parameter
+            if (autoTagName != null) localVarQueryParams.Add("autoTagName", Configuration.ApiClient.ParameterToString(autoTagName)); // query parameter
+            if (pageSize != null) localVarQueryParams.Add("pageSize", Configuration.ApiClient.ParameterToString(pageSize)); // query parameter
+            if (page != null) localVarQueryParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // query parameter
+            if (search != null) localVarQueryParams.Add("search", Configuration.ApiClient.ParameterToString(search)); // query parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetClientGroupAssets", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (InlineResponse200) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+            
+        }
+
+        /// <summary>
+        /// List Jericho Sends Lists Jericho sends, both pending and sent.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team whose Jericho sends you wish to see.</param>
+        /// <returns>List&lt;JerichoConfiguration&gt;</returns>
+        public List<JerichoConfiguration> GetJerichoSends (string teamId)
+        {
+             ApiResponse<List<JerichoConfiguration>> localVarResponse = GetJerichoSendsWithHttpInfo(teamId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Jericho Sends Lists Jericho sends, both pending and sent.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team whose Jericho sends you wish to see.</param>
+        /// <returns>ApiResponse of List&lt;JerichoConfiguration&gt;</returns>
+        public ApiResponse< List<JerichoConfiguration> > GetJerichoSendsWithHttpInfo (string teamId)
+        {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new ApiException(400, "Missing required parameter 'teamId' when calling TeamsApi->GetJerichoSends");
+
+            var localVarPath = "/team/{teamId}/jericho";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (teamId != null) localVarPathParams.Add("teamId", Configuration.ApiClient.ParameterToString(teamId)); // path parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetJerichoSends", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<JerichoConfiguration>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<JerichoConfiguration>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<JerichoConfiguration>)));
+            
+        }
+
+        /// <summary>
+        /// List Jericho Sends Lists Jericho sends, both pending and sent.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team whose Jericho sends you wish to see.</param>
+        /// <returns>Task of List&lt;JerichoConfiguration&gt;</returns>
+        public async System.Threading.Tasks.Task<List<JerichoConfiguration>> GetJerichoSendsAsync (string teamId)
+        {
+             ApiResponse<List<JerichoConfiguration>> localVarResponse = await GetJerichoSendsAsyncWithHttpInfo(teamId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// List Jericho Sends Lists Jericho sends, both pending and sent.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team whose Jericho sends you wish to see.</param>
+        /// <returns>Task of ApiResponse (List&lt;JerichoConfiguration&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<JerichoConfiguration>>> GetJerichoSendsAsyncWithHttpInfo (string teamId)
+        {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new ApiException(400, "Missing required parameter 'teamId' when calling TeamsApi->GetJerichoSends");
+
+            var localVarPath = "/team/{teamId}/jericho";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (teamId != null) localVarPathParams.Add("teamId", Configuration.ApiClient.ParameterToString(teamId)); // path parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetJerichoSends", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<JerichoConfiguration>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<JerichoConfiguration>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<JerichoConfiguration>)));
+            
         }
 
         /// <summary>

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createoauthclient"></a>
 # **CreateOAuthClient**
-> void CreateOAuthClient (string name, string redirectUri)
+> OAuthClient CreateOAuthClient (string name, string redirectUri)
 
 Create an OAuth Client
 
@@ -43,7 +43,8 @@ namespace Example
             try
             {
                 // Create an OAuth Client
-                apiInstance.CreateOAuthClient(name, redirectUri);
+                OAuthClient result = apiInstance.CreateOAuthClient(name, redirectUri);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -63,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**OAuthClient**](OAuthClient.md)
 
 ### Authorization
 
@@ -142,7 +143,7 @@ void (empty response body)
 
 <a name="getoauthclients"></a>
 # **GetOAuthClients**
-> void GetOAuthClients ()
+> List<OAuthClient> GetOAuthClients ()
 
 Lists OAuth Clients
 
@@ -171,7 +172,8 @@ namespace Example
             try
             {
                 // Lists OAuth Clients
-                apiInstance.GetOAuthClients();
+                List&lt;OAuthClient&gt; result = apiInstance.GetOAuthClients();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -187,7 +189,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**List<OAuthClient>**](OAuthClient.md)
 
 ### Authorization
 

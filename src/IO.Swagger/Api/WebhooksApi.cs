@@ -1,7 +1,7 @@
 /* 
  * BombBomb
  *
- * We make it easy to use simple video to build relationships
+ * We make it easy to build relationships using simple videos.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -26,6 +26,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using IO.Swagger.Client;
+using IO.Swagger.Model;
 
 namespace IO.Swagger.Api
 {
@@ -43,8 +44,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookUrl">The Url of your listener</param>
-        /// <returns></returns>
-        void AddWebHook (string hookUrl);
+        /// <returns>BBWebHook</returns>
+        BBWebHook AddWebHook (string hookUrl);
 
         /// <summary>
         /// Add Webhook
@@ -54,8 +55,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookUrl">The Url of your listener</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddWebHookWithHttpInfo (string hookUrl);
+        /// <returns>ApiResponse of BBWebHook</returns>
+        ApiResponse<BBWebHook> AddWebHookWithHttpInfo (string hookUrl);
         /// <summary>
         /// Deletes Webhook
         /// </summary>
@@ -64,8 +65,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookId">The id of the webhook to delete</param>
-        /// <returns></returns>
-        void DeleteWebHook (string hookId);
+        /// <returns>string</returns>
+        string DeleteWebHook (string hookId);
 
         /// <summary>
         /// Deletes Webhook
@@ -75,8 +76,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookId">The id of the webhook to delete</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteWebHookWithHttpInfo (string hookId);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DeleteWebHookWithHttpInfo (string hookId);
         /// <summary>
         /// Lists Webhooks
         /// </summary>
@@ -84,8 +85,8 @@ namespace IO.Swagger.Api
         /// Lists all registered Webhooks
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void GetWebHooks ();
+        /// <returns>List&lt;BBWebHook&gt;</returns>
+        List<BBWebHook> GetWebHooks ();
 
         /// <summary>
         /// Lists Webhooks
@@ -94,8 +95,8 @@ namespace IO.Swagger.Api
         /// Lists all registered Webhooks
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetWebHooksWithHttpInfo ();
+        /// <returns>ApiResponse of List&lt;BBWebHook&gt;</returns>
+        ApiResponse<List<BBWebHook>> GetWebHooksWithHttpInfo ();
         /// <summary>
         /// Sends test Webhook
         /// </summary>
@@ -125,8 +126,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookUrl">The Url of your listener</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddWebHookAsync (string hookUrl);
+        /// <returns>Task of BBWebHook</returns>
+        System.Threading.Tasks.Task<BBWebHook> AddWebHookAsync (string hookUrl);
 
         /// <summary>
         /// Add Webhook
@@ -136,8 +137,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookUrl">The Url of your listener</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddWebHookAsyncWithHttpInfo (string hookUrl);
+        /// <returns>Task of ApiResponse (BBWebHook)</returns>
+        System.Threading.Tasks.Task<ApiResponse<BBWebHook>> AddWebHookAsyncWithHttpInfo (string hookUrl);
         /// <summary>
         /// Deletes Webhook
         /// </summary>
@@ -146,8 +147,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookId">The id of the webhook to delete</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteWebHookAsync (string hookId);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DeleteWebHookAsync (string hookId);
 
         /// <summary>
         /// Deletes Webhook
@@ -157,8 +158,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookId">The id of the webhook to delete</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWebHookAsyncWithHttpInfo (string hookId);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DeleteWebHookAsyncWithHttpInfo (string hookId);
         /// <summary>
         /// Lists Webhooks
         /// </summary>
@@ -166,8 +167,8 @@ namespace IO.Swagger.Api
         /// Lists all registered Webhooks
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetWebHooksAsync ();
+        /// <returns>Task of List&lt;BBWebHook&gt;</returns>
+        System.Threading.Tasks.Task<List<BBWebHook>> GetWebHooksAsync ();
 
         /// <summary>
         /// Lists Webhooks
@@ -176,8 +177,8 @@ namespace IO.Swagger.Api
         /// Lists all registered Webhooks
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetWebHooksAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (List&lt;BBWebHook&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<BBWebHook>>> GetWebHooksAsyncWithHttpInfo ();
         /// <summary>
         /// Sends test Webhook
         /// </summary>
@@ -314,10 +315,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookUrl">The Url of your listener</param>
-        /// <returns></returns>
-        public void AddWebHook (string hookUrl)
+        /// <returns>BBWebHook</returns>
+        public BBWebHook AddWebHook (string hookUrl)
         {
-             AddWebHookWithHttpInfo(hookUrl);
+             ApiResponse<BBWebHook> localVarResponse = AddWebHookWithHttpInfo(hookUrl);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -325,8 +327,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookUrl">The Url of your listener</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddWebHookWithHttpInfo (string hookUrl)
+        /// <returns>ApiResponse of BBWebHook</returns>
+        public ApiResponse< BBWebHook > AddWebHookWithHttpInfo (string hookUrl)
         {
             // verify the required parameter 'hookUrl' is set
             if (hookUrl == null)
@@ -378,10 +380,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<BBWebHook>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (BBWebHook) Configuration.ApiClient.Deserialize(localVarResponse, typeof(BBWebHook)));
+            
         }
 
         /// <summary>
@@ -389,10 +391,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookUrl">The Url of your listener</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddWebHookAsync (string hookUrl)
+        /// <returns>Task of BBWebHook</returns>
+        public async System.Threading.Tasks.Task<BBWebHook> AddWebHookAsync (string hookUrl)
         {
-             await AddWebHookAsyncWithHttpInfo(hookUrl);
+             ApiResponse<BBWebHook> localVarResponse = await AddWebHookAsyncWithHttpInfo(hookUrl);
+             return localVarResponse.Data;
 
         }
 
@@ -401,8 +404,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookUrl">The Url of your listener</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddWebHookAsyncWithHttpInfo (string hookUrl)
+        /// <returns>Task of ApiResponse (BBWebHook)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<BBWebHook>> AddWebHookAsyncWithHttpInfo (string hookUrl)
         {
             // verify the required parameter 'hookUrl' is set
             if (hookUrl == null)
@@ -454,10 +457,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<BBWebHook>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (BBWebHook) Configuration.ApiClient.Deserialize(localVarResponse, typeof(BBWebHook)));
+            
         }
 
         /// <summary>
@@ -465,10 +468,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookId">The id of the webhook to delete</param>
-        /// <returns></returns>
-        public void DeleteWebHook (string hookId)
+        /// <returns>string</returns>
+        public string DeleteWebHook (string hookId)
         {
-             DeleteWebHookWithHttpInfo(hookId);
+             ApiResponse<string> localVarResponse = DeleteWebHookWithHttpInfo(hookId);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -476,8 +480,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookId">The id of the webhook to delete</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteWebHookWithHttpInfo (string hookId)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DeleteWebHookWithHttpInfo (string hookId)
         {
             // verify the required parameter 'hookId' is set
             if (hookId == null)
@@ -529,10 +533,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+            
         }
 
         /// <summary>
@@ -540,10 +544,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookId">The id of the webhook to delete</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteWebHookAsync (string hookId)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DeleteWebHookAsync (string hookId)
         {
-             await DeleteWebHookAsyncWithHttpInfo(hookId);
+             ApiResponse<string> localVarResponse = await DeleteWebHookAsyncWithHttpInfo(hookId);
+             return localVarResponse.Data;
 
         }
 
@@ -552,8 +557,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hookId">The id of the webhook to delete</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWebHookAsyncWithHttpInfo (string hookId)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DeleteWebHookAsyncWithHttpInfo (string hookId)
         {
             // verify the required parameter 'hookId' is set
             if (hookId == null)
@@ -605,28 +610,29 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+            
         }
 
         /// <summary>
         /// Lists Webhooks Lists all registered Webhooks
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void GetWebHooks ()
+        /// <returns>List&lt;BBWebHook&gt;</returns>
+        public List<BBWebHook> GetWebHooks ()
         {
-             GetWebHooksWithHttpInfo();
+             ApiResponse<List<BBWebHook>> localVarResponse = GetWebHooksWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Lists Webhooks Lists all registered Webhooks
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetWebHooksWithHttpInfo ()
+        /// <returns>ApiResponse of List&lt;BBWebHook&gt;</returns>
+        public ApiResponse< List<BBWebHook> > GetWebHooksWithHttpInfo ()
         {
 
             var localVarPath = "/webhook/";
@@ -674,20 +680,21 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<List<BBWebHook>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (List<BBWebHook>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BBWebHook>)));
+            
         }
 
         /// <summary>
         /// Lists Webhooks Lists all registered Webhooks
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetWebHooksAsync ()
+        /// <returns>Task of List&lt;BBWebHook&gt;</returns>
+        public async System.Threading.Tasks.Task<List<BBWebHook>> GetWebHooksAsync ()
         {
-             await GetWebHooksAsyncWithHttpInfo();
+             ApiResponse<List<BBWebHook>> localVarResponse = await GetWebHooksAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -695,8 +702,8 @@ namespace IO.Swagger.Api
         /// Lists Webhooks Lists all registered Webhooks
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetWebHooksAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (List&lt;BBWebHook&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<BBWebHook>>> GetWebHooksAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/webhook/";
@@ -744,10 +751,10 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<List<BBWebHook>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (List<BBWebHook>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BBWebHook>)));
+            
         }
 
         /// <summary>

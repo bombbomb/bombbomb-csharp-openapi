@@ -60,17 +60,17 @@ namespace IO.Swagger.Client
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default configuration and base path (https://dev.api.bombbomb.com/v2).
+        /// with default configuration and base path (https://api.bombbomb.com/v2).
         /// </summary>
         public ApiClient()
         {
             Configuration = Configuration.Default;
-            RestClient = new RestClient("https://dev.api.bombbomb.com/v2");
+            RestClient = new RestClient("https://api.bombbomb.com/v2");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://dev.api.bombbomb.com/v2).
+        /// with default base path (https://api.bombbomb.com/v2).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config = null)
@@ -80,7 +80,7 @@ namespace IO.Swagger.Client
             else
                 Configuration = config;
 
-            RestClient = new RestClient("https://dev.api.bombbomb.com/v2");
+            RestClient = new RestClient("https://api.bombbomb.com/v2");
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace IO.Swagger.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://dev.api.bombbomb.com/v2")
+        public ApiClient(String basePath = "https://api.bombbomb.com/v2")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");

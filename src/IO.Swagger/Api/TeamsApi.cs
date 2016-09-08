@@ -110,6 +110,29 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of List&lt;JerichoConfiguration&gt;</returns>
         ApiResponse<List<JerichoConfiguration>> GetJerichoSendsWithHttpInfo (string teamId);
         /// <summary>
+        /// Gets Jericho performance statistics
+        /// </summary>
+        /// <remarks>
+        /// Returns an aggregate view of the performance of a Jericho send
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho job</param>
+        /// <param name="teamId">ID of team through which Jericho was sent</param>
+        /// <returns>JerichoPerformance</returns>
+        JerichoPerformance GetJerichoStats (string jerichoId, string teamId);
+
+        /// <summary>
+        /// Gets Jericho performance statistics
+        /// </summary>
+        /// <remarks>
+        /// Returns an aggregate view of the performance of a Jericho send
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho job</param>
+        /// <param name="teamId">ID of team through which Jericho was sent</param>
+        /// <returns>ApiResponse of JerichoPerformance</returns>
+        ApiResponse<JerichoPerformance> GetJerichoStatsWithHttpInfo (string jerichoId, string teamId);
+        /// <summary>
         /// Creates a Jericho send.
         /// </summary>
         /// <remarks>
@@ -207,6 +230,29 @@ namespace IO.Swagger.Api
         /// <param name="teamId">The team whose Jericho sends you wish to see.</param>
         /// <returns>Task of ApiResponse (List&lt;JerichoConfiguration&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<JerichoConfiguration>>> GetJerichoSendsAsyncWithHttpInfo (string teamId);
+        /// <summary>
+        /// Gets Jericho performance statistics
+        /// </summary>
+        /// <remarks>
+        /// Returns an aggregate view of the performance of a Jericho send
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho job</param>
+        /// <param name="teamId">ID of team through which Jericho was sent</param>
+        /// <returns>Task of JerichoPerformance</returns>
+        System.Threading.Tasks.Task<JerichoPerformance> GetJerichoStatsAsync (string jerichoId, string teamId);
+
+        /// <summary>
+        /// Gets Jericho performance statistics
+        /// </summary>
+        /// <remarks>
+        /// Returns an aggregate view of the performance of a Jericho send
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho job</param>
+        /// <param name="teamId">ID of team through which Jericho was sent</param>
+        /// <returns>Task of ApiResponse (JerichoPerformance)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JerichoPerformance>> GetJerichoStatsAsyncWithHttpInfo (string jerichoId, string teamId);
         /// <summary>
         /// Creates a Jericho send.
         /// </summary>
@@ -826,6 +872,171 @@ namespace IO.Swagger.Api
             return new ApiResponse<List<JerichoConfiguration>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<JerichoConfiguration>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<JerichoConfiguration>)));
+            
+        }
+
+        /// <summary>
+        /// Gets Jericho performance statistics Returns an aggregate view of the performance of a Jericho send
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho job</param>
+        /// <param name="teamId">ID of team through which Jericho was sent</param>
+        /// <returns>JerichoPerformance</returns>
+        public JerichoPerformance GetJerichoStats (string jerichoId, string teamId)
+        {
+             ApiResponse<JerichoPerformance> localVarResponse = GetJerichoStatsWithHttpInfo(jerichoId, teamId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets Jericho performance statistics Returns an aggregate view of the performance of a Jericho send
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho job</param>
+        /// <param name="teamId">ID of team through which Jericho was sent</param>
+        /// <returns>ApiResponse of JerichoPerformance</returns>
+        public ApiResponse< JerichoPerformance > GetJerichoStatsWithHttpInfo (string jerichoId, string teamId)
+        {
+            // verify the required parameter 'jerichoId' is set
+            if (jerichoId == null)
+                throw new ApiException(400, "Missing required parameter 'jerichoId' when calling TeamsApi->GetJerichoStats");
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new ApiException(400, "Missing required parameter 'teamId' when calling TeamsApi->GetJerichoStats");
+
+            var localVarPath = "/team/{teamId}/jericho/{jerichoId}/performance";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (jerichoId != null) localVarPathParams.Add("jerichoId", Configuration.ApiClient.ParameterToString(jerichoId)); // path parameter
+            if (teamId != null) localVarPathParams.Add("teamId", Configuration.ApiClient.ParameterToString(teamId)); // path parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetJerichoStats", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<JerichoPerformance>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (JerichoPerformance) Configuration.ApiClient.Deserialize(localVarResponse, typeof(JerichoPerformance)));
+            
+        }
+
+        /// <summary>
+        /// Gets Jericho performance statistics Returns an aggregate view of the performance of a Jericho send
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho job</param>
+        /// <param name="teamId">ID of team through which Jericho was sent</param>
+        /// <returns>Task of JerichoPerformance</returns>
+        public async System.Threading.Tasks.Task<JerichoPerformance> GetJerichoStatsAsync (string jerichoId, string teamId)
+        {
+             ApiResponse<JerichoPerformance> localVarResponse = await GetJerichoStatsAsyncWithHttpInfo(jerichoId, teamId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets Jericho performance statistics Returns an aggregate view of the performance of a Jericho send
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="jerichoId">ID of the Jericho job</param>
+        /// <param name="teamId">ID of team through which Jericho was sent</param>
+        /// <returns>Task of ApiResponse (JerichoPerformance)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JerichoPerformance>> GetJerichoStatsAsyncWithHttpInfo (string jerichoId, string teamId)
+        {
+            // verify the required parameter 'jerichoId' is set
+            if (jerichoId == null)
+                throw new ApiException(400, "Missing required parameter 'jerichoId' when calling TeamsApi->GetJerichoStats");
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new ApiException(400, "Missing required parameter 'teamId' when calling TeamsApi->GetJerichoStats");
+
+            var localVarPath = "/team/{teamId}/jericho/{jerichoId}/performance";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (jerichoId != null) localVarPathParams.Add("jerichoId", Configuration.ApiClient.ParameterToString(jerichoId)); // path parameter
+            if (teamId != null) localVarPathParams.Add("teamId", Configuration.ApiClient.ParameterToString(teamId)); // path parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetJerichoStats", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<JerichoPerformance>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (JerichoPerformance) Configuration.ApiClient.Deserialize(localVarResponse, typeof(JerichoPerformance)));
             
         }
 

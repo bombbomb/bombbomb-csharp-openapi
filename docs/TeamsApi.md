@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CancelJerichoSend**](TeamsApi.md#canceljerichosend) | **DELETE** /team/{teamId}/jericho/{jerichoId} | Cancel a Jericho Send
 [**GetClientGroupAssets**](TeamsApi.md#getclientgroupassets) | **GET** /team/assets/ | Lists team assets
 [**GetJerichoSends**](TeamsApi.md#getjerichosends) | **GET** /team/{teamId}/jericho | List Jericho Sends
+[**GetJerichoStats**](TeamsApi.md#getjerichostats) | **GET** /team/{teamId}/jericho/{jerichoId}/performance | Gets Jericho performance statistics
 [**QueueJerichoSend**](TeamsApi.md#queuejerichosend) | **POST** /team/{teamId}/jericho | Creates a Jericho send.
 
 
@@ -202,6 +203,73 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List<JerichoConfiguration>**](JerichoConfiguration.md)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getjerichostats"></a>
+# **GetJerichoStats**
+> JerichoPerformance GetJerichoStats (string jerichoId, string teamId)
+
+Gets Jericho performance statistics
+
+Returns an aggregate view of the performance of a Jericho send
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetJerichoStatsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var jerichoId = jerichoId_example;  // string | ID of the Jericho job
+            var teamId = teamId_example;  // string | ID of team through which Jericho was sent
+
+            try
+            {
+                // Gets Jericho performance statistics
+                JerichoPerformance result = apiInstance.GetJerichoStats(jerichoId, teamId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.GetJerichoStats: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jerichoId** | **string**| ID of the Jericho job | 
+ **teamId** | **string**| ID of team through which Jericho was sent | 
+
+### Return type
+
+[**JerichoPerformance**](JerichoPerformance.md)
 
 ### Authorization
 

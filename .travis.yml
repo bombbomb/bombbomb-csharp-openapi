@@ -19,5 +19,5 @@ mono:
 solution: IO.Swagger.sln
 script:
   - /bin/sh ./mono_nunit_test.sh
-  - nuget pack
+  - nuget pack ./src/IO.Swagger/IO.Swagger.csproj
   - nuget push

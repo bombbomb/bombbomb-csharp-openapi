@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**AddWebHook**](WebhooksApi.md#addwebhook) | **POST** /webhook | Add Webhook
 [**DeleteWebHook**](WebhooksApi.md#deletewebhook) | **DELETE** /webhook/{hookId} | Deletes Webhook
 [**GetWebHooks**](WebhooksApi.md#getwebhooks) | **GET** /webhook/ | Lists Webhooks
+[**ListWebHookEvents**](WebhooksApi.md#listwebhookevents) | **GET** /webhook/events | Describe WebHook Events
 [**SendWebhookExample**](WebhooksApi.md#sendwebhookexample) | **POST** /webhook/test | Sends test Webhook
 
 
@@ -70,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -135,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -196,7 +197,64 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="listwebhookevents"></a>
+# **ListWebHookEvents**
+> void ListWebHookEvents ()
+
+Describe WebHook Events
+
+Returns example Webhook events for each kind of possible event.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class ListWebHookEventsExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new WebhooksApi();
+
+            try
+            {
+                // Describe WebHook Events
+                apiInstance.ListWebHookEvents();
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling WebhooksApi.ListWebHookEvents: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -256,7 +314,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

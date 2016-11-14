@@ -34,50 +34,58 @@ using Newtonsoft.Json.Converters;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// The BBWebHook class
+    /// The CurriculumUserProgress class
     /// </summary>
     [DataContract]
-    public partial class BBWebHook :  IEquatable<BBWebHook>
+    public partial class CurriculumUserProgress :  IEquatable<CurriculumUserProgress>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BBWebHook" /> class.
+        /// Initializes a new instance of the <see cref="CurriculumUserProgress" /> class.
         /// </summary>
-        /// <param name="UserId">The user to whom the webhook belongs.</param>
-        /// <param name="HookId">The id of the hook.</param>
-        /// <param name="Url">the url to send hook requests to.</param>
-        /// <param name="IsHidden">Whether the hook is displayed to the user.</param>
-        public BBWebHook(string UserId = null, int? HookId = null, string Url = null, bool? IsHidden = null)
+        /// <param name="Id">Id.</param>
+        /// <param name="UserId">User Id.</param>
+        /// <param name="CurriculumItemId">Curriculum Item Id.</param>
+        /// <param name="CurriculumId">Curriculum Id.</param>
+        /// <param name="CompletedDate">When the final email is scheduled to be sent.</param>
+        public CurriculumUserProgress(string Id = null, string UserId = null, string CurriculumItemId = null, string CurriculumId = null, DateTime? CompletedDate = null)
         {
+            this.Id = Id;
             this.UserId = UserId;
-            this.HookId = HookId;
-            this.Url = Url;
-            this.IsHidden = IsHidden;
+            this.CurriculumItemId = CurriculumItemId;
+            this.CurriculumId = CurriculumId;
+            this.CompletedDate = CompletedDate;
         }
         
         /// <summary>
-        /// The user to whom the webhook belongs
+        /// Id
         /// </summary>
-        /// <value>The user to whom the webhook belongs</value>
+        /// <value>Id</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public string Id { get; set; }
+        /// <summary>
+        /// User Id
+        /// </summary>
+        /// <value>User Id</value>
         [DataMember(Name="userId", EmitDefaultValue=false)]
         public string UserId { get; set; }
         /// <summary>
-        /// The id of the hook
+        /// Curriculum Item Id
         /// </summary>
-        /// <value>The id of the hook</value>
-        [DataMember(Name="hookId", EmitDefaultValue=false)]
-        public int? HookId { get; set; }
+        /// <value>Curriculum Item Id</value>
+        [DataMember(Name="curriculumItemId", EmitDefaultValue=false)]
+        public string CurriculumItemId { get; set; }
         /// <summary>
-        /// the url to send hook requests to
+        /// Curriculum Id
         /// </summary>
-        /// <value>the url to send hook requests to</value>
-        [DataMember(Name="url", EmitDefaultValue=false)]
-        public string Url { get; set; }
+        /// <value>Curriculum Id</value>
+        [DataMember(Name="curriculumId", EmitDefaultValue=false)]
+        public string CurriculumId { get; set; }
         /// <summary>
-        /// Whether the hook is displayed to the user
+        /// When the final email is scheduled to be sent
         /// </summary>
-        /// <value>Whether the hook is displayed to the user</value>
-        [DataMember(Name="isHidden", EmitDefaultValue=false)]
-        public bool? IsHidden { get; set; }
+        /// <value>When the final email is scheduled to be sent</value>
+        [DataMember(Name="completedDate", EmitDefaultValue=false)]
+        public DateTime? CompletedDate { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -85,11 +93,12 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class BBWebHook {\n");
+            sb.Append("class CurriculumUserProgress {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  HookId: ").Append(HookId).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  IsHidden: ").Append(IsHidden).Append("\n");
+            sb.Append("  CurriculumItemId: ").Append(CurriculumItemId).Append("\n");
+            sb.Append("  CurriculumId: ").Append(CurriculumId).Append("\n");
+            sb.Append("  CompletedDate: ").Append(CompletedDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -111,15 +120,15 @@ namespace IO.Swagger.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as BBWebHook);
+            return this.Equals(obj as CurriculumUserProgress);
         }
 
         /// <summary>
-        /// Returns true if BBWebHook instances are equal
+        /// Returns true if CurriculumUserProgress instances are equal
         /// </summary>
-        /// <param name="other">Instance of BBWebHook to be compared</param>
+        /// <param name="other">Instance of CurriculumUserProgress to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(BBWebHook other)
+        public bool Equals(CurriculumUserProgress other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -127,24 +136,29 @@ namespace IO.Swagger.Model
 
             return 
                 (
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
+                (
                     this.UserId == other.UserId ||
                     this.UserId != null &&
                     this.UserId.Equals(other.UserId)
                 ) && 
                 (
-                    this.HookId == other.HookId ||
-                    this.HookId != null &&
-                    this.HookId.Equals(other.HookId)
+                    this.CurriculumItemId == other.CurriculumItemId ||
+                    this.CurriculumItemId != null &&
+                    this.CurriculumItemId.Equals(other.CurriculumItemId)
                 ) && 
                 (
-                    this.Url == other.Url ||
-                    this.Url != null &&
-                    this.Url.Equals(other.Url)
+                    this.CurriculumId == other.CurriculumId ||
+                    this.CurriculumId != null &&
+                    this.CurriculumId.Equals(other.CurriculumId)
                 ) && 
                 (
-                    this.IsHidden == other.IsHidden ||
-                    this.IsHidden != null &&
-                    this.IsHidden.Equals(other.IsHidden)
+                    this.CompletedDate == other.CompletedDate ||
+                    this.CompletedDate != null &&
+                    this.CompletedDate.Equals(other.CompletedDate)
                 );
         }
 
@@ -159,14 +173,16 @@ namespace IO.Swagger.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
+                if (this.Id != null)
+                    hash = hash * 59 + this.Id.GetHashCode();
                 if (this.UserId != null)
                     hash = hash * 59 + this.UserId.GetHashCode();
-                if (this.HookId != null)
-                    hash = hash * 59 + this.HookId.GetHashCode();
-                if (this.Url != null)
-                    hash = hash * 59 + this.Url.GetHashCode();
-                if (this.IsHidden != null)
-                    hash = hash * 59 + this.IsHidden.GetHashCode();
+                if (this.CurriculumItemId != null)
+                    hash = hash * 59 + this.CurriculumItemId.GetHashCode();
+                if (this.CurriculumId != null)
+                    hash = hash * 59 + this.CurriculumId.GetHashCode();
+                if (this.CompletedDate != null)
+                    hash = hash * 59 + this.CompletedDate.GetHashCode();
                 return hash;
             }
         }

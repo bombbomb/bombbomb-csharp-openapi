@@ -34,32 +34,42 @@ using Newtonsoft.Json.Converters;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// InlineResponse200
+    /// The TeamPublicRepresentation class
     /// </summary>
     [DataContract]
-    public partial class InlineResponse200 :  IEquatable<InlineResponse200>
+    public partial class TeamPublicRepresentation :  IEquatable<TeamPublicRepresentation>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineResponse200" /> class.
+        /// Initializes a new instance of the <see cref="TeamPublicRepresentation" /> class.
         /// </summary>
-        /// <param name="TotalPages">TotalPages.</param>
-        /// <param name="Items">Items.</param>
-        public InlineResponse200(int? TotalPages = null, List<InlineResponse200Items> Items = null)
+        /// <param name="Id">The id of the team.</param>
+        /// <param name="Name">The name of the team.</param>
+        /// <param name="CreatedDate">The date the team was created.</param>
+        public TeamPublicRepresentation(string Id = null, string Name = null, string CreatedDate = null)
         {
-            this.TotalPages = TotalPages;
-            this.Items = Items;
+            this.Id = Id;
+            this.Name = Name;
+            this.CreatedDate = CreatedDate;
         }
         
         /// <summary>
-        /// Gets or Sets TotalPages
+        /// The id of the team
         /// </summary>
-        [DataMember(Name="totalPages", EmitDefaultValue=false)]
-        public int? TotalPages { get; set; }
+        /// <value>The id of the team</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public string Id { get; set; }
         /// <summary>
-        /// Gets or Sets Items
+        /// The name of the team
         /// </summary>
-        [DataMember(Name="items", EmitDefaultValue=false)]
-        public List<InlineResponse200Items> Items { get; set; }
+        /// <value>The name of the team</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+        /// <summary>
+        /// The date the team was created
+        /// </summary>
+        /// <value>The date the team was created</value>
+        [DataMember(Name="createdDate", EmitDefaultValue=false)]
+        public string CreatedDate { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -67,9 +77,10 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class InlineResponse200 {\n");
-            sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
-            sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("class TeamPublicRepresentation {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  CreatedDate: ").Append(CreatedDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,15 +102,15 @@ namespace IO.Swagger.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as InlineResponse200);
+            return this.Equals(obj as TeamPublicRepresentation);
         }
 
         /// <summary>
-        /// Returns true if InlineResponse200 instances are equal
+        /// Returns true if TeamPublicRepresentation instances are equal
         /// </summary>
-        /// <param name="other">Instance of InlineResponse200 to be compared</param>
+        /// <param name="other">Instance of TeamPublicRepresentation to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(InlineResponse200 other)
+        public bool Equals(TeamPublicRepresentation other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -107,14 +118,19 @@ namespace IO.Swagger.Model
 
             return 
                 (
-                    this.TotalPages == other.TotalPages ||
-                    this.TotalPages != null &&
-                    this.TotalPages.Equals(other.TotalPages)
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
                 ) && 
                 (
-                    this.Items == other.Items ||
-                    this.Items != null &&
-                    this.Items.SequenceEqual(other.Items)
+                    this.Name == other.Name ||
+                    this.Name != null &&
+                    this.Name.Equals(other.Name)
+                ) && 
+                (
+                    this.CreatedDate == other.CreatedDate ||
+                    this.CreatedDate != null &&
+                    this.CreatedDate.Equals(other.CreatedDate)
                 );
         }
 
@@ -129,10 +145,12 @@ namespace IO.Swagger.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.TotalPages != null)
-                    hash = hash * 59 + this.TotalPages.GetHashCode();
-                if (this.Items != null)
-                    hash = hash * 59 + this.Items.GetHashCode();
+                if (this.Id != null)
+                    hash = hash * 59 + this.Id.GetHashCode();
+                if (this.Name != null)
+                    hash = hash * 59 + this.Name.GetHashCode();
+                if (this.CreatedDate != null)
+                    hash = hash * 59 + this.CreatedDate.GetHashCode();
                 return hash;
             }
         }

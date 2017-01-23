@@ -26,113 +26,120 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
 
 namespace IO.Swagger.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ICurriculumApi : IApiAccessor
+    public interface IAutomationsApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get Curricula
+        /// Get Automation Email Stats
         /// </summary>
         /// <remarks>
-        /// Get Curricula, optionally with progress included.
+        /// Get Automation Email Stats
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeProgress">Whether to return progress with the curriculum. (optional)</param>
-        /// <returns>List&lt;Curriculum&gt;</returns>
-        List<Curriculum> GetCurricula (bool? includeProgress = null);
+        /// <param name="dripId">The id of the drip</param>
+        /// <param name="dripDropId">The id of the drip drop</param>
+        /// <returns></returns>
+        void GetDripDropStats (string dripId, string dripDropId);
 
         /// <summary>
-        /// Get Curricula
+        /// Get Automation Email Stats
         /// </summary>
         /// <remarks>
-        /// Get Curricula, optionally with progress included.
+        /// Get Automation Email Stats
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeProgress">Whether to return progress with the curriculum. (optional)</param>
-        /// <returns>ApiResponse of List&lt;Curriculum&gt;</returns>
-        ApiResponse<List<Curriculum>> GetCurriculaWithHttpInfo (bool? includeProgress = null);
+        /// <param name="dripId">The id of the drip</param>
+        /// <param name="dripDropId">The id of the drip drop</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> GetDripDropStatsWithHttpInfo (string dripId, string dripDropId);
         /// <summary>
-        /// Get Detailed For User
+        /// Get Automation Stats
         /// </summary>
         /// <remarks>
-        /// Get all curricula for user including progress for each curriculum.
+        /// Get Automation Stats
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;CurriculumWithProgress&gt;</returns>
-        List<CurriculumWithProgress> GetUserCurriculumWithProgress ();
+        /// <param name="id">The id of the automation</param>
+        /// <returns></returns>
+        void GetDripStats (string id);
 
         /// <summary>
-        /// Get Detailed For User
+        /// Get Automation Stats
         /// </summary>
         /// <remarks>
-        /// Get all curricula for user including progress for each curriculum.
+        /// Get Automation Stats
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;CurriculumWithProgress&gt;</returns>
-        ApiResponse<List<CurriculumWithProgress>> GetUserCurriculumWithProgressWithHttpInfo ();
+        /// <param name="id">The id of the automation</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> GetDripStatsWithHttpInfo (string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Get Curricula
+        /// Get Automation Email Stats
         /// </summary>
         /// <remarks>
-        /// Get Curricula, optionally with progress included.
+        /// Get Automation Email Stats
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeProgress">Whether to return progress with the curriculum. (optional)</param>
-        /// <returns>Task of List&lt;Curriculum&gt;</returns>
-        System.Threading.Tasks.Task<List<Curriculum>> GetCurriculaAsync (bool? includeProgress = null);
+        /// <param name="dripId">The id of the drip</param>
+        /// <param name="dripDropId">The id of the drip drop</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task GetDripDropStatsAsync (string dripId, string dripDropId);
 
         /// <summary>
-        /// Get Curricula
+        /// Get Automation Email Stats
         /// </summary>
         /// <remarks>
-        /// Get Curricula, optionally with progress included.
+        /// Get Automation Email Stats
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeProgress">Whether to return progress with the curriculum. (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;Curriculum&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Curriculum>>> GetCurriculaAsyncWithHttpInfo (bool? includeProgress = null);
+        /// <param name="dripId">The id of the drip</param>
+        /// <param name="dripDropId">The id of the drip drop</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetDripDropStatsAsyncWithHttpInfo (string dripId, string dripDropId);
         /// <summary>
-        /// Get Detailed For User
+        /// Get Automation Stats
         /// </summary>
         /// <remarks>
-        /// Get all curricula for user including progress for each curriculum.
+        /// Get Automation Stats
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;CurriculumWithProgress&gt;</returns>
-        System.Threading.Tasks.Task<List<CurriculumWithProgress>> GetUserCurriculumWithProgressAsync ();
+        /// <param name="id">The id of the automation</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task GetDripStatsAsync (string id);
 
         /// <summary>
-        /// Get Detailed For User
+        /// Get Automation Stats
         /// </summary>
         /// <remarks>
-        /// Get all curricula for user including progress for each curriculum.
+        /// Get Automation Stats
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;CurriculumWithProgress&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<CurriculumWithProgress>>> GetUserCurriculumWithProgressAsyncWithHttpInfo ();
+        /// <param name="id">The id of the automation</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetDripStatsAsyncWithHttpInfo (string id);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class CurriculumApi : ICurriculumApi
+    public partial class AutomationsApi : IAutomationsApi
     {
         private IO.Swagger.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CurriculumApi"/> class.
+        /// Initializes a new instance of the <see cref="AutomationsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public CurriculumApi(String basePath)
+        public AutomationsApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -146,12 +153,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CurriculumApi"/> class
+        /// Initializes a new instance of the <see cref="AutomationsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public CurriculumApi(Configuration configuration = null)
+        public AutomationsApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -231,27 +238,34 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Get Curricula Get Curricula, optionally with progress included.
+        /// Get Automation Email Stats Get Automation Email Stats
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeProgress">Whether to return progress with the curriculum. (optional)</param>
-        /// <returns>List&lt;Curriculum&gt;</returns>
-        public List<Curriculum> GetCurricula (bool? includeProgress = null)
+        /// <param name="dripId">The id of the drip</param>
+        /// <param name="dripDropId">The id of the drip drop</param>
+        /// <returns></returns>
+        public void GetDripDropStats (string dripId, string dripDropId)
         {
-             ApiResponse<List<Curriculum>> localVarResponse = GetCurriculaWithHttpInfo(includeProgress);
-             return localVarResponse.Data;
+             GetDripDropStatsWithHttpInfo(dripId, dripDropId);
         }
 
         /// <summary>
-        /// Get Curricula Get Curricula, optionally with progress included.
+        /// Get Automation Email Stats Get Automation Email Stats
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeProgress">Whether to return progress with the curriculum. (optional)</param>
-        /// <returns>ApiResponse of List&lt;Curriculum&gt;</returns>
-        public ApiResponse< List<Curriculum> > GetCurriculaWithHttpInfo (bool? includeProgress = null)
+        /// <param name="dripId">The id of the drip</param>
+        /// <param name="dripDropId">The id of the drip drop</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> GetDripDropStatsWithHttpInfo (string dripId, string dripDropId)
         {
+            // verify the required parameter 'dripId' is set
+            if (dripId == null)
+                throw new ApiException(400, "Missing required parameter 'dripId' when calling AutomationsApi->GetDripDropStats");
+            // verify the required parameter 'dripDropId' is set
+            if (dripDropId == null)
+                throw new ApiException(400, "Missing required parameter 'dripDropId' when calling AutomationsApi->GetDripDropStats");
 
-            var localVarPath = "/curricula/";
+            var localVarPath = "/automation/{dripId}/dripdrop/{dripDropId}/stats";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -276,7 +290,8 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (includeProgress != null) localVarQueryParams.Add("includeProgress", Configuration.ApiClient.ParameterToString(includeProgress)); // query parameter
+            if (dripId != null) localVarPathParams.Add("dripId", Configuration.ApiClient.ParameterToString(dripId)); // path parameter
+            if (dripDropId != null) localVarPathParams.Add("dripDropId", Configuration.ApiClient.ParameterToString(dripDropId)); // path parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -294,39 +309,46 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetCurricula", localVarResponse);
+                Exception exception = ExceptionFactory("GetDripDropStats", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Curriculum>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Curriculum>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Curriculum>)));
             
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
-        /// Get Curricula Get Curricula, optionally with progress included.
+        /// Get Automation Email Stats Get Automation Email Stats
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeProgress">Whether to return progress with the curriculum. (optional)</param>
-        /// <returns>Task of List&lt;Curriculum&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Curriculum>> GetCurriculaAsync (bool? includeProgress = null)
+        /// <param name="dripId">The id of the drip</param>
+        /// <param name="dripDropId">The id of the drip drop</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task GetDripDropStatsAsync (string dripId, string dripDropId)
         {
-             ApiResponse<List<Curriculum>> localVarResponse = await GetCurriculaAsyncWithHttpInfo(includeProgress);
-             return localVarResponse.Data;
+             await GetDripDropStatsAsyncWithHttpInfo(dripId, dripDropId);
 
         }
 
         /// <summary>
-        /// Get Curricula Get Curricula, optionally with progress included.
+        /// Get Automation Email Stats Get Automation Email Stats
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeProgress">Whether to return progress with the curriculum. (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;Curriculum&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Curriculum>>> GetCurriculaAsyncWithHttpInfo (bool? includeProgress = null)
+        /// <param name="dripId">The id of the drip</param>
+        /// <param name="dripDropId">The id of the drip drop</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetDripDropStatsAsyncWithHttpInfo (string dripId, string dripDropId)
         {
+            // verify the required parameter 'dripId' is set
+            if (dripId == null)
+                throw new ApiException(400, "Missing required parameter 'dripId' when calling AutomationsApi->GetDripDropStats");
+            // verify the required parameter 'dripDropId' is set
+            if (dripDropId == null)
+                throw new ApiException(400, "Missing required parameter 'dripDropId' when calling AutomationsApi->GetDripDropStats");
 
-            var localVarPath = "/curricula/";
+            var localVarPath = "/automation/{dripId}/dripdrop/{dripDropId}/stats";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -351,7 +373,8 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (includeProgress != null) localVarQueryParams.Add("includeProgress", Configuration.ApiClient.ParameterToString(includeProgress)); // query parameter
+            if (dripId != null) localVarPathParams.Add("dripId", Configuration.ApiClient.ParameterToString(dripId)); // path parameter
+            if (dripDropId != null) localVarPathParams.Add("dripDropId", Configuration.ApiClient.ParameterToString(dripDropId)); // path parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -369,36 +392,40 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetCurricula", localVarResponse);
+                Exception exception = ExceptionFactory("GetDripDropStats", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Curriculum>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Curriculum>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Curriculum>)));
             
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
-        /// Get Detailed For User Get all curricula for user including progress for each curriculum.
+        /// Get Automation Stats Get Automation Stats
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;CurriculumWithProgress&gt;</returns>
-        public List<CurriculumWithProgress> GetUserCurriculumWithProgress ()
+        /// <param name="id">The id of the automation</param>
+        /// <returns></returns>
+        public void GetDripStats (string id)
         {
-             ApiResponse<List<CurriculumWithProgress>> localVarResponse = GetUserCurriculumWithProgressWithHttpInfo();
-             return localVarResponse.Data;
+             GetDripStatsWithHttpInfo(id);
         }
 
         /// <summary>
-        /// Get Detailed For User Get all curricula for user including progress for each curriculum.
+        /// Get Automation Stats Get Automation Stats
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;CurriculumWithProgress&gt;</returns>
-        public ApiResponse< List<CurriculumWithProgress> > GetUserCurriculumWithProgressWithHttpInfo ()
+        /// <param name="id">The id of the automation</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> GetDripStatsWithHttpInfo (string id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling AutomationsApi->GetDripStats");
 
-            var localVarPath = "/curriculum/getForUserWithProgress";
+            var localVarPath = "/automation/{id}/stats";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -423,6 +450,7 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
+            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -440,37 +468,41 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetUserCurriculumWithProgress", localVarResponse);
+                Exception exception = ExceptionFactory("GetDripStats", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<CurriculumWithProgress>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CurriculumWithProgress>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CurriculumWithProgress>)));
             
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
-        /// Get Detailed For User Get all curricula for user including progress for each curriculum.
+        /// Get Automation Stats Get Automation Stats
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;CurriculumWithProgress&gt;</returns>
-        public async System.Threading.Tasks.Task<List<CurriculumWithProgress>> GetUserCurriculumWithProgressAsync ()
+        /// <param name="id">The id of the automation</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task GetDripStatsAsync (string id)
         {
-             ApiResponse<List<CurriculumWithProgress>> localVarResponse = await GetUserCurriculumWithProgressAsyncWithHttpInfo();
-             return localVarResponse.Data;
+             await GetDripStatsAsyncWithHttpInfo(id);
 
         }
 
         /// <summary>
-        /// Get Detailed For User Get all curricula for user including progress for each curriculum.
+        /// Get Automation Stats Get Automation Stats
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;CurriculumWithProgress&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<CurriculumWithProgress>>> GetUserCurriculumWithProgressAsyncWithHttpInfo ()
+        /// <param name="id">The id of the automation</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetDripStatsAsyncWithHttpInfo (string id)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling AutomationsApi->GetDripStats");
 
-            var localVarPath = "/curriculum/getForUserWithProgress";
+            var localVarPath = "/automation/{id}/stats";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -495,6 +527,7 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
+            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -512,14 +545,14 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetUserCurriculumWithProgress", localVarResponse);
+                Exception exception = ExceptionFactory("GetDripStats", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<CurriculumWithProgress>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CurriculumWithProgress>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CurriculumWithProgress>)));
             
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
     }

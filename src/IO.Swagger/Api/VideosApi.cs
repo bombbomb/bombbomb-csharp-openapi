@@ -33,190 +33,168 @@ namespace IO.Swagger.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IUtilitiesApi : IApiAccessor
+    public interface IVideosApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create an OAuth Client
+        /// Get Live Video Recorder HTML
         /// </summary>
         /// <remarks>
-        /// Creates an OAuth Client managed by the user
+        /// Returns an object with a number of properties to help you put a video recorder on your site.         This is to be used in conjunction with the VideoRecordedLive call one the user has confirmed in your UI that         the video is how they want it.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>OAuthClient</returns>
-        OAuthClient CreateOAuthClient (string name, string redirectUri);
+        /// <param name="width">The width of the recorder to present. (optional)</param>
+        /// <param name="videoId">The id of the video to record (optional)</param>
+        /// <returns>VideoRecorderMethodResponse</returns>
+        VideoRecorderMethodResponse GetVideoRecorder (int? width = null, string videoId = null);
 
         /// <summary>
-        /// Create an OAuth Client
+        /// Get Live Video Recorder HTML
         /// </summary>
         /// <remarks>
-        /// Creates an OAuth Client managed by the user
+        /// Returns an object with a number of properties to help you put a video recorder on your site.         This is to be used in conjunction with the VideoRecordedLive call one the user has confirmed in your UI that         the video is how they want it.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>ApiResponse of OAuthClient</returns>
-        ApiResponse<OAuthClient> CreateOAuthClientWithHttpInfo (string name, string redirectUri);
+        /// <param name="width">The width of the recorder to present. (optional)</param>
+        /// <param name="videoId">The id of the video to record (optional)</param>
+        /// <returns>ApiResponse of VideoRecorderMethodResponse</returns>
+        ApiResponse<VideoRecorderMethodResponse> GetVideoRecorderWithHttpInfo (int? width = null, string videoId = null);
         /// <summary>
-        /// Delete an OAuth Client
+        /// Completes a live recording
         /// </summary>
         /// <remarks>
-        /// Deletes an OAuth Client managed by the user
+        /// Used in conjunction with the live recorder method to mark a video recording as complete.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
-        /// <returns></returns>
-        void DeleteOAuthClient (string id);
+        /// <param name="videoId">The id of the video to mark as done.</param>
+        /// <param name="filename">The filename that was chosen as the final video.</param>
+        /// <param name="title">The title to give the video</param>
+        /// <returns>VideoPublicRepresentation</returns>
+        VideoPublicRepresentation MarkLiveRecordingComplete (string videoId, string filename, string title);
 
         /// <summary>
-        /// Delete an OAuth Client
+        /// Completes a live recording
         /// </summary>
         /// <remarks>
-        /// Deletes an OAuth Client managed by the user
+        /// Used in conjunction with the live recorder method to mark a video recording as complete.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteOAuthClientWithHttpInfo (string id);
+        /// <param name="videoId">The id of the video to mark as done.</param>
+        /// <param name="filename">The filename that was chosen as the final video.</param>
+        /// <param name="title">The title to give the video</param>
+        /// <returns>ApiResponse of VideoPublicRepresentation</returns>
+        ApiResponse<VideoPublicRepresentation> MarkLiveRecordingCompleteWithHttpInfo (string videoId, string filename, string title);
         /// <summary>
-        /// Lists OAuth Clients
+        /// Generate Signed Url
         /// </summary>
         /// <remarks>
-        /// Enumerates OAuth Clients managed by the user
+        /// Generates a signed url to be used for video uploads.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;OAuthClient&gt;</returns>
-        List<OAuthClient> GetOAuthClients ();
+        /// <param name="policy">The policy to sign</param>
+        /// <param name="v4">Whether to do v4 signing (optional)</param>
+        /// <returns>string</returns>
+        string SignUpload (SignUploadRequest policy, bool? v4 = null);
 
         /// <summary>
-        /// Lists OAuth Clients
+        /// Generate Signed Url
         /// </summary>
         /// <remarks>
-        /// Enumerates OAuth Clients managed by the user
+        /// Generates a signed url to be used for video uploads.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;OAuthClient&gt;</returns>
-        ApiResponse<List<OAuthClient>> GetOAuthClientsWithHttpInfo ();
-        /// <summary>
-        /// Describes this api
-        /// </summary>
-        /// <remarks>
-        /// Describes methods available through the API.
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void GetSpec ();
-
-        /// <summary>
-        /// Describes this api
-        /// </summary>
-        /// <remarks>
-        /// Describes methods available through the API.
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetSpecWithHttpInfo ();
+        /// <param name="policy">The policy to sign</param>
+        /// <param name="v4">Whether to do v4 signing (optional)</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> SignUploadWithHttpInfo (SignUploadRequest policy, bool? v4 = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Create an OAuth Client
+        /// Get Live Video Recorder HTML
         /// </summary>
         /// <remarks>
-        /// Creates an OAuth Client managed by the user
+        /// Returns an object with a number of properties to help you put a video recorder on your site.         This is to be used in conjunction with the VideoRecordedLive call one the user has confirmed in your UI that         the video is how they want it.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of OAuthClient</returns>
-        System.Threading.Tasks.Task<OAuthClient> CreateOAuthClientAsync (string name, string redirectUri);
+        /// <param name="width">The width of the recorder to present. (optional)</param>
+        /// <param name="videoId">The id of the video to record (optional)</param>
+        /// <returns>Task of VideoRecorderMethodResponse</returns>
+        System.Threading.Tasks.Task<VideoRecorderMethodResponse> GetVideoRecorderAsync (int? width = null, string videoId = null);
 
         /// <summary>
-        /// Create an OAuth Client
+        /// Get Live Video Recorder HTML
         /// </summary>
         /// <remarks>
-        /// Creates an OAuth Client managed by the user
+        /// Returns an object with a number of properties to help you put a video recorder on your site.         This is to be used in conjunction with the VideoRecordedLive call one the user has confirmed in your UI that         the video is how they want it.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of ApiResponse (OAuthClient)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OAuthClient>> CreateOAuthClientAsyncWithHttpInfo (string name, string redirectUri);
+        /// <param name="width">The width of the recorder to present. (optional)</param>
+        /// <param name="videoId">The id of the video to record (optional)</param>
+        /// <returns>Task of ApiResponse (VideoRecorderMethodResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VideoRecorderMethodResponse>> GetVideoRecorderAsyncWithHttpInfo (int? width = null, string videoId = null);
         /// <summary>
-        /// Delete an OAuth Client
+        /// Completes a live recording
         /// </summary>
         /// <remarks>
-        /// Deletes an OAuth Client managed by the user
+        /// Used in conjunction with the live recorder method to mark a video recording as complete.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteOAuthClientAsync (string id);
+        /// <param name="videoId">The id of the video to mark as done.</param>
+        /// <param name="filename">The filename that was chosen as the final video.</param>
+        /// <param name="title">The title to give the video</param>
+        /// <returns>Task of VideoPublicRepresentation</returns>
+        System.Threading.Tasks.Task<VideoPublicRepresentation> MarkLiveRecordingCompleteAsync (string videoId, string filename, string title);
 
         /// <summary>
-        /// Delete an OAuth Client
+        /// Completes a live recording
         /// </summary>
         /// <remarks>
-        /// Deletes an OAuth Client managed by the user
+        /// Used in conjunction with the live recorder method to mark a video recording as complete.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOAuthClientAsyncWithHttpInfo (string id);
+        /// <param name="videoId">The id of the video to mark as done.</param>
+        /// <param name="filename">The filename that was chosen as the final video.</param>
+        /// <param name="title">The title to give the video</param>
+        /// <returns>Task of ApiResponse (VideoPublicRepresentation)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VideoPublicRepresentation>> MarkLiveRecordingCompleteAsyncWithHttpInfo (string videoId, string filename, string title);
         /// <summary>
-        /// Lists OAuth Clients
+        /// Generate Signed Url
         /// </summary>
         /// <remarks>
-        /// Enumerates OAuth Clients managed by the user
+        /// Generates a signed url to be used for video uploads.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;OAuthClient&gt;</returns>
-        System.Threading.Tasks.Task<List<OAuthClient>> GetOAuthClientsAsync ();
+        /// <param name="policy">The policy to sign</param>
+        /// <param name="v4">Whether to do v4 signing (optional)</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> SignUploadAsync (SignUploadRequest policy, bool? v4 = null);
 
         /// <summary>
-        /// Lists OAuth Clients
+        /// Generate Signed Url
         /// </summary>
         /// <remarks>
-        /// Enumerates OAuth Clients managed by the user
+        /// Generates a signed url to be used for video uploads.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;OAuthClient&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<OAuthClient>>> GetOAuthClientsAsyncWithHttpInfo ();
-        /// <summary>
-        /// Describes this api
-        /// </summary>
-        /// <remarks>
-        /// Describes methods available through the API.
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetSpecAsync ();
-
-        /// <summary>
-        /// Describes this api
-        /// </summary>
-        /// <remarks>
-        /// Describes methods available through the API.
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetSpecAsyncWithHttpInfo ();
+        /// <param name="policy">The policy to sign</param>
+        /// <param name="v4">Whether to do v4 signing (optional)</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> SignUploadAsyncWithHttpInfo (SignUploadRequest policy, bool? v4 = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class UtilitiesApi : IUtilitiesApi
+    public partial class VideosApi : IVideosApi
     {
         private IO.Swagger.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UtilitiesApi"/> class.
+        /// Initializes a new instance of the <see cref="VideosApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public UtilitiesApi(String basePath)
+        public VideosApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -230,12 +208,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UtilitiesApi"/> class
+        /// Initializes a new instance of the <see cref="VideosApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public UtilitiesApi(Configuration configuration = null)
+        public VideosApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -315,35 +293,29 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Create an OAuth Client Creates an OAuth Client managed by the user
+        /// Get Live Video Recorder HTML Returns an object with a number of properties to help you put a video recorder on your site.         This is to be used in conjunction with the VideoRecordedLive call one the user has confirmed in your UI that         the video is how they want it.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>OAuthClient</returns>
-        public OAuthClient CreateOAuthClient (string name, string redirectUri)
+        /// <param name="width">The width of the recorder to present. (optional)</param>
+        /// <param name="videoId">The id of the video to record (optional)</param>
+        /// <returns>VideoRecorderMethodResponse</returns>
+        public VideoRecorderMethodResponse GetVideoRecorder (int? width = null, string videoId = null)
         {
-             ApiResponse<OAuthClient> localVarResponse = CreateOAuthClientWithHttpInfo(name, redirectUri);
+             ApiResponse<VideoRecorderMethodResponse> localVarResponse = GetVideoRecorderWithHttpInfo(width, videoId);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create an OAuth Client Creates an OAuth Client managed by the user
+        /// Get Live Video Recorder HTML Returns an object with a number of properties to help you put a video recorder on your site.         This is to be used in conjunction with the VideoRecordedLive call one the user has confirmed in your UI that         the video is how they want it.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>ApiResponse of OAuthClient</returns>
-        public ApiResponse< OAuthClient > CreateOAuthClientWithHttpInfo (string name, string redirectUri)
+        /// <param name="width">The width of the recorder to present. (optional)</param>
+        /// <param name="videoId">The id of the video to record (optional)</param>
+        /// <returns>ApiResponse of VideoRecorderMethodResponse</returns>
+        public ApiResponse< VideoRecorderMethodResponse > GetVideoRecorderWithHttpInfo (int? width = null, string videoId = null)
         {
-            // verify the required parameter 'name' is set
-            if (name == null)
-                throw new ApiException(400, "Missing required parameter 'name' when calling UtilitiesApi->CreateOAuthClient");
-            // verify the required parameter 'redirectUri' is set
-            if (redirectUri == null)
-                throw new ApiException(400, "Missing required parameter 'redirectUri' when calling UtilitiesApi->CreateOAuthClient");
 
-            var localVarPath = "/oauthclient";
+            var localVarPath = "/videos/live/getRecorder";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -368,8 +340,175 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (name != null) localVarFormParams.Add("name", Configuration.ApiClient.ParameterToString(name)); // form parameter
-            if (redirectUri != null) localVarFormParams.Add("redirectUri", Configuration.ApiClient.ParameterToString(redirectUri)); // form parameter
+            if (width != null) localVarQueryParams.Add("width", Configuration.ApiClient.ParameterToString(width)); // query parameter
+            if (videoId != null) localVarQueryParams.Add("videoId", Configuration.ApiClient.ParameterToString(videoId)); // query parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetVideoRecorder", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<VideoRecorderMethodResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (VideoRecorderMethodResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(VideoRecorderMethodResponse)));
+            
+        }
+
+        /// <summary>
+        /// Get Live Video Recorder HTML Returns an object with a number of properties to help you put a video recorder on your site.         This is to be used in conjunction with the VideoRecordedLive call one the user has confirmed in your UI that         the video is how they want it.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="width">The width of the recorder to present. (optional)</param>
+        /// <param name="videoId">The id of the video to record (optional)</param>
+        /// <returns>Task of VideoRecorderMethodResponse</returns>
+        public async System.Threading.Tasks.Task<VideoRecorderMethodResponse> GetVideoRecorderAsync (int? width = null, string videoId = null)
+        {
+             ApiResponse<VideoRecorderMethodResponse> localVarResponse = await GetVideoRecorderAsyncWithHttpInfo(width, videoId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get Live Video Recorder HTML Returns an object with a number of properties to help you put a video recorder on your site.         This is to be used in conjunction with the VideoRecordedLive call one the user has confirmed in your UI that         the video is how they want it.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="width">The width of the recorder to present. (optional)</param>
+        /// <param name="videoId">The id of the video to record (optional)</param>
+        /// <returns>Task of ApiResponse (VideoRecorderMethodResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<VideoRecorderMethodResponse>> GetVideoRecorderAsyncWithHttpInfo (int? width = null, string videoId = null)
+        {
+
+            var localVarPath = "/videos/live/getRecorder";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/x-www-form-urlencoded"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (width != null) localVarQueryParams.Add("width", Configuration.ApiClient.ParameterToString(width)); // query parameter
+            if (videoId != null) localVarQueryParams.Add("videoId", Configuration.ApiClient.ParameterToString(videoId)); // query parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetVideoRecorder", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<VideoRecorderMethodResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (VideoRecorderMethodResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(VideoRecorderMethodResponse)));
+            
+        }
+
+        /// <summary>
+        /// Completes a live recording Used in conjunction with the live recorder method to mark a video recording as complete.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="videoId">The id of the video to mark as done.</param>
+        /// <param name="filename">The filename that was chosen as the final video.</param>
+        /// <param name="title">The title to give the video</param>
+        /// <returns>VideoPublicRepresentation</returns>
+        public VideoPublicRepresentation MarkLiveRecordingComplete (string videoId, string filename, string title)
+        {
+             ApiResponse<VideoPublicRepresentation> localVarResponse = MarkLiveRecordingCompleteWithHttpInfo(videoId, filename, title);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Completes a live recording Used in conjunction with the live recorder method to mark a video recording as complete.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="videoId">The id of the video to mark as done.</param>
+        /// <param name="filename">The filename that was chosen as the final video.</param>
+        /// <param name="title">The title to give the video</param>
+        /// <returns>ApiResponse of VideoPublicRepresentation</returns>
+        public ApiResponse< VideoPublicRepresentation > MarkLiveRecordingCompleteWithHttpInfo (string videoId, string filename, string title)
+        {
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->MarkLiveRecordingComplete");
+            // verify the required parameter 'filename' is set
+            if (filename == null)
+                throw new ApiException(400, "Missing required parameter 'filename' when calling VideosApi->MarkLiveRecordingComplete");
+            // verify the required parameter 'title' is set
+            if (title == null)
+                throw new ApiException(400, "Missing required parameter 'title' when calling VideosApi->MarkLiveRecordingComplete");
+
+            var localVarPath = "/videos/live/markComplete";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/x-www-form-urlencoded"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (videoId != null) localVarFormParams.Add("videoId", Configuration.ApiClient.ParameterToString(videoId)); // form parameter
+            if (filename != null) localVarFormParams.Add("filename", Configuration.ApiClient.ParameterToString(filename)); // form parameter
+            if (title != null) localVarFormParams.Add("title", Configuration.ApiClient.ParameterToString(title)); // form parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -387,47 +526,52 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CreateOAuthClient", localVarResponse);
+                Exception exception = ExceptionFactory("MarkLiveRecordingComplete", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<OAuthClient>(localVarStatusCode,
+            return new ApiResponse<VideoPublicRepresentation>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (OAuthClient) Configuration.ApiClient.Deserialize(localVarResponse, typeof(OAuthClient)));
+                (VideoPublicRepresentation) Configuration.ApiClient.Deserialize(localVarResponse, typeof(VideoPublicRepresentation)));
             
         }
 
         /// <summary>
-        /// Create an OAuth Client Creates an OAuth Client managed by the user
+        /// Completes a live recording Used in conjunction with the live recorder method to mark a video recording as complete.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of OAuthClient</returns>
-        public async System.Threading.Tasks.Task<OAuthClient> CreateOAuthClientAsync (string name, string redirectUri)
+        /// <param name="videoId">The id of the video to mark as done.</param>
+        /// <param name="filename">The filename that was chosen as the final video.</param>
+        /// <param name="title">The title to give the video</param>
+        /// <returns>Task of VideoPublicRepresentation</returns>
+        public async System.Threading.Tasks.Task<VideoPublicRepresentation> MarkLiveRecordingCompleteAsync (string videoId, string filename, string title)
         {
-             ApiResponse<OAuthClient> localVarResponse = await CreateOAuthClientAsyncWithHttpInfo(name, redirectUri);
+             ApiResponse<VideoPublicRepresentation> localVarResponse = await MarkLiveRecordingCompleteAsyncWithHttpInfo(videoId, filename, title);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Create an OAuth Client Creates an OAuth Client managed by the user
+        /// Completes a live recording Used in conjunction with the live recorder method to mark a video recording as complete.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of ApiResponse (OAuthClient)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<OAuthClient>> CreateOAuthClientAsyncWithHttpInfo (string name, string redirectUri)
+        /// <param name="videoId">The id of the video to mark as done.</param>
+        /// <param name="filename">The filename that was chosen as the final video.</param>
+        /// <param name="title">The title to give the video</param>
+        /// <returns>Task of ApiResponse (VideoPublicRepresentation)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<VideoPublicRepresentation>> MarkLiveRecordingCompleteAsyncWithHttpInfo (string videoId, string filename, string title)
         {
-            // verify the required parameter 'name' is set
-            if (name == null)
-                throw new ApiException(400, "Missing required parameter 'name' when calling UtilitiesApi->CreateOAuthClient");
-            // verify the required parameter 'redirectUri' is set
-            if (redirectUri == null)
-                throw new ApiException(400, "Missing required parameter 'redirectUri' when calling UtilitiesApi->CreateOAuthClient");
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->MarkLiveRecordingComplete");
+            // verify the required parameter 'filename' is set
+            if (filename == null)
+                throw new ApiException(400, "Missing required parameter 'filename' when calling VideosApi->MarkLiveRecordingComplete");
+            // verify the required parameter 'title' is set
+            if (title == null)
+                throw new ApiException(400, "Missing required parameter 'title' when calling VideosApi->MarkLiveRecordingComplete");
 
-            var localVarPath = "/oauthclient";
+            var localVarPath = "/videos/live/markComplete";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -452,8 +596,9 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (name != null) localVarFormParams.Add("name", Configuration.ApiClient.ParameterToString(name)); // form parameter
-            if (redirectUri != null) localVarFormParams.Add("redirectUri", Configuration.ApiClient.ParameterToString(redirectUri)); // form parameter
+            if (videoId != null) localVarFormParams.Add("videoId", Configuration.ApiClient.ParameterToString(videoId)); // form parameter
+            if (filename != null) localVarFormParams.Add("filename", Configuration.ApiClient.ParameterToString(filename)); // form parameter
+            if (title != null) localVarFormParams.Add("title", Configuration.ApiClient.ParameterToString(title)); // form parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -471,189 +616,43 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CreateOAuthClient", localVarResponse);
+                Exception exception = ExceptionFactory("MarkLiveRecordingComplete", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<OAuthClient>(localVarStatusCode,
+            return new ApiResponse<VideoPublicRepresentation>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (OAuthClient) Configuration.ApiClient.Deserialize(localVarResponse, typeof(OAuthClient)));
+                (VideoPublicRepresentation) Configuration.ApiClient.Deserialize(localVarResponse, typeof(VideoPublicRepresentation)));
             
         }
 
         /// <summary>
-        /// Delete an OAuth Client Deletes an OAuth Client managed by the user
+        /// Generate Signed Url Generates a signed url to be used for video uploads.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
-        /// <returns></returns>
-        public void DeleteOAuthClient (string id)
+        /// <param name="policy">The policy to sign</param>
+        /// <param name="v4">Whether to do v4 signing (optional)</param>
+        /// <returns>string</returns>
+        public string SignUpload (SignUploadRequest policy, bool? v4 = null)
         {
-             DeleteOAuthClientWithHttpInfo(id);
-        }
-
-        /// <summary>
-        /// Delete an OAuth Client Deletes an OAuth Client managed by the user
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteOAuthClientWithHttpInfo (string id)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling UtilitiesApi->DeleteOAuthClient");
-
-            var localVarPath = "/oauthclient/{id}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
-
-            // authentication (BBOAuth2) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("DeleteOAuthClient", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// Delete an OAuth Client Deletes an OAuth Client managed by the user
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteOAuthClientAsync (string id)
-        {
-             await DeleteOAuthClientAsyncWithHttpInfo(id);
-
-        }
-
-        /// <summary>
-        /// Delete an OAuth Client Deletes an OAuth Client managed by the user
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOAuthClientAsyncWithHttpInfo (string id)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling UtilitiesApi->DeleteOAuthClient");
-
-            var localVarPath = "/oauthclient/{id}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
-
-            // authentication (BBOAuth2) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("DeleteOAuthClient", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;OAuthClient&gt;</returns>
-        public List<OAuthClient> GetOAuthClients ()
-        {
-             ApiResponse<List<OAuthClient>> localVarResponse = GetOAuthClientsWithHttpInfo();
+             ApiResponse<string> localVarResponse = SignUploadWithHttpInfo(policy, v4);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
+        /// Generate Signed Url Generates a signed url to be used for video uploads.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;OAuthClient&gt;</returns>
-        public ApiResponse< List<OAuthClient> > GetOAuthClientsWithHttpInfo ()
+        /// <param name="policy">The policy to sign</param>
+        /// <param name="v4">Whether to do v4 signing (optional)</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > SignUploadWithHttpInfo (SignUploadRequest policy, bool? v4 = null)
         {
+            // verify the required parameter 'policy' is set
+            if (policy == null)
+                throw new ApiException(400, "Missing required parameter 'policy' when calling VideosApi->SignUpload");
 
-            var localVarPath = "/oauthclient";
+            var localVarPath = "/video/signedUpload";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -663,7 +662,7 @@ namespace IO.Swagger.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/x-www-form-urlencoded"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -678,54 +677,64 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-
-            // authentication (BBOAuth2) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            if (v4 != null) localVarFormParams.Add("v4", Configuration.ApiClient.ParameterToString(v4)); // form parameter
+            if (policy != null && policy.GetType() != typeof(byte[]))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+                localVarPostBody = Configuration.ApiClient.Serialize(policy); // http body (model) parameter
             }
+            else
+            {
+                localVarPostBody = policy; // byte array
+            }
+
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetOAuthClients", localVarResponse);
+                Exception exception = ExceptionFactory("SignUpload", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<OAuthClient>>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<OAuthClient>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OAuthClient>)));
+                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
             
         }
 
         /// <summary>
-        /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
+        /// Generate Signed Url Generates a signed url to be used for video uploads.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;OAuthClient&gt;</returns>
-        public async System.Threading.Tasks.Task<List<OAuthClient>> GetOAuthClientsAsync ()
+        /// <param name="policy">The policy to sign</param>
+        /// <param name="v4">Whether to do v4 signing (optional)</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> SignUploadAsync (SignUploadRequest policy, bool? v4 = null)
         {
-             ApiResponse<List<OAuthClient>> localVarResponse = await GetOAuthClientsAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await SignUploadAsyncWithHttpInfo(policy, v4);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
+        /// Generate Signed Url Generates a signed url to be used for video uploads.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;OAuthClient&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<OAuthClient>>> GetOAuthClientsAsyncWithHttpInfo ()
+        /// <param name="policy">The policy to sign</param>
+        /// <param name="v4">Whether to do v4 signing (optional)</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> SignUploadAsyncWithHttpInfo (SignUploadRequest policy, bool? v4 = null)
         {
+            // verify the required parameter 'policy' is set
+            if (policy == null)
+                throw new ApiException(400, "Missing required parameter 'policy' when calling VideosApi->SignUpload");
 
-            var localVarPath = "/oauthclient";
+            var localVarPath = "/video/signedUpload";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -735,7 +744,7 @@ namespace IO.Swagger.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/x-www-form-urlencoded"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -750,160 +759,34 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-
-            // authentication (BBOAuth2) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            if (v4 != null) localVarFormParams.Add("v4", Configuration.ApiClient.ParameterToString(v4)); // form parameter
+            if (policy != null && policy.GetType() != typeof(byte[]))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+                localVarPostBody = Configuration.ApiClient.Serialize(policy); // http body (model) parameter
             }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
+            else
             {
-                Exception exception = ExceptionFactory("GetOAuthClients", localVarResponse);
-                if (exception != null) throw exception;
+                localVarPostBody = policy; // byte array
             }
-
-            return new ApiResponse<List<OAuthClient>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<OAuthClient>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OAuthClient>)));
-            
-        }
-
-        /// <summary>
-        /// Describes this api Describes methods available through the API.
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void GetSpec ()
-        {
-             GetSpecWithHttpInfo();
-        }
-
-        /// <summary>
-        /// Describes this api Describes methods available through the API.
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetSpecWithHttpInfo ()
-        {
-
-            var localVarPath = "/spec";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetSpec", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// Describes this api Describes methods available through the API.
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetSpecAsync ()
-        {
-             await GetSpecAsyncWithHttpInfo();
-
-        }
-
-        /// <summary>
-        /// Describes this api Describes methods available through the API.
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetSpecAsyncWithHttpInfo ()
-        {
-
-            var localVarPath = "/spec";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetSpec", localVarResponse);
+                Exception exception = ExceptionFactory("SignUpload", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+            
         }
 
     }

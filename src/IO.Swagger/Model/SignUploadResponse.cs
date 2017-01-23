@@ -34,42 +34,34 @@ using Newtonsoft.Json.Converters;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// The TeamPublicRepresentation class
+    /// The SignUploadResponse class
     /// </summary>
     [DataContract]
-    public partial class TeamPublicRepresentation :  IEquatable<TeamPublicRepresentation>
+    public partial class SignUploadResponse :  IEquatable<SignUploadResponse>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TeamPublicRepresentation" /> class.
+        /// Initializes a new instance of the <see cref="SignUploadResponse" /> class.
         /// </summary>
-        /// <param name="Id">The id of the team.</param>
-        /// <param name="Name">The name of the team.</param>
-        /// <param name="CreatedDate">The date the team was created.</param>
-        public TeamPublicRepresentation(string Id = null, string Name = null, string CreatedDate = null)
+        /// <param name="Policy">Base64 encoded policy..</param>
+        /// <param name="Signature">Signature for policy..</param>
+        public SignUploadResponse(string Policy = null, string Signature = null)
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.CreatedDate = CreatedDate;
+            this.Policy = Policy;
+            this.Signature = Signature;
         }
         
         /// <summary>
-        /// The id of the team
+        /// Base64 encoded policy.
         /// </summary>
-        /// <value>The id of the team</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public string Id { get; set; }
+        /// <value>Base64 encoded policy.</value>
+        [DataMember(Name="policy", EmitDefaultValue=false)]
+        public string Policy { get; set; }
         /// <summary>
-        /// The name of the team
+        /// Signature for policy.
         /// </summary>
-        /// <value>The name of the team</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
-        /// <summary>
-        /// The date the team was created
-        /// </summary>
-        /// <value>The date the team was created</value>
-        [DataMember(Name="createdDate", EmitDefaultValue=false)]
-        public string CreatedDate { get; set; }
+        /// <value>Signature for policy.</value>
+        [DataMember(Name="signature", EmitDefaultValue=false)]
+        public string Signature { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -77,10 +69,9 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class TeamPublicRepresentation {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  CreatedDate: ").Append(CreatedDate).Append("\n");
+            sb.Append("class SignUploadResponse {\n");
+            sb.Append("  Policy: ").Append(Policy).Append("\n");
+            sb.Append("  Signature: ").Append(Signature).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -102,15 +93,15 @@ namespace IO.Swagger.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as TeamPublicRepresentation);
+            return this.Equals(obj as SignUploadResponse);
         }
 
         /// <summary>
-        /// Returns true if TeamPublicRepresentation instances are equal
+        /// Returns true if SignUploadResponse instances are equal
         /// </summary>
-        /// <param name="other">Instance of TeamPublicRepresentation to be compared</param>
+        /// <param name="other">Instance of SignUploadResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TeamPublicRepresentation other)
+        public bool Equals(SignUploadResponse other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -118,19 +109,14 @@ namespace IO.Swagger.Model
 
             return 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    this.Policy == other.Policy ||
+                    this.Policy != null &&
+                    this.Policy.Equals(other.Policy)
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.Equals(other.Name)
-                ) && 
-                (
-                    this.CreatedDate == other.CreatedDate ||
-                    this.CreatedDate != null &&
-                    this.CreatedDate.Equals(other.CreatedDate)
+                    this.Signature == other.Signature ||
+                    this.Signature != null &&
+                    this.Signature.Equals(other.Signature)
                 );
         }
 
@@ -145,12 +131,10 @@ namespace IO.Swagger.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
-                if (this.CreatedDate != null)
-                    hash = hash * 59 + this.CreatedDate.GetHashCode();
+                if (this.Policy != null)
+                    hash = hash * 59 + this.Policy.GetHashCode();
+                if (this.Signature != null)
+                    hash = hash * 59 + this.Signature.GetHashCode();
                 return hash;
             }
         }

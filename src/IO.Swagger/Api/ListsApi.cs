@@ -26,197 +26,162 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
 
 namespace IO.Swagger.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IUtilitiesApi : IApiAccessor
+    public interface IListsApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create an OAuth Client
+        /// Clear Contacts from List
         /// </summary>
         /// <remarks>
-        /// Creates an OAuth Client managed by the user
+        /// Clears all contacts from a list.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>OAuthClient</returns>
-        OAuthClient CreateOAuthClient (string name, string redirectUri);
-
-        /// <summary>
-        /// Create an OAuth Client
-        /// </summary>
-        /// <remarks>
-        /// Creates an OAuth Client managed by the user
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>ApiResponse of OAuthClient</returns>
-        ApiResponse<OAuthClient> CreateOAuthClientWithHttpInfo (string name, string redirectUri);
-        /// <summary>
-        /// Delete an OAuth Client
-        /// </summary>
-        /// <remarks>
-        /// Deletes an OAuth Client managed by the user
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns></returns>
-        void DeleteOAuthClient (string id);
+        void ClearList (string listId);
 
         /// <summary>
-        /// Delete an OAuth Client
+        /// Clear Contacts from List
         /// </summary>
         /// <remarks>
-        /// Deletes an OAuth Client managed by the user
+        /// Clears all contacts from a list.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteOAuthClientWithHttpInfo (string id);
+        ApiResponse<Object> ClearListWithHttpInfo (string listId);
         /// <summary>
-        /// Lists OAuth Clients
+        /// Copy All Contacts from a List
         /// </summary>
         /// <remarks>
-        /// Enumerates OAuth Clients managed by the user
+        /// Copy all contacts from a list.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;OAuthClient&gt;</returns>
-        List<OAuthClient> GetOAuthClients ();
-
-        /// <summary>
-        /// Lists OAuth Clients
-        /// </summary>
-        /// <remarks>
-        /// Enumerates OAuth Clients managed by the user
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;OAuthClient&gt;</returns>
-        ApiResponse<List<OAuthClient>> GetOAuthClientsWithHttpInfo ();
-        /// <summary>
-        /// Describes this api
-        /// </summary>
-        /// <remarks>
-        /// Describes methods available through the API.
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fromListId">The list to be cleared.</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns></returns>
-        void GetSpec ();
+        void CopyListContacts (string fromListId, string listId);
 
         /// <summary>
-        /// Describes this api
+        /// Copy All Contacts from a List
         /// </summary>
         /// <remarks>
-        /// Describes methods available through the API.
+        /// Copy all contacts from a list.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fromListId">The list to be cleared.</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetSpecWithHttpInfo ();
+        ApiResponse<Object> CopyListContactsWithHttpInfo (string fromListId, string listId);
+        /// <summary>
+        /// Suppress All Contacts from List
+        /// </summary>
+        /// <remarks>
+        /// Suppresses all contacts in a list.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns></returns>
+        void SuppressAllInList (string listId);
+
+        /// <summary>
+        /// Suppress All Contacts from List
+        /// </summary>
+        /// <remarks>
+        /// Suppresses all contacts in a list.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> SuppressAllInListWithHttpInfo (string listId);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Create an OAuth Client
+        /// Clear Contacts from List
         /// </summary>
         /// <remarks>
-        /// Creates an OAuth Client managed by the user
+        /// Clears all contacts from a list.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of OAuthClient</returns>
-        System.Threading.Tasks.Task<OAuthClient> CreateOAuthClientAsync (string name, string redirectUri);
-
-        /// <summary>
-        /// Create an OAuth Client
-        /// </summary>
-        /// <remarks>
-        /// Creates an OAuth Client managed by the user
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of ApiResponse (OAuthClient)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OAuthClient>> CreateOAuthClientAsyncWithHttpInfo (string name, string redirectUri);
-        /// <summary>
-        /// Delete an OAuth Client
-        /// </summary>
-        /// <remarks>
-        /// Deletes an OAuth Client managed by the user
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteOAuthClientAsync (string id);
+        System.Threading.Tasks.Task ClearListAsync (string listId);
 
         /// <summary>
-        /// Delete an OAuth Client
+        /// Clear Contacts from List
         /// </summary>
         /// <remarks>
-        /// Deletes an OAuth Client managed by the user
+        /// Clears all contacts from a list.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOAuthClientAsyncWithHttpInfo (string id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ClearListAsyncWithHttpInfo (string listId);
         /// <summary>
-        /// Lists OAuth Clients
+        /// Copy All Contacts from a List
         /// </summary>
         /// <remarks>
-        /// Enumerates OAuth Clients managed by the user
+        /// Copy all contacts from a list.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;OAuthClient&gt;</returns>
-        System.Threading.Tasks.Task<List<OAuthClient>> GetOAuthClientsAsync ();
-
-        /// <summary>
-        /// Lists OAuth Clients
-        /// </summary>
-        /// <remarks>
-        /// Enumerates OAuth Clients managed by the user
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;OAuthClient&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<OAuthClient>>> GetOAuthClientsAsyncWithHttpInfo ();
-        /// <summary>
-        /// Describes this api
-        /// </summary>
-        /// <remarks>
-        /// Describes methods available through the API.
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fromListId">The list to be cleared.</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetSpecAsync ();
+        System.Threading.Tasks.Task CopyListContactsAsync (string fromListId, string listId);
 
         /// <summary>
-        /// Describes this api
+        /// Copy All Contacts from a List
         /// </summary>
         /// <remarks>
-        /// Describes methods available through the API.
+        /// Copy all contacts from a list.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fromListId">The list to be cleared.</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetSpecAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> CopyListContactsAsyncWithHttpInfo (string fromListId, string listId);
+        /// <summary>
+        /// Suppress All Contacts from List
+        /// </summary>
+        /// <remarks>
+        /// Suppresses all contacts in a list.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task SuppressAllInListAsync (string listId);
+
+        /// <summary>
+        /// Suppress All Contacts from List
+        /// </summary>
+        /// <remarks>
+        /// Suppresses all contacts in a list.
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> SuppressAllInListAsyncWithHttpInfo (string listId);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class UtilitiesApi : IUtilitiesApi
+    public partial class ListsApi : IListsApi
     {
         private IO.Swagger.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UtilitiesApi"/> class.
+        /// Initializes a new instance of the <see cref="ListsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public UtilitiesApi(String basePath)
+        public ListsApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -230,12 +195,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UtilitiesApi"/> class
+        /// Initializes a new instance of the <see cref="ListsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public UtilitiesApi(Configuration configuration = null)
+        public ListsApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -315,35 +280,29 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Create an OAuth Client Creates an OAuth Client managed by the user
+        /// Clear Contacts from List Clears all contacts from a list.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>OAuthClient</returns>
-        public OAuthClient CreateOAuthClient (string name, string redirectUri)
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns></returns>
+        public void ClearList (string listId)
         {
-             ApiResponse<OAuthClient> localVarResponse = CreateOAuthClientWithHttpInfo(name, redirectUri);
-             return localVarResponse.Data;
+             ClearListWithHttpInfo(listId);
         }
 
         /// <summary>
-        /// Create an OAuth Client Creates an OAuth Client managed by the user
+        /// Clear Contacts from List Clears all contacts from a list.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>ApiResponse of OAuthClient</returns>
-        public ApiResponse< OAuthClient > CreateOAuthClientWithHttpInfo (string name, string redirectUri)
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> ClearListWithHttpInfo (string listId)
         {
-            // verify the required parameter 'name' is set
-            if (name == null)
-                throw new ApiException(400, "Missing required parameter 'name' when calling UtilitiesApi->CreateOAuthClient");
-            // verify the required parameter 'redirectUri' is set
-            if (redirectUri == null)
-                throw new ApiException(400, "Missing required parameter 'redirectUri' when calling UtilitiesApi->CreateOAuthClient");
+            // verify the required parameter 'listId' is set
+            if (listId == null)
+                throw new ApiException(400, "Missing required parameter 'listId' when calling ListsApi->ClearList");
 
-            var localVarPath = "/oauthclient";
+            var localVarPath = "/lists/{listId}/clear";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -368,8 +327,166 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (name != null) localVarFormParams.Add("name", Configuration.ApiClient.ParameterToString(name)); // form parameter
-            if (redirectUri != null) localVarFormParams.Add("redirectUri", Configuration.ApiClient.ParameterToString(redirectUri)); // form parameter
+            if (listId != null) localVarPathParams.Add("listId", Configuration.ApiClient.ParameterToString(listId)); // path parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ClearList", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Clear Contacts from List Clears all contacts from a list.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task ClearListAsync (string listId)
+        {
+             await ClearListAsyncWithHttpInfo(listId);
+
+        }
+
+        /// <summary>
+        /// Clear Contacts from List Clears all contacts from a list.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ClearListAsyncWithHttpInfo (string listId)
+        {
+            // verify the required parameter 'listId' is set
+            if (listId == null)
+                throw new ApiException(400, "Missing required parameter 'listId' when calling ListsApi->ClearList");
+
+            var localVarPath = "/lists/{listId}/clear";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/x-www-form-urlencoded"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (listId != null) localVarPathParams.Add("listId", Configuration.ApiClient.ParameterToString(listId)); // path parameter
+
+            // authentication (BBOAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ClearList", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Copy All Contacts from a List Copy all contacts from a list.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fromListId">The list to be cleared.</param>
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns></returns>
+        public void CopyListContacts (string fromListId, string listId)
+        {
+             CopyListContactsWithHttpInfo(fromListId, listId);
+        }
+
+        /// <summary>
+        /// Copy All Contacts from a List Copy all contacts from a list.
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="fromListId">The list to be cleared.</param>
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> CopyListContactsWithHttpInfo (string fromListId, string listId)
+        {
+            // verify the required parameter 'fromListId' is set
+            if (fromListId == null)
+                throw new ApiException(400, "Missing required parameter 'fromListId' when calling ListsApi->CopyListContacts");
+            // verify the required parameter 'listId' is set
+            if (listId == null)
+                throw new ApiException(400, "Missing required parameter 'listId' when calling ListsApi->CopyListContacts");
+
+            var localVarPath = "/lists/{listId}/copy";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/x-www-form-urlencoded"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (listId != null) localVarPathParams.Add("listId", Configuration.ApiClient.ParameterToString(listId)); // path parameter
+            if (fromListId != null) localVarFormParams.Add("fromListId", Configuration.ApiClient.ParameterToString(fromListId)); // form parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -387,47 +504,46 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CreateOAuthClient", localVarResponse);
+                Exception exception = ExceptionFactory("CopyListContacts", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<OAuthClient>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (OAuthClient) Configuration.ApiClient.Deserialize(localVarResponse, typeof(OAuthClient)));
             
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
-        /// Create an OAuth Client Creates an OAuth Client managed by the user
+        /// Copy All Contacts from a List Copy all contacts from a list.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of OAuthClient</returns>
-        public async System.Threading.Tasks.Task<OAuthClient> CreateOAuthClientAsync (string name, string redirectUri)
+        /// <param name="fromListId">The list to be cleared.</param>
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task CopyListContactsAsync (string fromListId, string listId)
         {
-             ApiResponse<OAuthClient> localVarResponse = await CreateOAuthClientAsyncWithHttpInfo(name, redirectUri);
-             return localVarResponse.Data;
+             await CopyListContactsAsyncWithHttpInfo(fromListId, listId);
 
         }
 
         /// <summary>
-        /// Create an OAuth Client Creates an OAuth Client managed by the user
+        /// Copy All Contacts from a List Copy all contacts from a list.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="name">The name of the OAuth client. e.g. MyCrm DEV, or MyCrm PROD</param>
-        /// <param name="redirectUri">The URI to direct the client to after logging in.</param>
-        /// <returns>Task of ApiResponse (OAuthClient)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<OAuthClient>> CreateOAuthClientAsyncWithHttpInfo (string name, string redirectUri)
+        /// <param name="fromListId">The list to be cleared.</param>
+        /// <param name="listId">The list to be cleared.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> CopyListContactsAsyncWithHttpInfo (string fromListId, string listId)
         {
-            // verify the required parameter 'name' is set
-            if (name == null)
-                throw new ApiException(400, "Missing required parameter 'name' when calling UtilitiesApi->CreateOAuthClient");
-            // verify the required parameter 'redirectUri' is set
-            if (redirectUri == null)
-                throw new ApiException(400, "Missing required parameter 'redirectUri' when calling UtilitiesApi->CreateOAuthClient");
+            // verify the required parameter 'fromListId' is set
+            if (fromListId == null)
+                throw new ApiException(400, "Missing required parameter 'fromListId' when calling ListsApi->CopyListContacts");
+            // verify the required parameter 'listId' is set
+            if (listId == null)
+                throw new ApiException(400, "Missing required parameter 'listId' when calling ListsApi->CopyListContacts");
 
-            var localVarPath = "/oauthclient";
+            var localVarPath = "/lists/{listId}/copy";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -452,8 +568,8 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (name != null) localVarFormParams.Add("name", Configuration.ApiClient.ParameterToString(name)); // form parameter
-            if (redirectUri != null) localVarFormParams.Add("redirectUri", Configuration.ApiClient.ParameterToString(redirectUri)); // form parameter
+            if (listId != null) localVarPathParams.Add("listId", Configuration.ApiClient.ParameterToString(listId)); // path parameter
+            if (fromListId != null) localVarFormParams.Add("fromListId", Configuration.ApiClient.ParameterToString(fromListId)); // form parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -471,40 +587,40 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CreateOAuthClient", localVarResponse);
+                Exception exception = ExceptionFactory("CopyListContacts", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<OAuthClient>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (OAuthClient) Configuration.ApiClient.Deserialize(localVarResponse, typeof(OAuthClient)));
             
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
-        /// Delete an OAuth Client Deletes an OAuth Client managed by the user
+        /// Suppress All Contacts from List Suppresses all contacts in a list.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns></returns>
-        public void DeleteOAuthClient (string id)
+        public void SuppressAllInList (string listId)
         {
-             DeleteOAuthClientWithHttpInfo(id);
+             SuppressAllInListWithHttpInfo(listId);
         }
 
         /// <summary>
-        /// Delete an OAuth Client Deletes an OAuth Client managed by the user
+        /// Suppress All Contacts from List Suppresses all contacts in a list.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteOAuthClientWithHttpInfo (string id)
+        public ApiResponse<Object> SuppressAllInListWithHttpInfo (string listId)
         {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling UtilitiesApi->DeleteOAuthClient");
+            // verify the required parameter 'listId' is set
+            if (listId == null)
+                throw new ApiException(400, "Missing required parameter 'listId' when calling ListsApi->SuppressAllInList");
 
-            var localVarPath = "/oauthclient/{id}";
+            var localVarPath = "/lists/{listId}/suppress";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -529,7 +645,7 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (listId != null) localVarPathParams.Add("listId", Configuration.ApiClient.ParameterToString(listId)); // path parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -540,14 +656,14 @@ namespace IO.Swagger.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DeleteOAuthClient", localVarResponse);
+                Exception exception = ExceptionFactory("SuppressAllInList", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -558,30 +674,30 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Delete an OAuth Client Deletes an OAuth Client managed by the user
+        /// Suppress All Contacts from List Suppresses all contacts in a list.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteOAuthClientAsync (string id)
+        public async System.Threading.Tasks.Task SuppressAllInListAsync (string listId)
         {
-             await DeleteOAuthClientAsyncWithHttpInfo(id);
+             await SuppressAllInListAsyncWithHttpInfo(listId);
 
         }
 
         /// <summary>
-        /// Delete an OAuth Client Deletes an OAuth Client managed by the user
+        /// Suppress All Contacts from List Suppresses all contacts in a list.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the OAuth Client</param>
+        /// <param name="listId">The list to be cleared.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOAuthClientAsyncWithHttpInfo (string id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> SuppressAllInListAsyncWithHttpInfo (string listId)
         {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling UtilitiesApi->DeleteOAuthClient");
+            // verify the required parameter 'listId' is set
+            if (listId == null)
+                throw new ApiException(400, "Missing required parameter 'listId' when calling ListsApi->SuppressAllInList");
 
-            var localVarPath = "/oauthclient/{id}";
+            var localVarPath = "/lists/{listId}/suppress";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -606,7 +722,7 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (listId != null) localVarPathParams.Add("listId", Configuration.ApiClient.ParameterToString(listId)); // path parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -617,286 +733,14 @@ namespace IO.Swagger.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DeleteOAuthClient", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;OAuthClient&gt;</returns>
-        public List<OAuthClient> GetOAuthClients ()
-        {
-             ApiResponse<List<OAuthClient>> localVarResponse = GetOAuthClientsWithHttpInfo();
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;OAuthClient&gt;</returns>
-        public ApiResponse< List<OAuthClient> > GetOAuthClientsWithHttpInfo ()
-        {
-
-            var localVarPath = "/oauthclient";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-
-            // authentication (BBOAuth2) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetOAuthClients", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<OAuthClient>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<OAuthClient>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OAuthClient>)));
-            
-        }
-
-        /// <summary>
-        /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;OAuthClient&gt;</returns>
-        public async System.Threading.Tasks.Task<List<OAuthClient>> GetOAuthClientsAsync ()
-        {
-             ApiResponse<List<OAuthClient>> localVarResponse = await GetOAuthClientsAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Lists OAuth Clients Enumerates OAuth Clients managed by the user
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;OAuthClient&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<OAuthClient>>> GetOAuthClientsAsyncWithHttpInfo ()
-        {
-
-            var localVarPath = "/oauthclient";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-
-            // authentication (BBOAuth2) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetOAuthClients", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<OAuthClient>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<OAuthClient>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OAuthClient>)));
-            
-        }
-
-        /// <summary>
-        /// Describes this api Describes methods available through the API.
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void GetSpec ()
-        {
-             GetSpecWithHttpInfo();
-        }
-
-        /// <summary>
-        /// Describes this api Describes methods available through the API.
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetSpecWithHttpInfo ()
-        {
-
-            var localVarPath = "/spec";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetSpec", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// Describes this api Describes methods available through the API.
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetSpecAsync ()
-        {
-             await GetSpecAsyncWithHttpInfo();
-
-        }
-
-        /// <summary>
-        /// Describes this api Describes methods available through the API.
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetSpecAsyncWithHttpInfo ()
-        {
-
-            var localVarPath = "/spec";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetSpec", localVarResponse);
+                Exception exception = ExceptionFactory("SuppressAllInList", localVarResponse);
                 if (exception != null) throw exception;
             }
 

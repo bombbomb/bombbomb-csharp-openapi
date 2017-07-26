@@ -8,13 +8,16 @@ Method | HTTP request | Description
 [**CancelJerichoSend**](TeamsApi.md#canceljerichosend) | **DELETE** /team/{teamId}/jericho/{jerichoId} | Cancel a Jericho Send
 [**CreateSubteam**](TeamsApi.md#createsubteam) | **POST** /team/{teamId}/subteam | Add a Subteam
 [**DeleteSubteam**](TeamsApi.md#deletesubteam) | **DELETE** /team/{teamId}/subteam | Delete Subteam
+[**GetAllClientGroupAssociations**](TeamsApi.md#getallclientgroupassociations) | **GET** /team/associations/ | Lists team associations
 [**GetClientGroupAssets**](TeamsApi.md#getclientgroupassets) | **GET** /team/assets/ | Lists team assets
 [**GetJerichoSends**](TeamsApi.md#getjerichosends) | **GET** /team/{teamId}/jericho | List Jericho Sends
 [**GetJerichoStats**](TeamsApi.md#getjerichostats) | **GET** /team/{teamId}/jericho/{jerichoId}/performance | Gets Jericho performance statistics
 [**GetSubteams**](TeamsApi.md#getsubteams) | **GET** /team/{teamId}/subteam | List Subteams
 [**QueueJerichoSend**](TeamsApi.md#queuejerichosend) | **POST** /team/{teamId}/jericho | Creates a Jericho send.
 [**RemoveMemberFromTeam**](TeamsApi.md#removememberfromteam) | **DELETE** /team/{teamId}/member/{userId} | Remove Member from Team
+[**UpdateJerichoPromptSend**](TeamsApi.md#updatejerichopromptsend) | **PUT** /team/{teamId}/jericho/{jerichoId} | Updates the Jericho Prompt Settings
 [**UpdateTeam**](TeamsApi.md#updateteam) | **POST** /team/{teamId} | Update a team
+[**UpdateTeamMember**](TeamsApi.md#updateteammember) | **PUT** /team/{teamId}/member | Update Member of Team
 
 
 <a name="addteammember"></a>
@@ -274,6 +277,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **string**
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getallclientgroupassociations"></a>
+# **GetAllClientGroupAssociations**
+> void GetAllClientGroupAssociations (string clientId)
+
+Lists team associations
+
+Returns a collection of team associations for a given user
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetAllClientGroupAssociationsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var clientId = clientId_example;  // string | The clientId requesting group associations.
+
+            try
+            {
+                // Lists team associations
+                apiInstance.GetAllClientGroupAssociations(clientId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.GetAllClientGroupAssociations: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientId** | **string**| The clientId requesting group associations. | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -692,6 +759,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="updatejerichopromptsend"></a>
+# **UpdateJerichoPromptSend**
+> void UpdateJerichoPromptSend (string teamId, string jerichoId)
+
+Updates the Jericho Prompt Settings
+
+Updates the prompt settings based on the original email id
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class UpdateJerichoPromptSendExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var teamId = teamId_example;  // string | The team id
+            var jerichoId = jerichoId_example;  // string | ID of the Jericho job
+
+            try
+            {
+                // Updates the Jericho Prompt Settings
+                apiInstance.UpdateJerichoPromptSend(teamId, jerichoId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.UpdateJerichoPromptSend: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **string**| The team id | 
+ **jerichoId** | **string**| ID of the Jericho job | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updateteam"></a>
 # **UpdateTeam**
 > TeamPublicRepresentation UpdateTeam (string teamId, string name = null)
@@ -747,6 +880,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TeamPublicRepresentation**](TeamPublicRepresentation.md)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateteammember"></a>
+# **UpdateTeamMember**
+> void UpdateTeamMember (string teamId, string userId, bool? admin)
+
+Update Member of Team
+
+Updates a member of a team
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class UpdateTeamMemberExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var teamId = teamId_example;  // string | The team id
+            var userId = userId_example;  // string | The user id of the member being added to the team.
+            var admin = true;  // bool? | Set if the user is an admin of this team.
+
+            try
+            {
+                // Update Member of Team
+                apiInstance.UpdateTeamMember(teamId, userId, admin);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.UpdateTeamMember: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **string**| The team id | 
+ **userId** | **string**| The user id of the member being added to the team. | 
+ **admin** | **bool?**| Set if the user is an admin of this team. | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 

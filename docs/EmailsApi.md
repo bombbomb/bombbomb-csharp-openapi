@@ -12,11 +12,11 @@ Method | HTTP request | Description
 
 <a name="createprintingpressemail"></a>
 # **CreatePrintingPressEmail**
-> void CreatePrintingPressEmail (string templateId, string content, bool? replace, string videoId = null, string subjectLine = null)
+> void CreatePrintingPressEmail (string templateId, string content, string emailId = null, string videoId = null, string subjectLine = null)
 
 Create an Email with Printing Press
 
-Prints an email using the template id and content to the users account.If a video id, is include it will replace any video placeholders with that video.
+Prints an email using the template id and content to the users account.If a video id is included, it will replace any video placeholders with that video.
 
 ### Example
 ```csharp
@@ -39,14 +39,14 @@ namespace Example
             var apiInstance = new EmailsApi();
             var templateId = templateId_example;  // string | The template id to be printed.
             var content = content_example;  // string | The content of the email.
-            var replace = true;  // bool? | Set whether to replace video placeholders with video id.
+            var emailId = emailId_example;  // string | The email id to be printed to. (optional) 
             var videoId = videoId_example;  // string | A video to replace video place holders with. (optional) 
             var subjectLine = subjectLine_example;  // string | The subject line to be printed. (optional) 
 
             try
             {
                 // Create an Email with Printing Press
-                apiInstance.CreatePrintingPressEmail(templateId, content, replace, videoId, subjectLine);
+                apiInstance.CreatePrintingPressEmail(templateId, content, emailId, videoId, subjectLine);
             }
             catch (Exception e)
             {
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **templateId** | **string**| The template id to be printed. | 
  **content** | **string**| The content of the email. | 
- **replace** | **bool?**| Set whether to replace video placeholders with video id. | 
+ **emailId** | **string**| The email id to be printed to. | [optional] 
  **videoId** | **string**| A video to replace video place holders with. | [optional] 
  **subjectLine** | **string**| The subject line to be printed. | [optional] 
 

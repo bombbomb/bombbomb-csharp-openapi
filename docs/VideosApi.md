@@ -4,10 +4,76 @@ All URIs are relative to *https://api.bombbomb.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetVideoEncodingStatus**](VideosApi.md#getvideoencodingstatus) | **GET** /videos/{videoId}/status | Video Encoding Status
 [**GetVideoRecorder**](VideosApi.md#getvideorecorder) | **GET** /videos/live/getRecorder | Get Live Video Recorder HTML
 [**MarkLiveRecordingComplete**](VideosApi.md#markliverecordingcomplete) | **POST** /videos/live/markComplete | Completes a live recording
 [**SignUpload**](VideosApi.md#signupload) | **POST** /video/signedUpload | Generate Signed Url
 
+
+<a name="getvideoencodingstatus"></a>
+# **GetVideoEncodingStatus**
+> VideoEncodingStatusResponse GetVideoEncodingStatus (string videoId)
+
+Video Encoding Status
+
+Get information about the current state of encoding for a given video id.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetVideoEncodingStatusExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new VideosApi();
+            var videoId = videoId_example;  // string | The video's id.
+
+            try
+            {
+                // Video Encoding Status
+                VideoEncodingStatusResponse result = apiInstance.GetVideoEncodingStatus(videoId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling VideosApi.GetVideoEncodingStatus: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **string**| The video&#39;s id. | 
+
+### Return type
+
+[**VideoEncodingStatusResponse**](VideoEncodingStatusResponse.md)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="getvideorecorder"></a>
 # **GetVideoRecorder**

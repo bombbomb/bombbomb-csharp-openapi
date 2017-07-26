@@ -34,32 +34,42 @@ using Newtonsoft.Json.Converters;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// InlineResponse200
+    /// The VideoEncodingStatusResponse class
     /// </summary>
     [DataContract]
-    public partial class InlineResponse200 :  IEquatable<InlineResponse200>
+    public partial class VideoEncodingStatusResponse :  IEquatable<VideoEncodingStatusResponse>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineResponse200" /> class.
+        /// Initializes a new instance of the <see cref="VideoEncodingStatusResponse" /> class.
         /// </summary>
-        /// <param name="TotalPages">TotalPages.</param>
-        /// <param name="Items">Items.</param>
-        public InlineResponse200(int? TotalPages = null, List<InlineResponse200Items> Items = null)
+        /// <param name="IsReady">Returns true if the video is done encoding and finalized..</param>
+        /// <param name="IsFailed">Returns true if the video encoding process failed..</param>
+        /// <param name="Progress">0-100 value indicating progress of video encoding process..</param>
+        public VideoEncodingStatusResponse(bool? IsReady = null, bool? IsFailed = null, int? Progress = null)
         {
-            this.TotalPages = TotalPages;
-            this.Items = Items;
+            this.IsReady = IsReady;
+            this.IsFailed = IsFailed;
+            this.Progress = Progress;
         }
         
         /// <summary>
-        /// Gets or Sets TotalPages
+        /// Returns true if the video is done encoding and finalized.
         /// </summary>
-        [DataMember(Name="totalPages", EmitDefaultValue=false)]
-        public int? TotalPages { get; set; }
+        /// <value>Returns true if the video is done encoding and finalized.</value>
+        [DataMember(Name="isReady", EmitDefaultValue=false)]
+        public bool? IsReady { get; set; }
         /// <summary>
-        /// Gets or Sets Items
+        /// Returns true if the video encoding process failed.
         /// </summary>
-        [DataMember(Name="items", EmitDefaultValue=false)]
-        public List<InlineResponse200Items> Items { get; set; }
+        /// <value>Returns true if the video encoding process failed.</value>
+        [DataMember(Name="isFailed", EmitDefaultValue=false)]
+        public bool? IsFailed { get; set; }
+        /// <summary>
+        /// 0-100 value indicating progress of video encoding process.
+        /// </summary>
+        /// <value>0-100 value indicating progress of video encoding process.</value>
+        [DataMember(Name="progress", EmitDefaultValue=false)]
+        public int? Progress { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -67,9 +77,10 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class InlineResponse200 {\n");
-            sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
-            sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("class VideoEncodingStatusResponse {\n");
+            sb.Append("  IsReady: ").Append(IsReady).Append("\n");
+            sb.Append("  IsFailed: ").Append(IsFailed).Append("\n");
+            sb.Append("  Progress: ").Append(Progress).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,15 +102,15 @@ namespace IO.Swagger.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as InlineResponse200);
+            return this.Equals(obj as VideoEncodingStatusResponse);
         }
 
         /// <summary>
-        /// Returns true if InlineResponse200 instances are equal
+        /// Returns true if VideoEncodingStatusResponse instances are equal
         /// </summary>
-        /// <param name="other">Instance of InlineResponse200 to be compared</param>
+        /// <param name="other">Instance of VideoEncodingStatusResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(InlineResponse200 other)
+        public bool Equals(VideoEncodingStatusResponse other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -107,14 +118,19 @@ namespace IO.Swagger.Model
 
             return 
                 (
-                    this.TotalPages == other.TotalPages ||
-                    this.TotalPages != null &&
-                    this.TotalPages.Equals(other.TotalPages)
+                    this.IsReady == other.IsReady ||
+                    this.IsReady != null &&
+                    this.IsReady.Equals(other.IsReady)
                 ) && 
                 (
-                    this.Items == other.Items ||
-                    this.Items != null &&
-                    this.Items.SequenceEqual(other.Items)
+                    this.IsFailed == other.IsFailed ||
+                    this.IsFailed != null &&
+                    this.IsFailed.Equals(other.IsFailed)
+                ) && 
+                (
+                    this.Progress == other.Progress ||
+                    this.Progress != null &&
+                    this.Progress.Equals(other.Progress)
                 );
         }
 
@@ -129,10 +145,12 @@ namespace IO.Swagger.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.TotalPages != null)
-                    hash = hash * 59 + this.TotalPages.GetHashCode();
-                if (this.Items != null)
-                    hash = hash * 59 + this.Items.GetHashCode();
+                if (this.IsReady != null)
+                    hash = hash * 59 + this.IsReady.GetHashCode();
+                if (this.IsFailed != null)
+                    hash = hash * 59 + this.IsFailed.GetHashCode();
+                if (this.Progress != null)
+                    hash = hash * 59 + this.Progress.GetHashCode();
                 return hash;
             }
         }

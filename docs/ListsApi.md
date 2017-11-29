@@ -4,10 +4,76 @@ All URIs are relative to *https://api.bombbomb.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddNewList**](ListsApi.md#addnewlist) | **POST** /lists/ | Add list.
 [**ClearList**](ListsApi.md#clearlist) | **PUT** /lists/{listId}/clear | Clear Contacts from List
 [**CopyListContacts**](ListsApi.md#copylistcontacts) | **POST** /lists/{listId}/copy | Copy All Contacts from a List
+[**GetAllLists**](ListsApi.md#getalllists) | **GET** /lists/ | Get all Lists
 [**SuppressAllInList**](ListsApi.md#suppressallinlist) | **PUT** /lists/{listId}/suppress | Suppress All Contacts from List
 
+
+<a name="addnewlist"></a>
+# **AddNewList**
+> void AddNewList (string listName)
+
+Add list.
+
+Add a list to the users account.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class AddNewListExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ListsApi();
+            var listName = listName_example;  // string | Name of the new list being added
+
+            try
+            {
+                // Add list.
+                apiInstance.AddNewList(listName);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ListsApi.AddNewList: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listName** | **string**| Name of the new list being added | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="clearlist"></a>
 # **ClearList**
@@ -123,6 +189,66 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fromListId** | **string**| The list to be cleared. | 
  **listId** | **string**| The list to be cleared. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getalllists"></a>
+# **GetAllLists**
+> void GetAllLists ()
+
+Get all Lists
+
+Get all the lists for a specific user.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetAllListsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ListsApi();
+
+            try
+            {
+                // Get all Lists
+                apiInstance.GetAllLists();
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ListsApi.GetAllLists: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
 
 ### Return type
 

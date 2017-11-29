@@ -34,58 +34,66 @@ using Newtonsoft.Json.Converters;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// The CurriculumUserProgress class
+    /// The HostedDoc class
     /// </summary>
     [DataContract]
-    public partial class CurriculumUserProgress :  IEquatable<CurriculumUserProgress>
+    public partial class HostedDoc :  IEquatable<HostedDoc>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CurriculumUserProgress" /> class.
+        /// Initializes a new instance of the <see cref="HostedDoc" /> class.
         /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="UserId">User Id.</param>
-        /// <param name="CurriculumItemId">Curriculum Item Id.</param>
-        /// <param name="CurriculumId">Curriculum Id.</param>
-        /// <param name="CompletedDate">When the final email is scheduled to be sent.</param>
-        public CurriculumUserProgress(string Id = null, string UserId = null, string CurriculumItemId = null, string CurriculumId = null, DateTime? CompletedDate = null)
+        /// <param name="Id">The doc&#39;s id..</param>
+        /// <param name="UserId">The doc&#39;s owner..</param>
+        /// <param name="FileName">docs file name..</param>
+        /// <param name="ShortUrl">The doc&#39;s short url..</param>
+        /// <param name="LongUrl">The doc&#39;s long url..</param>
+        /// <param name="UploadDate">The doc&#39;s upload date..</param>
+        public HostedDoc(string Id = null, string UserId = null, string FileName = null, string ShortUrl = null, string LongUrl = null, DateTime? UploadDate = null)
         {
             this.Id = Id;
             this.UserId = UserId;
-            this.CurriculumItemId = CurriculumItemId;
-            this.CurriculumId = CurriculumId;
-            this.CompletedDate = CompletedDate;
+            this.FileName = FileName;
+            this.ShortUrl = ShortUrl;
+            this.LongUrl = LongUrl;
+            this.UploadDate = UploadDate;
         }
         
         /// <summary>
-        /// Id
+        /// The doc&#39;s id.
         /// </summary>
-        /// <value>Id</value>
+        /// <value>The doc&#39;s id.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public string Id { get; set; }
         /// <summary>
-        /// User Id
+        /// The doc&#39;s owner.
         /// </summary>
-        /// <value>User Id</value>
+        /// <value>The doc&#39;s owner.</value>
         [DataMember(Name="userId", EmitDefaultValue=false)]
         public string UserId { get; set; }
         /// <summary>
-        /// Curriculum Item Id
+        /// docs file name.
         /// </summary>
-        /// <value>Curriculum Item Id</value>
-        [DataMember(Name="curriculumItemId", EmitDefaultValue=false)]
-        public string CurriculumItemId { get; set; }
+        /// <value>docs file name.</value>
+        [DataMember(Name="fileName", EmitDefaultValue=false)]
+        public string FileName { get; set; }
         /// <summary>
-        /// Curriculum Id
+        /// The doc&#39;s short url.
         /// </summary>
-        /// <value>Curriculum Id</value>
-        [DataMember(Name="curriculumId", EmitDefaultValue=false)]
-        public string CurriculumId { get; set; }
+        /// <value>The doc&#39;s short url.</value>
+        [DataMember(Name="shortUrl", EmitDefaultValue=false)]
+        public string ShortUrl { get; set; }
         /// <summary>
-        /// When the final email is scheduled to be sent
+        /// The doc&#39;s long url.
         /// </summary>
-        /// <value>When the final email is scheduled to be sent</value>
-        [DataMember(Name="completedDate", EmitDefaultValue=false)]
-        public DateTime? CompletedDate { get; set; }
+        /// <value>The doc&#39;s long url.</value>
+        [DataMember(Name="longUrl", EmitDefaultValue=false)]
+        public string LongUrl { get; set; }
+        /// <summary>
+        /// The doc&#39;s upload date.
+        /// </summary>
+        /// <value>The doc&#39;s upload date.</value>
+        [DataMember(Name="uploadDate", EmitDefaultValue=false)]
+        public DateTime? UploadDate { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -93,12 +101,13 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CurriculumUserProgress {\n");
+            sb.Append("class HostedDoc {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  CurriculumItemId: ").Append(CurriculumItemId).Append("\n");
-            sb.Append("  CurriculumId: ").Append(CurriculumId).Append("\n");
-            sb.Append("  CompletedDate: ").Append(CompletedDate).Append("\n");
+            sb.Append("  FileName: ").Append(FileName).Append("\n");
+            sb.Append("  ShortUrl: ").Append(ShortUrl).Append("\n");
+            sb.Append("  LongUrl: ").Append(LongUrl).Append("\n");
+            sb.Append("  UploadDate: ").Append(UploadDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -120,15 +129,15 @@ namespace IO.Swagger.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as CurriculumUserProgress);
+            return this.Equals(obj as HostedDoc);
         }
 
         /// <summary>
-        /// Returns true if CurriculumUserProgress instances are equal
+        /// Returns true if HostedDoc instances are equal
         /// </summary>
-        /// <param name="other">Instance of CurriculumUserProgress to be compared</param>
+        /// <param name="other">Instance of HostedDoc to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CurriculumUserProgress other)
+        public bool Equals(HostedDoc other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -146,19 +155,24 @@ namespace IO.Swagger.Model
                     this.UserId.Equals(other.UserId)
                 ) && 
                 (
-                    this.CurriculumItemId == other.CurriculumItemId ||
-                    this.CurriculumItemId != null &&
-                    this.CurriculumItemId.Equals(other.CurriculumItemId)
+                    this.FileName == other.FileName ||
+                    this.FileName != null &&
+                    this.FileName.Equals(other.FileName)
                 ) && 
                 (
-                    this.CurriculumId == other.CurriculumId ||
-                    this.CurriculumId != null &&
-                    this.CurriculumId.Equals(other.CurriculumId)
+                    this.ShortUrl == other.ShortUrl ||
+                    this.ShortUrl != null &&
+                    this.ShortUrl.Equals(other.ShortUrl)
                 ) && 
                 (
-                    this.CompletedDate == other.CompletedDate ||
-                    this.CompletedDate != null &&
-                    this.CompletedDate.Equals(other.CompletedDate)
+                    this.LongUrl == other.LongUrl ||
+                    this.LongUrl != null &&
+                    this.LongUrl.Equals(other.LongUrl)
+                ) && 
+                (
+                    this.UploadDate == other.UploadDate ||
+                    this.UploadDate != null &&
+                    this.UploadDate.Equals(other.UploadDate)
                 );
         }
 
@@ -177,12 +191,14 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.Id.GetHashCode();
                 if (this.UserId != null)
                     hash = hash * 59 + this.UserId.GetHashCode();
-                if (this.CurriculumItemId != null)
-                    hash = hash * 59 + this.CurriculumItemId.GetHashCode();
-                if (this.CurriculumId != null)
-                    hash = hash * 59 + this.CurriculumId.GetHashCode();
-                if (this.CompletedDate != null)
-                    hash = hash * 59 + this.CompletedDate.GetHashCode();
+                if (this.FileName != null)
+                    hash = hash * 59 + this.FileName.GetHashCode();
+                if (this.ShortUrl != null)
+                    hash = hash * 59 + this.ShortUrl.GetHashCode();
+                if (this.LongUrl != null)
+                    hash = hash * 59 + this.LongUrl.GetHashCode();
+                if (this.UploadDate != null)
+                    hash = hash * 59 + this.UploadDate.GetHashCode();
                 return hash;
             }
         }

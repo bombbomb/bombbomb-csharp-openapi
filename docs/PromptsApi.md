@@ -12,13 +12,14 @@ Method | HTTP request | Description
 [**GetVideoEmailPrompt**](PromptsApi.md#getvideoemailprompt) | **GET** /prompt/{id} | Gets a prompt
 [**GetVideoEmailPrompts**](PromptsApi.md#getvideoemailprompts) | **GET** /prompt/ | List prompts
 [**RespondToVideoEmailPrompt**](PromptsApi.md#respondtovideoemailprompt) | **POST** /prompt/{id}/response | Respond to a prompt
+[**UpdatePrompt**](PromptsApi.md#updateprompt) | **PUT** /prompts/{id} | Update Prompt
 [**UpdatePromptBot**](PromptsApi.md#updatepromptbot) | **PUT** /prompts/bots/{id} | Update Prompt Bot
 [**UpdatePromptCampaign**](PromptsApi.md#updatepromptcampaign) | **PUT** /prompts/campaigns/{id} | Update Prompt Campaign
 
 
 <a name="createpromptbot"></a>
 # **CreatePromptBot**
-> PromptBot CreatePromptBot (string listId, string emailId, string name, string subject, string content, string contactFieldValueColumn, string botTypeId, string templateId, string videoId = null, string endDate = null)
+> PromptBot CreatePromptBot (string emailId, string name, string subject, string content, string contactFieldValueColumn, string botTypeId, string templateId, string listId = null, string videoId = null, string endDate = null)
 
 Create a running Prompt Bot for a list
 
@@ -43,7 +44,6 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new PromptsApi();
-            var listId = listId_example;  // string | The list id to attach the bot to.
             var emailId = emailId_example;  // string | The default email to use.
             var name = name_example;  // string | The name of the bot.
             var subject = subject_example;  // string | The subject of the default email.
@@ -51,13 +51,14 @@ namespace Example
             var contactFieldValueColumn = contactFieldValueColumn_example;  // string | The custom field value column with dates for this bot.
             var botTypeId = botTypeId_example;  // string | The type of bot to create.
             var templateId = templateId_example;  // string | The template used to create the email id.
+            var listId = listId_example;  // string | The list id to attach the bot to. (optional) 
             var videoId = videoId_example;  // string | The video used in the email. (optional) 
             var endDate = endDate_example;  // string | The time frame to complete sending to the list. (optional) 
 
             try
             {
                 // Create a running Prompt Bot for a list
-                PromptBot result = apiInstance.CreatePromptBot(listId, emailId, name, subject, content, contactFieldValueColumn, botTypeId, templateId, videoId, endDate);
+                PromptBot result = apiInstance.CreatePromptBot(emailId, name, subject, content, contactFieldValueColumn, botTypeId, templateId, listId, videoId, endDate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -73,7 +74,6 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **string**| The list id to attach the bot to. | 
  **emailId** | **string**| The default email to use. | 
  **name** | **string**| The name of the bot. | 
  **subject** | **string**| The subject of the default email. | 
@@ -81,6 +81,7 @@ Name | Type | Description  | Notes
  **contactFieldValueColumn** | **string**| The custom field value column with dates for this bot. | 
  **botTypeId** | **string**| The type of bot to create. | 
  **templateId** | **string**| The template used to create the email id. | 
+ **listId** | **string**| The list id to attach the bot to. | [optional] 
  **videoId** | **string**| The video used in the email. | [optional] 
  **endDate** | **string**| The time frame to complete sending to the list. | [optional] 
 
@@ -542,9 +543,85 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="updateprompt"></a>
+# **UpdatePrompt**
+> void UpdatePrompt (string id, string sendMechanism = null, string facebookMessage = null, string twitterMessage = null, string videoId = null, string emailId = null, string subject = null)
+
+Update Prompt
+
+Updates a Prompt
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class UpdatePromptExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new PromptsApi();
+            var id = id_example;  // string | The prompt's id
+            var sendMechanism = sendMechanism_example;  // string | The mechanism for the prompt to be sent (optional) 
+            var facebookMessage = facebookMessage_example;  // string | The facebook message assigned to the prompt (optional) 
+            var twitterMessage = twitterMessage_example;  // string | The twitter message assigned to the prompt (optional) 
+            var videoId = videoId_example;  // string | The id of the video. (optional) 
+            var emailId = emailId_example;  // string | The id of the email. (optional) 
+            var subject = subject_example;  // string | The subject of the email (optional) 
+
+            try
+            {
+                // Update Prompt
+                apiInstance.UpdatePrompt(id, sendMechanism, facebookMessage, twitterMessage, videoId, emailId, subject);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling PromptsApi.UpdatePrompt: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| The prompt&#39;s id | 
+ **sendMechanism** | **string**| The mechanism for the prompt to be sent | [optional] 
+ **facebookMessage** | **string**| The facebook message assigned to the prompt | [optional] 
+ **twitterMessage** | **string**| The twitter message assigned to the prompt | [optional] 
+ **videoId** | **string**| The id of the video. | [optional] 
+ **emailId** | **string**| The id of the email. | [optional] 
+ **subject** | **string**| The subject of the email | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatepromptbot"></a>
 # **UpdatePromptBot**
-> PromptBot UpdatePromptBot (string id, string listId, string emailId, string name, string subject, string content, string contactFieldValueColumn, string templateId, string videoId = null, string endDate = null, string status = null)
+> PromptBot UpdatePromptBot (string id, string emailId, string name, string subject, string content, string contactFieldValueColumn, string templateId, string listId = null, string videoId = null, string endDate = null, string status = null)
 
 Update Prompt Bot
 
@@ -570,13 +647,13 @@ namespace Example
 
             var apiInstance = new PromptsApi();
             var id = id_example;  // string | The bot id.
-            var listId = listId_example;  // string | The list id to attach the bot to.
             var emailId = emailId_example;  // string | The default email to use.
             var name = name_example;  // string | The name of the bot.
             var subject = subject_example;  // string | The subject of the default email.
             var content = content_example;  // string | The content used in the default email.
             var contactFieldValueColumn = contactFieldValueColumn_example;  // string | The custom field value column with dates for this bot.
             var templateId = templateId_example;  // string | The template used to create the email id.
+            var listId = listId_example;  // string | The list id to attach the bot to. (optional) 
             var videoId = videoId_example;  // string | The video used in the default email. (optional) 
             var endDate = endDate_example;  // string | The time frame to complete sending to the list. (optional) 
             var status = status_example;  // string | The status of the bot. (optional) 
@@ -584,7 +661,7 @@ namespace Example
             try
             {
                 // Update Prompt Bot
-                PromptBot result = apiInstance.UpdatePromptBot(id, listId, emailId, name, subject, content, contactFieldValueColumn, templateId, videoId, endDate, status);
+                PromptBot result = apiInstance.UpdatePromptBot(id, emailId, name, subject, content, contactFieldValueColumn, templateId, listId, videoId, endDate, status);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -601,13 +678,13 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| The bot id. | 
- **listId** | **string**| The list id to attach the bot to. | 
  **emailId** | **string**| The default email to use. | 
  **name** | **string**| The name of the bot. | 
  **subject** | **string**| The subject of the default email. | 
  **content** | **string**| The content used in the default email. | 
  **contactFieldValueColumn** | **string**| The custom field value column with dates for this bot. | 
  **templateId** | **string**| The template used to create the email id. | 
+ **listId** | **string**| The list id to attach the bot to. | [optional] 
  **videoId** | **string**| The video used in the default email. | [optional] 
  **endDate** | **string**| The time frame to complete sending to the list. | [optional] 
  **status** | **string**| The status of the bot. | [optional] 
@@ -629,7 +706,7 @@ Name | Type | Description  | Notes
 
 <a name="updatepromptcampaign"></a>
 # **UpdatePromptCampaign**
-> void UpdatePromptCampaign (string clientGroupId, string brandedTemplateId = null, string personalTemplateId = null, bool? enabled = null, string autoShares = null)
+> void UpdatePromptCampaign (string clientGroupId, string brandedTemplateId = null, string personalTemplateId = null, bool? enabled = null, string sendMechanism = null)
 
 Update Prompt Campaign
 
@@ -658,12 +735,12 @@ namespace Example
             var brandedTemplateId = brandedTemplateId_example;  // string | The template to use for branded feel emails. (optional) 
             var personalTemplateId = personalTemplateId_example;  // string | The template to use for personal feel emails. (optional) 
             var enabled = true;  // bool? | Set whether the user is able to start receiving prompts. (optional) 
-            var autoShares = autoShares_example;  // string | These are what we are autosharing to (optional) 
+            var sendMechanism = sendMechanism_example;  // string | The way to send the prompt (optional) 
 
             try
             {
                 // Update Prompt Campaign
-                apiInstance.UpdatePromptCampaign(clientGroupId, brandedTemplateId, personalTemplateId, enabled, autoShares);
+                apiInstance.UpdatePromptCampaign(clientGroupId, brandedTemplateId, personalTemplateId, enabled, sendMechanism);
             }
             catch (Exception e)
             {
@@ -682,7 +759,7 @@ Name | Type | Description  | Notes
  **brandedTemplateId** | **string**| The template to use for branded feel emails. | [optional] 
  **personalTemplateId** | **string**| The template to use for personal feel emails. | [optional] 
  **enabled** | **bool?**| Set whether the user is able to start receiving prompts. | [optional] 
- **autoShares** | **string**| These are what we are autosharing to | [optional] 
+ **sendMechanism** | **string**| The way to send the prompt | [optional] 
 
 ### Return type
 

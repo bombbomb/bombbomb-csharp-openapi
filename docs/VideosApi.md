@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetVideoRecorder**](VideosApi.md#getvideorecorder) | **GET** /videos/live/getRecorder | Get Live Video Recorder HTML
 [**MarkLiveRecordingComplete**](VideosApi.md#markliverecordingcomplete) | **POST** /videos/live/markComplete | Completes a live recording
 [**SignUpload**](VideosApi.md#signupload) | **POST** /video/signedUpload | Generate Signed Url
+[**UpdateVideoThumbnailV2**](VideosApi.md#updatevideothumbnailv2) | **PUT** /videos/thumbnail | Upload thumbnail
 
 
 <a name="getvideoencodingstatus"></a>
@@ -271,6 +272,74 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updatevideothumbnailv2"></a>
+# **UpdateVideoThumbnailV2**
+> void UpdateVideoThumbnailV2 (string videoId, string thumbnail, bool? custom = null)
+
+Upload thumbnail
+
+Upload a new video thumbnail
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class UpdateVideoThumbnailV2Example
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new VideosApi();
+            var videoId = videoId_example;  // string | The id of the video
+            var thumbnail = thumbnail_example;  // string | The thumbnail being uploaded
+            var custom = true;  // bool? | The default email to use. (optional) 
+
+            try
+            {
+                // Upload thumbnail
+                apiInstance.UpdateVideoThumbnailV2(videoId, thumbnail, custom);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling VideosApi.UpdateVideoThumbnailV2: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **string**| The id of the video | 
+ **thumbnail** | **string**| The thumbnail being uploaded | 
+ **custom** | **bool?**| The default email to use. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

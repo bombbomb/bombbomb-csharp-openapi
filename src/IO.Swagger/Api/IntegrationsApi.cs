@@ -32,68 +32,68 @@ namespace IO.Swagger.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IOrdersApi : IApiAccessor
+    public interface IIntegrationsApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Deletes image from user s3 store
+        /// Synchronize your integration list or lists.
         /// </summary>
         /// <remarks>
-        /// Deletes image from user s3 store
+        /// Synchronize your integration contact list with the service you are integrated with. If no integration code is provided, all integrations will be synchronized.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
-        /// <returns></returns>
-        void TemplateAssetDelete (string fileName);
+        /// <param name="integrationId">The integration to sync lists for. All integrations will sync if nothing is provided. (optional)</param>
+        /// <returns>string</returns>
+        string SyncUsersIntegratedLists (string integrationId = null);
 
         /// <summary>
-        /// Deletes image from user s3 store
+        /// Synchronize your integration list or lists.
         /// </summary>
         /// <remarks>
-        /// Deletes image from user s3 store
+        /// Synchronize your integration contact list with the service you are integrated with. If no integration code is provided, all integrations will be synchronized.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TemplateAssetDeleteWithHttpInfo (string fileName);
+        /// <param name="integrationId">The integration to sync lists for. All integrations will sync if nothing is provided. (optional)</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> SyncUsersIntegratedListsWithHttpInfo (string integrationId = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Deletes image from user s3 store
+        /// Synchronize your integration list or lists.
         /// </summary>
         /// <remarks>
-        /// Deletes image from user s3 store
+        /// Synchronize your integration contact list with the service you are integrated with. If no integration code is provided, all integrations will be synchronized.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task TemplateAssetDeleteAsync (string fileName);
+        /// <param name="integrationId">The integration to sync lists for. All integrations will sync if nothing is provided. (optional)</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> SyncUsersIntegratedListsAsync (string integrationId = null);
 
         /// <summary>
-        /// Deletes image from user s3 store
+        /// Synchronize your integration list or lists.
         /// </summary>
         /// <remarks>
-        /// Deletes image from user s3 store
+        /// Synchronize your integration contact list with the service you are integrated with. If no integration code is provided, all integrations will be synchronized.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TemplateAssetDeleteAsyncWithHttpInfo (string fileName);
+        /// <param name="integrationId">The integration to sync lists for. All integrations will sync if nothing is provided. (optional)</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> SyncUsersIntegratedListsAsyncWithHttpInfo (string integrationId = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class OrdersApi : IOrdersApi
+    public partial class IntegrationsApi : IIntegrationsApi
     {
         private IO.Swagger.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OrdersApi"/> class.
+        /// Initializes a new instance of the <see cref="IntegrationsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public OrdersApi(String basePath)
+        public IntegrationsApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -107,12 +107,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OrdersApi"/> class
+        /// Initializes a new instance of the <see cref="IntegrationsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public OrdersApi(Configuration configuration = null)
+        public IntegrationsApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -192,29 +192,27 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Deletes image from user s3 store Deletes image from user s3 store
+        /// Synchronize your integration list or lists. Synchronize your integration contact list with the service you are integrated with. If no integration code is provided, all integrations will be synchronized.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
-        /// <returns></returns>
-        public void TemplateAssetDelete (string fileName)
+        /// <param name="integrationId">The integration to sync lists for. All integrations will sync if nothing is provided. (optional)</param>
+        /// <returns>string</returns>
+        public string SyncUsersIntegratedLists (string integrationId = null)
         {
-             TemplateAssetDeleteWithHttpInfo(fileName);
+             ApiResponse<string> localVarResponse = SyncUsersIntegratedListsWithHttpInfo(integrationId);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Deletes image from user s3 store Deletes image from user s3 store
+        /// Synchronize your integration list or lists. Synchronize your integration contact list with the service you are integrated with. If no integration code is provided, all integrations will be synchronized.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> TemplateAssetDeleteWithHttpInfo (string fileName)
+        /// <param name="integrationId">The integration to sync lists for. All integrations will sync if nothing is provided. (optional)</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > SyncUsersIntegratedListsWithHttpInfo (string integrationId = null)
         {
-            // verify the required parameter 'fileName' is set
-            if (fileName == null)
-                throw new ApiException(400, "Missing required parameter 'fileName' when calling OrdersApi->TemplateAssetDelete");
 
-            var localVarPath = "/orders/templates/images";
+            var localVarPath = "/integrations/sync";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -239,7 +237,7 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (fileName != null) localVarFormParams.Add("fileName", Configuration.ApiClient.ParameterToString(fileName)); // form parameter
+            if (integrationId != null) localVarQueryParams.Add("integration_id", Configuration.ApiClient.ParameterToString(integrationId)); // query parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -250,48 +248,46 @@ namespace IO.Swagger.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("TemplateAssetDelete", localVarResponse);
+                Exception exception = ExceptionFactory("SyncUsersIntegratedLists", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+            
         }
 
         /// <summary>
-        /// Deletes image from user s3 store Deletes image from user s3 store
+        /// Synchronize your integration list or lists. Synchronize your integration contact list with the service you are integrated with. If no integration code is provided, all integrations will be synchronized.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task TemplateAssetDeleteAsync (string fileName)
+        /// <param name="integrationId">The integration to sync lists for. All integrations will sync if nothing is provided. (optional)</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> SyncUsersIntegratedListsAsync (string integrationId = null)
         {
-             await TemplateAssetDeleteAsyncWithHttpInfo(fileName);
+             ApiResponse<string> localVarResponse = await SyncUsersIntegratedListsAsyncWithHttpInfo(integrationId);
+             return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Deletes image from user s3 store Deletes image from user s3 store
+        /// Synchronize your integration list or lists. Synchronize your integration contact list with the service you are integrated with. If no integration code is provided, all integrations will be synchronized.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TemplateAssetDeleteAsyncWithHttpInfo (string fileName)
+        /// <param name="integrationId">The integration to sync lists for. All integrations will sync if nothing is provided. (optional)</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> SyncUsersIntegratedListsAsyncWithHttpInfo (string integrationId = null)
         {
-            // verify the required parameter 'fileName' is set
-            if (fileName == null)
-                throw new ApiException(400, "Missing required parameter 'fileName' when calling OrdersApi->TemplateAssetDelete");
 
-            var localVarPath = "/orders/templates/images";
+            var localVarPath = "/integrations/sync";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -316,7 +312,7 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (fileName != null) localVarFormParams.Add("fileName", Configuration.ApiClient.ParameterToString(fileName)); // form parameter
+            if (integrationId != null) localVarQueryParams.Add("integration_id", Configuration.ApiClient.ParameterToString(integrationId)); // query parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -327,21 +323,21 @@ namespace IO.Swagger.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("TemplateAssetDelete", localVarResponse);
+                Exception exception = ExceptionFactory("SyncUsersIntegratedLists", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+            
         }
 
     }

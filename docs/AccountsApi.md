@@ -6,12 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AccountDetails**](AccountsApi.md#accountdetails) | **GET** /accounts | Get account details.
 [**CreateAccount**](AccountsApi.md#createaccount) | **POST** /accounts | Create Account
+[**GetClientStatistics**](AccountsApi.md#getclientstatistics) | **GET** /accounts/stats | Get Client Statistics
 [**SubscriptionPurchaseAllowed**](AccountsApi.md#subscriptionpurchaseallowed) | **GET** /accounts/purchaseable | Check if subscription purchase allowed.
 
 
 <a name="accountdetails"></a>
 # **AccountDetails**
-> void AccountDetails (string email = null, string pw = null, string apiKey = null)
+> void AccountDetails ()
 
 Get account details.
 
@@ -33,14 +34,11 @@ namespace Example
         {
             
             var apiInstance = new AccountsApi();
-            var email = email_example;  // string | Your login email address (optional) 
-            var pw = pw_example;  // string | Your password (optional) 
-            var apiKey = apiKey_example;  // string | Your Api Key (optional) 
 
             try
             {
                 // Get account details.
-                apiInstance.AccountDetails(email, pw, apiKey);
+                apiInstance.AccountDetails();
             }
             catch (Exception e)
             {
@@ -52,12 +50,7 @@ namespace Example
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Your login email address | [optional] 
- **pw** | **string**| Your password | [optional] 
- **apiKey** | **string**| Your Api Key | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -76,7 +69,7 @@ No authorization required
 
 <a name="createaccount"></a>
 # **CreateAccount**
-> string CreateAccount (string teamId, string firstName, string lastName, string emailAddress, string companyName, string phone, string country = null, string industry = null, string address = null, string city = null, string postalCode = null)
+> string CreateAccount (string teamId, string firstName, string lastName, string emailAddress, string companyName, string phone, string country = null, string industry = null, string address = null, string city = null, string postalCode = null, string preventWelcomeEmail = null)
 
 Create Account
 
@@ -112,11 +105,12 @@ namespace Example
             var address = address_example;  // string | Street Address of the user. (optional) 
             var city = city_example;  // string | City of the user. (optional) 
             var postalCode = postalCode_example;  // string | Postal/Zip code of the user. (optional) 
+            var preventWelcomeEmail = preventWelcomeEmail_example;  // string | prevent an email with login credentials from being sent to the new account. must be set to 'true' (optional) 
 
             try
             {
                 // Create Account
-                string result = apiInstance.CreateAccount(teamId, firstName, lastName, emailAddress, companyName, phone, country, industry, address, city, postalCode);
+                string result = apiInstance.CreateAccount(teamId, firstName, lastName, emailAddress, companyName, phone, country, industry, address, city, postalCode, preventWelcomeEmail);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -143,6 +137,7 @@ Name | Type | Description  | Notes
  **address** | **string**| Street Address of the user. | [optional] 
  **city** | **string**| City of the user. | [optional] 
  **postalCode** | **string**| Postal/Zip code of the user. | [optional] 
+ **preventWelcomeEmail** | **string**| prevent an email with login credentials from being sent to the new account. must be set to &#39;true&#39; | [optional] 
 
 ### Return type
 
@@ -159,9 +154,73 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getclientstatistics"></a>
+# **GetClientStatistics**
+> void GetClientStatistics (string clientId = null)
+
+Get Client Statistics
+
+Gets general statics for a Client
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetClientStatisticsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AccountsApi();
+            var clientId = clientId_example;  // string | Client ID of the account to retrieve. Defaults to yourself. (optional) 
+
+            try
+            {
+                // Get Client Statistics
+                apiInstance.GetClientStatistics(clientId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling AccountsApi.GetClientStatistics: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientId** | **string**| Client ID of the account to retrieve. Defaults to yourself. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="subscriptionpurchaseallowed"></a>
 # **SubscriptionPurchaseAllowed**
-> void SubscriptionPurchaseAllowed (string email = null, string pw = null, string apiKey = null)
+> void SubscriptionPurchaseAllowed ()
 
 Check if subscription purchase allowed.
 
@@ -183,14 +242,11 @@ namespace Example
         {
             
             var apiInstance = new AccountsApi();
-            var email = email_example;  // string | Your login email address (optional) 
-            var pw = pw_example;  // string | Your password (optional) 
-            var apiKey = apiKey_example;  // string | Your Api Key (optional) 
 
             try
             {
                 // Check if subscription purchase allowed.
-                apiInstance.SubscriptionPurchaseAllowed(email, pw, apiKey);
+                apiInstance.SubscriptionPurchaseAllowed();
             }
             catch (Exception e)
             {
@@ -202,12 +258,7 @@ namespace Example
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **string**| Your login email address | [optional] 
- **pw** | **string**| Your password | [optional] 
- **apiKey** | **string**| Your Api Key | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 

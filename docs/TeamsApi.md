@@ -10,11 +10,16 @@ Method | HTTP request | Description
 [**DeleteSubteam**](TeamsApi.md#deletesubteam) | **DELETE** /team/{teamId}/subteam | Delete Subteam
 [**GetAllClientGroupAssociations**](TeamsApi.md#getallclientgroupassociations) | **GET** /team/associations/ | Lists team associations
 [**GetClientGroupAssets**](TeamsApi.md#getclientgroupassets) | **GET** /team/assets/ | Lists team assets
+[**GetClientGroupStatistics**](TeamsApi.md#getclientgroupstatistics) | **GET** /team/{teamId}/stats | Get Team statistics
 [**GetJerichoSends**](TeamsApi.md#getjerichosends) | **GET** /team/{teamId}/jericho | List Jericho Sends
 [**GetJerichoStats**](TeamsApi.md#getjerichostats) | **GET** /team/{teamId}/jericho/{jerichoId}/performance | Gets Jericho performance statistics
+[**GetPagedClientGroupMembers**](TeamsApi.md#getpagedclientgroupmembers) | **GET** /team/{teamId}/members | List Team Members
 [**GetSubteams**](TeamsApi.md#getsubteams) | **GET** /team/{teamId}/subteam | List Subteams
+[**GetTeamPromptAggregateStats**](TeamsApi.md#getteampromptaggregatestats) | **GET** /team/{clientGroupId}/campaign/stats | Get aggregate stats for campaigns
+[**GetTeamPromptCampaigns**](TeamsApi.md#getteampromptcampaigns) | **GET** /team/{clientGroupId}/campaign | Get campaigns for team
 [**QueueJerichoSend**](TeamsApi.md#queuejerichosend) | **POST** /team/{teamId}/jericho | Creates a Jericho send.
 [**RemoveMemberFromTeam**](TeamsApi.md#removememberfromteam) | **DELETE** /team/{teamId}/member/{userId} | Remove Member from Team
+[**ResendTeamMemberInvitation**](TeamsApi.md#resendteammemberinvitation) | **POST** /team/{teamId}/{memberUserId}/rewelcome | Resend invite
 [**UpdateJerichoPromptSend**](TeamsApi.md#updatejerichopromptsend) | **PUT** /team/{teamId}/jericho/{jerichoId} | Updates the Jericho Prompt Settings
 [**UpdateTeam**](TeamsApi.md#updateteam) | **POST** /team/{teamId} | Update a team
 [**UpdateTeamMember**](TeamsApi.md#updateteammember) | **PUT** /team/{teamId}/member | Update Member of Team
@@ -428,6 +433,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getclientgroupstatistics"></a>
+# **GetClientGroupStatistics**
+> void GetClientGroupStatistics (string teamId, string memberStatus = null)
+
+Get Team statistics
+
+Get top level statistic data for a Team
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetClientGroupStatisticsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var teamId = teamId_example;  // string | The team id
+            var memberStatus = memberStatus_example;  // string | The status of members to query for (optional) 
+
+            try
+            {
+                // Get Team statistics
+                apiInstance.GetClientGroupStatistics(teamId, memberStatus);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.GetClientGroupStatistics: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **string**| The team id | 
+ **memberStatus** | **string**| The status of members to query for | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getjerichosends"></a>
 # **GetJerichoSends**
 > List<JerichoConfiguration> GetJerichoSends (string teamId)
@@ -560,6 +631,82 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getpagedclientgroupmembers"></a>
+# **GetPagedClientGroupMembers**
+> void GetPagedClientGroupMembers (string teamId, string pageSize, string page, string status = null, string search = null, string orderBy = null, string orderDirection = null)
+
+List Team Members
+
+Get a paginated listing of Team members
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetPagedClientGroupMembersExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var teamId = teamId_example;  // string | The team id
+            var pageSize = pageSize_example;  // string | Amount of records to return in a page.
+            var page = page_example;  // string | The page to return.
+            var status = status_example;  // string | The status type to filter by. (optional) 
+            var search = search_example;  // string | Filter results with names that match the search term. (optional) 
+            var orderBy = orderBy_example;  // string | Key to order results by (optional) 
+            var orderDirection = orderDirection_example;  // string | ASC or DESC (optional) 
+
+            try
+            {
+                // List Team Members
+                apiInstance.GetPagedClientGroupMembers(teamId, pageSize, page, status, search, orderBy, orderDirection);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.GetPagedClientGroupMembers: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **string**| The team id | 
+ **pageSize** | **string**| Amount of records to return in a page. | 
+ **page** | **string**| The page to return. | 
+ **status** | **string**| The status type to filter by. | [optional] 
+ **search** | **string**| Filter results with names that match the search term. | [optional] 
+ **orderBy** | **string**| Key to order results by | [optional] 
+ **orderDirection** | **string**| ASC or DESC | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getsubteams"></a>
 # **GetSubteams**
 > List<TeamPublicRepresentation> GetSubteams (string teamId)
@@ -613,6 +760,140 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List<TeamPublicRepresentation>**](TeamPublicRepresentation.md)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getteampromptaggregatestats"></a>
+# **GetTeamPromptAggregateStats**
+> void GetTeamPromptAggregateStats (string clientGroupId)
+
+Get aggregate stats for campaigns
+
+Get all the campaigns aggregate stats
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetTeamPromptAggregateStatsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var clientGroupId = clientGroupId_example;  // string | ID of the client group association
+
+            try
+            {
+                // Get aggregate stats for campaigns
+                apiInstance.GetTeamPromptAggregateStats(clientGroupId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.GetTeamPromptAggregateStats: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientGroupId** | **string**| ID of the client group association | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getteampromptcampaigns"></a>
+# **GetTeamPromptCampaigns**
+> void GetTeamPromptCampaigns (string clientGroupId, string searchTerm = null, string orderBy = null, string asc = null)
+
+Get campaigns for team
+
+Get campaigns for the team and their stats
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetTeamPromptCampaignsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var clientGroupId = clientGroupId_example;  // string | ID of the client group association
+            var searchTerm = searchTerm_example;  // string | The value to search for in prompt subject (optional) 
+            var orderBy = orderBy_example;  // string | How to sort the column (optional) 
+            var asc = asc_example;  // string | Ascending or not (optional) 
+
+            try
+            {
+                // Get campaigns for team
+                apiInstance.GetTeamPromptCampaigns(clientGroupId, searchTerm, orderBy, asc);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.GetTeamPromptCampaigns: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientGroupId** | **string**| ID of the client group association | 
+ **searchTerm** | **string**| The value to search for in prompt subject | [optional] 
+ **orderBy** | **string**| How to sort the column | [optional] 
+ **asc** | **string**| Ascending or not | [optional] 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -759,6 +1040,73 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="resendteammemberinvitation"></a>
+# **ResendTeamMemberInvitation**
+> TeamPublicRepresentation ResendTeamMemberInvitation (string teamId, string memberUserId)
+
+Resend invite
+
+Resend invitation to a member of a team
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class ResendTeamMemberInvitationExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var teamId = teamId_example;  // string | The team id
+            var memberUserId = memberUserId_example;  // string | The user id of the member being resent an invitation.
+
+            try
+            {
+                // Resend invite
+                TeamPublicRepresentation result = apiInstance.ResendTeamMemberInvitation(teamId, memberUserId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.ResendTeamMemberInvitation: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **string**| The team id | 
+ **memberUserId** | **string**| The user id of the member being resent an invitation. | 
+
+### Return type
+
+[**TeamPublicRepresentation**](TeamPublicRepresentation.md)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatejerichopromptsend"></a>
 # **UpdateJerichoPromptSend**
 > void UpdateJerichoPromptSend (string teamId, string jerichoId)
@@ -827,7 +1175,7 @@ void (empty response body)
 
 <a name="updateteam"></a>
 # **UpdateTeam**
-> TeamPublicRepresentation UpdateTeam (string teamId, string name = null)
+> TeamPublicRepresentation UpdateTeam (string teamId, string name = null, string state = null)
 
 Update a team
 
@@ -854,11 +1202,12 @@ namespace Example
             var apiInstance = new TeamsApi();
             var teamId = teamId_example;  // string | The team id
             var name = name_example;  // string | The name of the team (optional) 
+            var state = state_example;  // string | The status of the login permissions (optional) 
 
             try
             {
                 // Update a team
-                TeamPublicRepresentation result = apiInstance.UpdateTeam(teamId, name);
+                TeamPublicRepresentation result = apiInstance.UpdateTeam(teamId, name, state);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -876,6 +1225,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **teamId** | **string**| The team id | 
  **name** | **string**| The name of the team | [optional] 
+ **state** | **string**| The status of the login permissions | [optional] 
 
 ### Return type
 

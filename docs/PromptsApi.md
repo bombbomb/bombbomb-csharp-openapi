@@ -6,15 +6,18 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreatePromptBot**](PromptsApi.md#createpromptbot) | **POST** /prompts/bots | Create a running Prompt Bot for a list
 [**CreateVideoEmailPrompt**](PromptsApi.md#createvideoemailprompt) | **POST** /prompt | Prompts user to send a video
+[**GetAlternateCampaignContent**](PromptsApi.md#getalternatecampaigncontent) | **GET** /campaign/{campaignId}/content/alternate | List alternate campaign content
 [**GetPendingVideoEmailPrompts**](PromptsApi.md#getpendingvideoemailprompts) | **GET** /prompt/pending | List pending prompts
 [**GetPromptBots**](PromptsApi.md#getpromptbots) | **GET** /prompts/bots | List Prompt Bots
-[**GetPromptCampaigns**](PromptsApi.md#getpromptcampaigns) | **GET** /prompts/campaigns | List Prompt Campaigns
+[**GetPromptCampaigns**](PromptsApi.md#getpromptcampaigns) | **GET** /prompts/{userId}/campaigns | List Prompt Campaigns
 [**GetVideoEmailPrompt**](PromptsApi.md#getvideoemailprompt) | **GET** /prompt/{id} | Gets a prompt
 [**GetVideoEmailPrompts**](PromptsApi.md#getvideoemailprompts) | **GET** /prompt/ | List prompts
 [**RespondToVideoEmailPrompt**](PromptsApi.md#respondtovideoemailprompt) | **POST** /prompt/{id}/response | Respond to a prompt
+[**SyncPromptSubscriptions**](PromptsApi.md#syncpromptsubscriptions) | **POST** /prompts/campaigns/sync | Syncs Campaigns and One to Ones Subscriptions for User
 [**UpdatePrompt**](PromptsApi.md#updateprompt) | **PUT** /prompts/{id} | Update Prompt
 [**UpdatePromptBot**](PromptsApi.md#updatepromptbot) | **PUT** /prompts/bots/{id} | Update Prompt Bot
 [**UpdatePromptCampaign**](PromptsApi.md#updatepromptcampaign) | **PUT** /prompts/campaigns/{id} | Update Prompt Campaign
+[**UpdatePromptTemplate**](PromptsApi.md#updateprompttemplate) | **PUT** /prompts/{id}/content | Update Prompt Content
 
 
 <a name="createpromptbot"></a>
@@ -161,6 +164,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getalternatecampaigncontent"></a>
+# **GetAlternateCampaignContent**
+> void GetAlternateCampaignContent (string clientGroupId)
+
+List alternate campaign content
+
+Returns a list of alternate campaign content by campaign id
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetAlternateCampaignContentExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new PromptsApi();
+            var clientGroupId = clientGroupId_example;  // string | Id for the campaign
+
+            try
+            {
+                // List alternate campaign content
+                apiInstance.GetAlternateCampaignContent(clientGroupId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling PromptsApi.GetAlternateCampaignContent: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientGroupId** | **string**| Id for the campaign | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -543,9 +610,73 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="syncpromptsubscriptions"></a>
+# **SyncPromptSubscriptions**
+> void SyncPromptSubscriptions (bool? migrate = null)
+
+Syncs Campaigns and One to Ones Subscriptions for User
+
+Syncs Campaigns and One to Ones Subscriptions for User based on their profile information. The user must be a Prompt Subscriber.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SyncPromptSubscriptionsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new PromptsApi();
+            var migrate = true;  // bool? | After syncing, migrate away from old campaigns. (optional) 
+
+            try
+            {
+                // Syncs Campaigns and One to Ones Subscriptions for User
+                apiInstance.SyncPromptSubscriptions(migrate);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling PromptsApi.SyncPromptSubscriptions: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **migrate** | **bool?**| After syncing, migrate away from old campaigns. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updateprompt"></a>
 # **UpdatePrompt**
-> void UpdatePrompt (string id, string sendMechanism = null, string facebookMessage = null, string twitterMessage = null, string videoId = null, string emailId = null, string subject = null)
+> void UpdatePrompt (string id, string sendMechanism = null, string facebookMessage = null, string twitterMessage = null, string videoId = null, string emailId = null, string subject = null, string resetCache = null, string resetEmailContent = null, string status = null)
 
 Update Prompt
 
@@ -577,11 +708,14 @@ namespace Example
             var videoId = videoId_example;  // string | The id of the video. (optional) 
             var emailId = emailId_example;  // string | The id of the email. (optional) 
             var subject = subject_example;  // string | The subject of the email (optional) 
+            var resetCache = resetCache_example;  // string | The subject of the email (optional) 
+            var resetEmailContent = resetEmailContent_example;  // string | The subject of the email (optional) 
+            var status = status_example;  // string | The status of the prompt (optional) 
 
             try
             {
                 // Update Prompt
-                apiInstance.UpdatePrompt(id, sendMechanism, facebookMessage, twitterMessage, videoId, emailId, subject);
+                apiInstance.UpdatePrompt(id, sendMechanism, facebookMessage, twitterMessage, videoId, emailId, subject, resetCache, resetEmailContent, status);
             }
             catch (Exception e)
             {
@@ -603,6 +737,9 @@ Name | Type | Description  | Notes
  **videoId** | **string**| The id of the video. | [optional] 
  **emailId** | **string**| The id of the email. | [optional] 
  **subject** | **string**| The subject of the email | [optional] 
+ **resetCache** | **string**| The subject of the email | [optional] 
+ **resetEmailContent** | **string**| The subject of the email | [optional] 
+ **status** | **string**| The status of the prompt | [optional] 
 
 ### Return type
 
@@ -760,6 +897,78 @@ Name | Type | Description  | Notes
  **personalTemplateId** | **string**| The template to use for personal feel emails. | [optional] 
  **enabled** | **bool?**| Set whether the user is able to start receiving prompts. | [optional] 
  **sendMechanism** | **string**| The way to send the prompt | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateprompttemplate"></a>
+# **UpdatePromptTemplate**
+> void UpdatePromptTemplate (string id, string alternateContentId, string newEmailId, string ogEmailId, string newExampleVideoId)
+
+Update Prompt Content
+
+Updates a Prompt Content
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class UpdatePromptTemplateExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new PromptsApi();
+            var id = id_example;  // string | The prompt's id
+            var alternateContentId = alternateContentId_example;  // string | The alternate content id
+            var newEmailId = newEmailId_example;  // string | The prompt's new email id
+            var ogEmailId = ogEmailId_example;  // string | The prompt's original email id
+            var newExampleVideoId = newExampleVideoId_example;  // string | The prompt's new tutorial video id
+
+            try
+            {
+                // Update Prompt Content
+                apiInstance.UpdatePromptTemplate(id, alternateContentId, newEmailId, ogEmailId, newExampleVideoId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling PromptsApi.UpdatePromptTemplate: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| The prompt&#39;s id | 
+ **alternateContentId** | **string**| The alternate content id | 
+ **newEmailId** | **string**| The prompt&#39;s new email id | 
+ **ogEmailId** | **string**| The prompt&#39;s original email id | 
+ **newExampleVideoId** | **string**| The prompt&#39;s new tutorial video id | 
 
 ### Return type
 

@@ -32,68 +32,68 @@ namespace IO.Swagger.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IOrdersApi : IApiAccessor
+    public interface IFormsApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Deletes image from user s3 store
+        /// Get csv
         /// </summary>
         /// <remarks>
-        /// Deletes image from user s3 store
+        /// Get form tracking as csv
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
+        /// <param name="id">Id of the form</param>
         /// <returns></returns>
-        void TemplateAssetDelete (string fileName);
+        void GetFormTrackingAsCsv (string id);
 
         /// <summary>
-        /// Deletes image from user s3 store
+        /// Get csv
         /// </summary>
         /// <remarks>
-        /// Deletes image from user s3 store
+        /// Get form tracking as csv
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
+        /// <param name="id">Id of the form</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TemplateAssetDeleteWithHttpInfo (string fileName);
+        ApiResponse<Object> GetFormTrackingAsCsvWithHttpInfo (string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Deletes image from user s3 store
+        /// Get csv
         /// </summary>
         /// <remarks>
-        /// Deletes image from user s3 store
+        /// Get form tracking as csv
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
+        /// <param name="id">Id of the form</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task TemplateAssetDeleteAsync (string fileName);
+        System.Threading.Tasks.Task GetFormTrackingAsCsvAsync (string id);
 
         /// <summary>
-        /// Deletes image from user s3 store
+        /// Get csv
         /// </summary>
         /// <remarks>
-        /// Deletes image from user s3 store
+        /// Get form tracking as csv
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
+        /// <param name="id">Id of the form</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TemplateAssetDeleteAsyncWithHttpInfo (string fileName);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetFormTrackingAsCsvAsyncWithHttpInfo (string id);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class OrdersApi : IOrdersApi
+    public partial class FormsApi : IFormsApi
     {
         private IO.Swagger.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OrdersApi"/> class.
+        /// Initializes a new instance of the <see cref="FormsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public OrdersApi(String basePath)
+        public FormsApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -107,12 +107,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OrdersApi"/> class
+        /// Initializes a new instance of the <see cref="FormsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public OrdersApi(Configuration configuration = null)
+        public FormsApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -192,29 +192,29 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Deletes image from user s3 store Deletes image from user s3 store
+        /// Get csv Get form tracking as csv
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
+        /// <param name="id">Id of the form</param>
         /// <returns></returns>
-        public void TemplateAssetDelete (string fileName)
+        public void GetFormTrackingAsCsv (string id)
         {
-             TemplateAssetDeleteWithHttpInfo(fileName);
+             GetFormTrackingAsCsvWithHttpInfo(id);
         }
 
         /// <summary>
-        /// Deletes image from user s3 store Deletes image from user s3 store
+        /// Get csv Get form tracking as csv
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
+        /// <param name="id">Id of the form</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> TemplateAssetDeleteWithHttpInfo (string fileName)
+        public ApiResponse<Object> GetFormTrackingAsCsvWithHttpInfo (string id)
         {
-            // verify the required parameter 'fileName' is set
-            if (fileName == null)
-                throw new ApiException(400, "Missing required parameter 'fileName' when calling OrdersApi->TemplateAssetDelete");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling FormsApi->GetFormTrackingAsCsv");
 
-            var localVarPath = "/orders/templates/images";
+            var localVarPath = "/forms/{id}/tracking/export";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -239,7 +239,7 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (fileName != null) localVarFormParams.Add("fileName", Configuration.ApiClient.ParameterToString(fileName)); // form parameter
+            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -250,14 +250,14 @@ namespace IO.Swagger.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("TemplateAssetDelete", localVarResponse);
+                Exception exception = ExceptionFactory("GetFormTrackingAsCsv", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -268,30 +268,30 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Deletes image from user s3 store Deletes image from user s3 store
+        /// Get csv Get form tracking as csv
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
+        /// <param name="id">Id of the form</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task TemplateAssetDeleteAsync (string fileName)
+        public async System.Threading.Tasks.Task GetFormTrackingAsCsvAsync (string id)
         {
-             await TemplateAssetDeleteAsyncWithHttpInfo(fileName);
+             await GetFormTrackingAsCsvAsyncWithHttpInfo(id);
 
         }
 
         /// <summary>
-        /// Deletes image from user s3 store Deletes image from user s3 store
+        /// Get csv Get form tracking as csv
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fileName">Filename for deletion</param>
+        /// <param name="id">Id of the form</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TemplateAssetDeleteAsyncWithHttpInfo (string fileName)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetFormTrackingAsCsvAsyncWithHttpInfo (string id)
         {
-            // verify the required parameter 'fileName' is set
-            if (fileName == null)
-                throw new ApiException(400, "Missing required parameter 'fileName' when calling OrdersApi->TemplateAssetDelete");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling FormsApi->GetFormTrackingAsCsv");
 
-            var localVarPath = "/orders/templates/images";
+            var localVarPath = "/forms/{id}/tracking/export";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -316,7 +316,7 @@ namespace IO.Swagger.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (fileName != null) localVarFormParams.Add("fileName", Configuration.ApiClient.ParameterToString(fileName)); // form parameter
+            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
 
             // authentication (BBOAuth2) required
             // oauth required
@@ -327,14 +327,14 @@ namespace IO.Swagger.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("TemplateAssetDelete", localVarResponse);
+                Exception exception = ExceptionFactory("GetFormTrackingAsCsv", localVarResponse);
                 if (exception != null) throw exception;
             }
 

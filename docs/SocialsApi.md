@@ -10,7 +10,10 @@ Method | HTTP request | Description
 [**GetSocialProfileProperties**](SocialsApi.md#getsocialprofileproperties) | **GET** /socials/profile | Gets the profile properties
 [**GetSocialStats**](SocialsApi.md#getsocialstats) | **GET** /socials/{promptId}/stats | Get social stats for a prompt
 [**PostSocialContent**](SocialsApi.md#postsocialcontent) | **POST** /socials/content | Creates social content
+[**RetrySocialSend**](SocialsApi.md#retrysocialsend) | **POST** /socials/send/retry | Sends social content
+[**SendSocial**](SocialsApi.md#sendsocial) | **POST** /socials/send | Sends social content
 [**UpdateClientGroupSendMechanism**](SocialsApi.md#updateclientgroupsendmechanism) | **PUT** /socials/client/sendMechanism | Gets the auto shares from the client group assoc id
+[**UpdateClientGroupsSendMechanism**](SocialsApi.md#updateclientgroupssendmechanism) | **PUT** /socials/client/sendMechanisms | Toggles the prompt campaigns in a users account
 [**UpdateFacebookPages**](SocialsApi.md#updatefacebookpages) | **PUT** /socials/facebook/pages | Updates facebook page Ids
 [**UpdateSocialContent**](SocialsApi.md#updatesocialcontent) | **PUT** /socials/content | Updates social content
 
@@ -77,7 +80,7 @@ void (empty response body)
 
 <a name="getsocialarticleproperties"></a>
 # **GetSocialArticleProperties**
-> void GetSocialArticleProperties (string emailId)
+> void GetSocialArticleProperties (string emailId, string socialContentId)
 
 Gets the social email properties
 
@@ -103,11 +106,12 @@ namespace Example
 
             var apiInstance = new SocialsApi();
             var emailId = emailId_example;  // string | This is the email Id for the email url
+            var socialContentId = socialContentId_example;  // string | This is the social content Id
 
             try
             {
                 // Gets the social email properties
-                apiInstance.GetSocialArticleProperties(emailId);
+                apiInstance.GetSocialArticleProperties(emailId, socialContentId);
             }
             catch (Exception e)
             {
@@ -123,6 +127,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **emailId** | **string**| This is the email Id for the email url | 
+ **socialContentId** | **string**| This is the social content Id | 
 
 ### Return type
 
@@ -395,6 +400,136 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="retrysocialsend"></a>
+# **RetrySocialSend**
+> void RetrySocialSend (string promptId)
+
+Sends social content
+
+Sends social content that failed for a user via their associated prompt
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class RetrySocialSendExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SocialsApi();
+            var promptId = promptId_example;  // string | The prompt id
+
+            try
+            {
+                // Sends social content
+                apiInstance.RetrySocialSend(promptId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SocialsApi.RetrySocialSend: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **promptId** | **string**| The prompt id | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="sendsocial"></a>
+# **SendSocial**
+> void SendSocial (string promptId, string socialType)
+
+Sends social content
+
+Sends social content for a user via their associated prompt
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SendSocialExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SocialsApi();
+            var promptId = promptId_example;  // string | The prompt id
+            var socialType = socialType_example;  // string | The destination for social content
+
+            try
+            {
+                // Sends social content
+                apiInstance.SendSocial(promptId, socialType);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SocialsApi.SendSocial: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **promptId** | **string**| The prompt id | 
+ **socialType** | **string**| The destination for social content | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updateclientgroupsendmechanism"></a>
 # **UpdateClientGroupSendMechanism**
 > void UpdateClientGroupSendMechanism (string sendMechanism, string clientGroupId, string enabled = null)
@@ -447,6 +582,72 @@ Name | Type | Description  | Notes
  **sendMechanism** | **string**| The send mechanism for the prompt | 
  **clientGroupId** | **string**| ID of the client group association | 
  **enabled** | **string**| Is the send mechanism enabled? | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateclientgroupssendmechanism"></a>
+# **UpdateClientGroupsSendMechanism**
+> void UpdateClientGroupsSendMechanism (string sendMechanism, string enabled)
+
+Toggles the prompt campaigns in a users account
+
+Toggles the prompt campaigns in a users account for a social integrations on or off
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class UpdateClientGroupsSendMechanismExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new SocialsApi();
+            var sendMechanism = sendMechanism_example;  // string | The send mechanism for the prompt
+            var enabled = enabled_example;  // string | Is the send mechanism enabled?
+
+            try
+            {
+                // Toggles the prompt campaigns in a users account
+                apiInstance.UpdateClientGroupsSendMechanism(sendMechanism, enabled);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SocialsApi.UpdateClientGroupsSendMechanism: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sendMechanism** | **string**| The send mechanism for the prompt | 
+ **enabled** | **string**| Is the send mechanism enabled? | 
 
 ### Return type
 

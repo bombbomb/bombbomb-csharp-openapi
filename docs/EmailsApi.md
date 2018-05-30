@@ -9,7 +9,11 @@ Method | HTTP request | Description
 [**GetEmailTracking**](EmailsApi.md#getemailtracking) | **GET** /emails/{emailId}/tracking | Get Email Tracking
 [**GetEmailTrackingInteractions**](EmailsApi.md#getemailtrackinginteractions) | **GET** /emails/{emailId}/tracking/interactions | Get Email Tracking Interactions
 [**GetHourlyEmailTracking**](EmailsApi.md#gethourlyemailtracking) | **GET** /emails/{emailId}/tracking/hourly | Get Hourly Email Tracking
+[**GetLiveFireData**](EmailsApi.md#getlivefiredata) | **GET** /emails/livefire | Get livefire feed data
 [**GetQuickSendTemplates**](EmailsApi.md#getquicksendtemplates) | **GET** /emails/quicksend/templates | Get all quicksend templates
+[**GetTemplateHtmlForTemplateId**](EmailsApi.md#gettemplatehtmlfortemplateid) | **GET** /emails/templates/{templateId}/html | Get the HTML for a given template
+[**GetVideoQuickSenderData**](EmailsApi.md#getvideoquicksenderdata) | **GET** /emails/quicksend | Get quicksend data
+[**SaveQuickSenderSettings**](EmailsApi.md#savequicksendersettings) | **POST** /emails/quicksend/settings | Save quicksender settings
 [**VideoQuickSender**](EmailsApi.md#videoquicksender) | **POST** /emails/quicksend | Send a quicksend email
 
 
@@ -353,6 +357,66 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getlivefiredata"></a>
+# **GetLiveFireData**
+> void GetLiveFireData ()
+
+Get livefire feed data
+
+Get the user data for the live fire feed emails
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetLiveFireDataExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new EmailsApi();
+
+            try
+            {
+                // Get livefire feed data
+                apiInstance.GetLiveFireData();
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EmailsApi.GetLiveFireData: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getquicksendtemplates"></a>
 # **GetQuickSendTemplates**
 > void GetQuickSendTemplates ()
@@ -397,6 +461,212 @@ namespace Example
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="gettemplatehtmlfortemplateid"></a>
+# **GetTemplateHtmlForTemplateId**
+> void GetTemplateHtmlForTemplateId (string templateId, string renderVariables = null)
+
+Get the HTML for a given template
+
+Get the HTML for a given template, with or without rendered variables
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetTemplateHtmlForTemplateIdExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new EmailsApi();
+            var templateId = templateId_example;  // string | The id of the template.
+            var renderVariables = renderVariables_example;  // string | Whether to render profile variables in the returned HTML. (optional) 
+
+            try
+            {
+                // Get the HTML for a given template
+                apiInstance.GetTemplateHtmlForTemplateId(templateId, renderVariables);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EmailsApi.GetTemplateHtmlForTemplateId: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **templateId** | **string**| The id of the template. | 
+ **renderVariables** | **string**| Whether to render profile variables in the returned HTML. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getvideoquicksenderdata"></a>
+# **GetVideoQuickSenderData**
+> void GetVideoQuickSenderData (string message = null, string subject = null, string videoId = null, string templateId = null, string commaDelimEmails = null)
+
+Get quicksend data
+
+Get the user data for quicksender, including templates and lists.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetVideoQuickSenderDataExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new EmailsApi();
+            var message = message_example;  // string | A message for the video content. (optional) 
+            var subject = subject_example;  // string | A subject for the video content. (optional) 
+            var videoId = videoId_example;  // string | A video ID. (optional) 
+            var templateId = templateId_example;  // string | A template ID. (optional) 
+            var commaDelimEmails = commaDelimEmails_example;  // string | Comma delimited emails (optional) 
+
+            try
+            {
+                // Get quicksend data
+                apiInstance.GetVideoQuickSenderData(message, subject, videoId, templateId, commaDelimEmails);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EmailsApi.GetVideoQuickSenderData: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **message** | **string**| A message for the video content. | [optional] 
+ **subject** | **string**| A subject for the video content. | [optional] 
+ **videoId** | **string**| A video ID. | [optional] 
+ **templateId** | **string**| A template ID. | [optional] 
+ **commaDelimEmails** | **string**| Comma delimited emails | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="savequicksendersettings"></a>
+# **SaveQuickSenderSettings**
+> void SaveQuickSenderSettings (string alertOnPlay = null, string alertOnOpen = null, string templateId = null)
+
+Save quicksender settings
+
+Save the quicksender notification and default template settings
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SaveQuickSenderSettingsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new EmailsApi();
+            var alertOnPlay = alertOnPlay_example;  // string | A preference setting for whether or not to notify user on quicksend email video plays. (optional) 
+            var alertOnOpen = alertOnOpen_example;  // string | A preference setting for whether or not to notify user on quicksend email opens. (optional) 
+            var templateId = templateId_example;  // string | Id of a template to use for this send. A null value means use the default for this user. (optional) 
+
+            try
+            {
+                // Save quicksender settings
+                apiInstance.SaveQuickSenderSettings(alertOnPlay, alertOnOpen, templateId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EmailsApi.SaveQuickSenderSettings: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **alertOnPlay** | **string**| A preference setting for whether or not to notify user on quicksend email video plays. | [optional] 
+ **alertOnOpen** | **string**| A preference setting for whether or not to notify user on quicksend email opens. | [optional] 
+ **templateId** | **string**| Id of a template to use for this send. A null value means use the default for this user. | [optional] 
 
 ### Return type
 

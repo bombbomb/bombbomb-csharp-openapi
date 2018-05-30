@@ -5,6 +5,8 @@ All URIs are relative to *https://api.bombbomb.com/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddTeamMember**](TeamsApi.md#addteammember) | **POST** /team/{teamId}/member | Add Member to Team
+[**AddUsers**](TeamsApi.md#addusers) | **POST** /team/{teamId}/members | Add users to group.
+[**AddUsersFromCsv**](TeamsApi.md#addusersfromcsv) | **POST** /team/{teamId}/members/csv | Add members to group from CSV
 [**CancelJerichoSend**](TeamsApi.md#canceljerichosend) | **DELETE** /team/{teamId}/jericho/{jerichoId} | Cancel a Jericho Send
 [**CreateSubteam**](TeamsApi.md#createsubteam) | **POST** /team/{teamId}/subteam | Add a Subteam
 [**DeleteSubteam**](TeamsApi.md#deletesubteam) | **DELETE** /team/{teamId}/subteam | Delete Subteam
@@ -17,6 +19,7 @@ Method | HTTP request | Description
 [**GetSubteams**](TeamsApi.md#getsubteams) | **GET** /team/{teamId}/subteam | List Subteams
 [**GetTeamPromptAggregateStats**](TeamsApi.md#getteampromptaggregatestats) | **GET** /team/{clientGroupId}/campaign/stats | Get aggregate stats for campaigns
 [**GetTeamPromptCampaigns**](TeamsApi.md#getteampromptcampaigns) | **GET** /team/{clientGroupId}/campaign | Get campaigns for team
+[**InviteToSocialPromptTeam**](TeamsApi.md#invitetosocialpromptteam) | **POST** /teams/prompt/invite | Invite a list to join the admin&#39;s social prompt team
 [**QueueJerichoSend**](TeamsApi.md#queuejerichosend) | **POST** /team/{teamId}/jericho | Creates a Jericho send.
 [**RemoveMemberFromTeam**](TeamsApi.md#removememberfromteam) | **DELETE** /team/{teamId}/member/{userId} | Remove Member from Team
 [**ResendTeamMemberInvitation**](TeamsApi.md#resendteammemberinvitation) | **POST** /team/{teamId}/{memberUserId}/rewelcome | Resend invite
@@ -27,7 +30,7 @@ Method | HTTP request | Description
 
 <a name="addteammember"></a>
 # **AddTeamMember**
-> string AddTeamMember (string teamId, string userId = null, string userEmail = null, bool? admin = null)
+> string AddTeamMember (string teamId, bool? admin = null, string subgroupIds = null, string userEmail = null, string userId = null)
 
 Add Member to Team
 
@@ -53,14 +56,15 @@ namespace Example
 
             var apiInstance = new TeamsApi();
             var teamId = teamId_example;  // string | The team id
-            var userId = userId_example;  // string | The user id of the member being added to the team. (optional) 
-            var userEmail = userEmail_example;  // string | The email of the member being added to the team. (optional) 
             var admin = true;  // bool? | Set if the user is an admin of this team. (optional) 
+            var subgroupIds = subgroupIds_example;  // string | Subgroup IDs to add user to (optional) 
+            var userEmail = userEmail_example;  // string | The email of the member being added to the team. (optional) 
+            var userId = userId_example;  // string | The user id of the member being added to the team. (optional) 
 
             try
             {
                 // Add Member to Team
-                string result = apiInstance.AddTeamMember(teamId, userId, userEmail, admin);
+                string result = apiInstance.AddTeamMember(teamId, admin, subgroupIds, userEmail, userId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -77,13 +81,156 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **teamId** | **string**| The team id | 
- **userId** | **string**| The user id of the member being added to the team. | [optional] 
- **userEmail** | **string**| The email of the member being added to the team. | [optional] 
  **admin** | **bool?**| Set if the user is an admin of this team. | [optional] 
+ **subgroupIds** | **string**| Subgroup IDs to add user to | [optional] 
+ **userEmail** | **string**| The email of the member being added to the team. | [optional] 
+ **userId** | **string**| The user id of the member being added to the team. | [optional] 
 
 ### Return type
 
 **string**
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="addusers"></a>
+# **AddUsers**
+> void AddUsers (string teamId, string userDetails, string sendWelcomeEmail = null, string subgroupIds = null)
+
+Add users to group.
+
+Add a new or existing user to group.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class AddUsersExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var teamId = teamId_example;  // string | The team id
+            var userDetails = userDetails_example;  // string | Array of emails or objects containing details needed to create user
+            var sendWelcomeEmail = sendWelcomeEmail_example;  // string | Whether to send welcome email to new users (optional) 
+            var subgroupIds = subgroupIds_example;  // string | Subgroup IDs to add user to (optional) 
+
+            try
+            {
+                // Add users to group.
+                apiInstance.AddUsers(teamId, userDetails, sendWelcomeEmail, subgroupIds);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.AddUsers: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **string**| The team id | 
+ **userDetails** | **string**| Array of emails or objects containing details needed to create user | 
+ **sendWelcomeEmail** | **string**| Whether to send welcome email to new users | [optional] 
+ **subgroupIds** | **string**| Subgroup IDs to add user to | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="addusersfromcsv"></a>
+# **AddUsersFromCsv**
+> void AddUsersFromCsv (string teamId, string csvImportId, string map, string sendWelcomeEmail = null, string subgroupIds = null)
+
+Add members to group from CSV
+
+Imports members to a group from a given CSV ID.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class AddUsersFromCsvExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var teamId = teamId_example;  // string | The team id
+            var csvImportId = csvImportId_example;  // string | ID of the CSV to import
+            var map = map_example;  // string | Object to use when mapping import to AccountCreateDetails. Key is property name on details, value is CSV column number.
+            var sendWelcomeEmail = sendWelcomeEmail_example;  // string | Whether to send welcome email to new users (optional) 
+            var subgroupIds = subgroupIds_example;  // string | Subgroup IDs to add user to (optional) 
+
+            try
+            {
+                // Add members to group from CSV
+                apiInstance.AddUsersFromCsv(teamId, csvImportId, map, sendWelcomeEmail, subgroupIds);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.AddUsersFromCsv: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **string**| The team id | 
+ **csvImportId** | **string**| ID of the CSV to import | 
+ **map** | **string**| Object to use when mapping import to AccountCreateDetails. Key is property name on details, value is CSV column number. | 
+ **sendWelcomeEmail** | **string**| Whether to send welcome email to new users | [optional] 
+ **subgroupIds** | **string**| Subgroup IDs to add user to | [optional] 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -838,7 +985,7 @@ void (empty response body)
 
 <a name="getteampromptcampaigns"></a>
 # **GetTeamPromptCampaigns**
-> void GetTeamPromptCampaigns (string clientGroupId, string searchTerm = null, string orderBy = null, string asc = null)
+> void GetTeamPromptCampaigns (string clientGroupId, string searchTerm = null, string currentPage = null)
 
 Get campaigns for team
 
@@ -865,13 +1012,12 @@ namespace Example
             var apiInstance = new TeamsApi();
             var clientGroupId = clientGroupId_example;  // string | ID of the client group association
             var searchTerm = searchTerm_example;  // string | The value to search for in prompt subject (optional) 
-            var orderBy = orderBy_example;  // string | How to sort the column (optional) 
-            var asc = asc_example;  // string | Ascending or not (optional) 
+            var currentPage = currentPage_example;  // string | The current page (optional) 
 
             try
             {
                 // Get campaigns for team
-                apiInstance.GetTeamPromptCampaigns(clientGroupId, searchTerm, orderBy, asc);
+                apiInstance.GetTeamPromptCampaigns(clientGroupId, searchTerm, currentPage);
             }
             catch (Exception e)
             {
@@ -888,8 +1034,73 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **clientGroupId** | **string**| ID of the client group association | 
  **searchTerm** | **string**| The value to search for in prompt subject | [optional] 
- **orderBy** | **string**| How to sort the column | [optional] 
- **asc** | **string**| Ascending or not | [optional] 
+ **currentPage** | **string**| The current page | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="invitetosocialpromptteam"></a>
+# **InviteToSocialPromptTeam**
+> void InviteToSocialPromptTeam (string teamId, string listId)
+
+Invite a list to join the admin's social prompt team
+
+Invite to Social Prompt Team
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class InviteToSocialPromptTeamExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var teamId = teamId_example;  // string | The team id
+            var listId = listId_example;  // string | List to invite to the social prompt team.
+
+            try
+            {
+                // Invite a list to join the admin's social prompt team
+                apiInstance.InviteToSocialPromptTeam(teamId, listId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.InviteToSocialPromptTeam: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **string**| The team id | 
+ **listId** | **string**| List to invite to the social prompt team. | 
 
 ### Return type
 
@@ -1175,7 +1386,7 @@ void (empty response body)
 
 <a name="updateteam"></a>
 # **UpdateTeam**
-> TeamPublicRepresentation UpdateTeam (string teamId, string name = null, string state = null)
+> TeamPublicRepresentation UpdateTeam (string teamId, string name = null, string state = null, bool? subteamsCanAddMembers = null)
 
 Update a team
 
@@ -1203,11 +1414,12 @@ namespace Example
             var teamId = teamId_example;  // string | The team id
             var name = name_example;  // string | The name of the team (optional) 
             var state = state_example;  // string | The status of the login permissions (optional) 
+            var subteamsCanAddMembers = true;  // bool? | Updates subteam member adding setting on group (optional) 
 
             try
             {
                 // Update a team
-                TeamPublicRepresentation result = apiInstance.UpdateTeam(teamId, name, state);
+                TeamPublicRepresentation result = apiInstance.UpdateTeam(teamId, name, state, subteamsCanAddMembers);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1226,6 +1438,7 @@ Name | Type | Description  | Notes
  **teamId** | **string**| The team id | 
  **name** | **string**| The name of the team | [optional] 
  **state** | **string**| The status of the login permissions | [optional] 
+ **subteamsCanAddMembers** | **bool?**| Updates subteam member adding setting on group | [optional] 
 
 ### Return type
 
@@ -1244,7 +1457,7 @@ Name | Type | Description  | Notes
 
 <a name="updateteammember"></a>
 # **UpdateTeamMember**
-> void UpdateTeamMember (string teamId, string userId, bool? admin)
+> void UpdateTeamMember (string teamId, string userId, bool? admin, string permissionSuiteId = null)
 
 Update Member of Team
 
@@ -1272,11 +1485,12 @@ namespace Example
             var teamId = teamId_example;  // string | The team id
             var userId = userId_example;  // string | The user id of the member being added to the team.
             var admin = true;  // bool? | Set if the user is an admin of this team.
+            var permissionSuiteId = permissionSuiteId_example;  // string | Set if the user is an admin of this team. (optional) 
 
             try
             {
                 // Update Member of Team
-                apiInstance.UpdateTeamMember(teamId, userId, admin);
+                apiInstance.UpdateTeamMember(teamId, userId, admin, permissionSuiteId);
             }
             catch (Exception e)
             {
@@ -1294,6 +1508,7 @@ Name | Type | Description  | Notes
  **teamId** | **string**| The team id | 
  **userId** | **string**| The user id of the member being added to the team. | 
  **admin** | **bool?**| Set if the user is an admin of this team. | 
+ **permissionSuiteId** | **string**| Set if the user is an admin of this team. | [optional] 
 
 ### Return type
 

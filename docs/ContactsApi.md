@@ -344,11 +344,11 @@ void (empty response body)
 
 <a name="deletecontacts"></a>
 # **DeleteContacts**
-> void DeleteContacts (string listId)
+> void DeleteContacts (string listId = null, string contactIds = null)
 
 Delete Contacts
 
-Delete contacts
+Delete all contacts within a list, or provide a comma separated list of contactIds to delete.
 
 ### Example
 ```csharp
@@ -369,12 +369,13 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new ContactsApi();
-            var listId = listId_example;  // string | The list of contacts to be deleted.
+            var listId = listId_example;  // string | The list of contacts to be deleted. (optional) 
+            var contactIds = contactIds_example;  // string | comma separated list of contact ids to delete (optional) 
 
             try
             {
                 // Delete Contacts
-                apiInstance.DeleteContacts(listId);
+                apiInstance.DeleteContacts(listId, contactIds);
             }
             catch (Exception e)
             {
@@ -389,7 +390,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **string**| The list of contacts to be deleted. | 
+ **listId** | **string**| The list of contacts to be deleted. | [optional] 
+ **contactIds** | **string**| comma separated list of contact ids to delete | [optional] 
 
 ### Return type
 

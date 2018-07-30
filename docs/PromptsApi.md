@@ -13,10 +13,11 @@ Method | HTTP request | Description
 [**GetVideoEmailPrompt**](PromptsApi.md#getvideoemailprompt) | **GET** /prompt/{id} | Gets a prompt
 [**GetVideoEmailPrompts**](PromptsApi.md#getvideoemailprompts) | **GET** /prompt/ | List prompts
 [**RespondToVideoEmailPrompt**](PromptsApi.md#respondtovideoemailprompt) | **POST** /prompt/{id}/response | Respond to a prompt
+[**SendPromptImmediately**](PromptsApi.md#sendpromptimmediately) | **POST** /prompt/{id}/sendit | 
 [**SyncPromptSubscriptions**](PromptsApi.md#syncpromptsubscriptions) | **POST** /prompts/campaigns/sync | Syncs Campaigns and One to Ones Subscriptions for User
 [**UpdatePrompt**](PromptsApi.md#updateprompt) | **PUT** /prompts/{id} | Update Prompt
 [**UpdatePromptBot**](PromptsApi.md#updatepromptbot) | **PUT** /prompts/bots/{id} | Update Prompt Bot
-[**UpdatePromptCampaign**](PromptsApi.md#updatepromptcampaign) | **PUT** /prompts/campaigns/{id} | Update Prompt Campaign
+[**UpdatePromptCampaign**](PromptsApi.md#updatepromptcampaign) | **PUT** /prompts/campaigns/{clientGroupId} | Update Prompt Campaign
 [**UpdatePromptTemplate**](PromptsApi.md#updateprompttemplate) | **PUT** /prompts/{id}/content | Update Prompt Content
 
 
@@ -42,7 +43,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -125,7 +125,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -190,7 +189,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -254,7 +252,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -315,7 +312,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -376,7 +372,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -436,7 +431,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -501,7 +495,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -562,7 +555,6 @@ namespace Example
     {
         public void main()
         {
-            
             var apiInstance = new PromptsApi();
             var id = id_example;  // string | The id of the prompt.
             var choice = choice_example;  // string | The users' selection. Can be: WithVideo, WithEmail, Cancel, Restore, Reset, Manual
@@ -610,6 +602,68 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="sendpromptimmediately"></a>
+# **SendPromptImmediately**
+> void SendPromptImmediately (string id)
+
+
+
+Ignore send date and send the prompt now.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SendPromptImmediatelyExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new PromptsApi();
+            var id = id_example;  // string | The Id of the prompt
+
+            try
+            {
+                apiInstance.SendPromptImmediately(id);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling PromptsApi.SendPromptImmediately: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| The Id of the prompt | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="syncpromptsubscriptions"></a>
 # **SyncPromptSubscriptions**
 > void SyncPromptSubscriptions (bool? migrate = null)
@@ -632,7 +686,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -696,7 +749,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -778,7 +830,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -863,7 +914,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -935,7 +985,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 

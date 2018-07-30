@@ -39,7 +39,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -111,7 +110,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -175,7 +173,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -241,7 +238,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -311,7 +307,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -379,7 +374,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -439,7 +433,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -499,7 +492,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -565,7 +557,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -637,7 +628,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -705,7 +695,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 

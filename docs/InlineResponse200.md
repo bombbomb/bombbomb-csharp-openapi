@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TotalPages** | **int?** |  | [optional] 
-**Items** | [**List&lt;InlineResponse200Items&gt;**](InlineResponse200Items.md) |  | [optional] 
+**Items** | [**List&lt;ClientGroupAssetMetaData&gt;**](ClientGroupAssetMetaData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

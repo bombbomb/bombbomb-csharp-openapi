@@ -16,6 +16,8 @@ Method | HTTP request | Description
 [**GetJerichoSends**](TeamsApi.md#getjerichosends) | **GET** /team/{teamId}/jericho | List Jericho Sends
 [**GetJerichoStats**](TeamsApi.md#getjerichostats) | **GET** /team/{teamId}/jericho/{jerichoId}/performance | Gets Jericho performance statistics
 [**GetPagedClientGroupMembers**](TeamsApi.md#getpagedclientgroupmembers) | **GET** /team/{teamId}/members | List Team Members
+[**GetPromptMonthlyStats**](TeamsApi.md#getpromptmonthlystats) | **GET** /team/{month}/{year}/monthStats | Jericho Monthly Stats
+[**GetPromptOverview**](TeamsApi.md#getpromptoverview) | **GET** /team/promptOverview | Get Prompt Overview
 [**GetSubteams**](TeamsApi.md#getsubteams) | **GET** /team/{teamId}/subteam | List Subteams
 [**GetTeamPromptAggregateStats**](TeamsApi.md#getteampromptaggregatestats) | **GET** /team/{clientGroupId}/campaign/stats | Get aggregate stats for campaigns
 [**GetTeamPromptCampaigns**](TeamsApi.md#getteampromptcampaigns) | **GET** /team/{clientGroupId}/campaign | Get campaigns for team
@@ -50,7 +52,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -123,7 +124,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -193,7 +193,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -265,7 +264,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -329,7 +327,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -396,7 +393,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -463,7 +459,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -527,7 +522,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -602,7 +596,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -668,7 +661,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -733,7 +725,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -800,7 +791,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -854,6 +844,132 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getpromptmonthlystats"></a>
+# **GetPromptMonthlyStats**
+> string GetPromptMonthlyStats (string month, string year)
+
+Jericho Monthly Stats
+
+Jericho Monthly Stats
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetPromptMonthlyStatsExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+            var month = month_example;  // string | The month whose Jericho sends you wish to see.
+            var year = year_example;  // string | The year whose Jericho sends you wish to see.
+
+            try
+            {
+                // Jericho Monthly Stats
+                string result = apiInstance.GetPromptMonthlyStats(month, year);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.GetPromptMonthlyStats: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **month** | **string**| The month whose Jericho sends you wish to see. | 
+ **year** | **string**| The year whose Jericho sends you wish to see. | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getpromptoverview"></a>
+# **GetPromptOverview**
+> string GetPromptOverview ()
+
+Get Prompt Overview
+
+Get Prompt Overview
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetPromptOverviewExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TeamsApi();
+
+            try
+            {
+                // Get Prompt Overview
+                string result = apiInstance.GetPromptOverview();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.GetPromptOverview: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getsubteams"></a>
 # **GetSubteams**
 > List<TeamPublicRepresentation> GetSubteams (string teamId)
@@ -876,10 +992,6 @@ namespace Example
     {
         public void main()
         {
-            
-            // Configure OAuth2 access token for authorization: BBOAuth2
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
             var apiInstance = new TeamsApi();
             var teamId = teamId_example;  // string | The team id
 
@@ -910,7 +1022,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[BBOAuth2](../README.md#BBOAuth2)
+No authorization required
 
 ### HTTP request headers
 
@@ -941,7 +1053,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -1005,7 +1116,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -1073,7 +1183,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -1139,7 +1248,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -1206,7 +1314,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -1273,7 +1380,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -1340,7 +1446,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -1406,7 +1511,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -1477,7 +1581,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 

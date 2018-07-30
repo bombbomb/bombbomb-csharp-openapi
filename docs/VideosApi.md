@@ -33,7 +33,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -98,7 +97,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -165,7 +163,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -234,7 +231,6 @@ namespace Example
     {
         public void main()
         {
-            
             var apiInstance = new VideosApi();
             var policy = new SignUploadRequest(); // SignUploadRequest | The policy to sign
             var v4 = true;  // bool? | Whether to do v4 signing (optional) 
@@ -298,7 +294,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 

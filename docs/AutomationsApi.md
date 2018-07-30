@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetDripDropStats**](AutomationsApi.md#getdripdropstats) | **GET** /automation/{dripId}/dripdrop/{dripDropId}/stats | Get Automation Email Stats
 [**GetDripStats**](AutomationsApi.md#getdripstats) | **GET** /automation/{id}/stats | Get Automation Stats
+[**GetSchedulingStatus**](AutomationsApi.md#getschedulingstatus) | **GET** /automation/{id}/scheduling/status | Get the number of pending scheduling calculations
 
 
 <a name="getdripdropstats"></a>
@@ -30,7 +31,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -96,7 +96,6 @@ namespace Example
     {
         public void main()
         {
-            
             // Configure OAuth2 access token for authorization: BBOAuth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -111,6 +110,69 @@ namespace Example
             catch (Exception e)
             {
                 Debug.Print("Exception when calling AutomationsApi.GetDripStats: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| The id of the automation | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BBOAuth2](../README.md#BBOAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getschedulingstatus"></a>
+# **GetSchedulingStatus**
+> void GetSchedulingStatus (string id)
+
+Get the number of pending scheduling calculations
+
+Get the number of pending scheduling calculations
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class GetSchedulingStatusExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: BBOAuth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AutomationsApi();
+            var id = id_example;  // string | The id of the automation
+
+            try
+            {
+                // Get the number of pending scheduling calculations
+                apiInstance.GetSchedulingStatus(id);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling AutomationsApi.GetSchedulingStatus: " + e.Message );
             }
         }
     }
